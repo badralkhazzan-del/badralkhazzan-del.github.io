@@ -69,6 +69,8 @@ for (const p of P.projects || []) {
     if (p.video.webm && !exists(p.video.webm)) err(`${w}: missing video ${p.video.webm}`);
   }
   if (p.demo) { if (!exists(p.demo.src)) err(`${w}: missing demo ${p.demo.src}`); checkImage(p.demo.poster, w + " demo poster"); }
+  checkImage(p.feature, w + " feature image");
+  if (p.document && !exists(p.document.src)) err(`${w}: missing document ${p.document.src}`);
 }
 
 /* ---------- awards, experience, skills, site ---------- */

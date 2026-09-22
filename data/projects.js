@@ -231,24 +231,50 @@ PORTFOLIO.projects = [
     title: "Hospital Management System: Database Design & ERD",
     year: "2025",
     category: "Data modeling · Database design · Systems thinking",
-    tagline: "A normalized data model for a hospital management system with nine entities and advanced ER modelling features.",
-    problem: null,
+    tagline: "A normalized data model for a hospital management system, with nine entities and advanced ER modelling features.",
+    problem:
+      "Hospitals manage large amounts of related data on patients, doctors, treatments, medication and billing. Without a structured database, records are duplicated, data becomes inconsistent and operations slow down.",
     context:
-      "Database Management System course, Department of Industrial Engineering, Universitas Islam Indonesia, 2025.",
-    role: "Course project.",
+      "Final project for the Database Management System course, Department of Industrial Engineering, Universitas Islam Indonesia, submitted August 2025.",
+    role: "Individual course project.",
     approach: [
-      "Designed an Entity Relationship Diagram that organizes hospital data consistently and is normalized to Third Normal Form (3NF).",
-      "Used supertype and subtype modelling (Person to Patient and Doctor), a recursive relationship (a doctor supervises doctors), a barred arc (a treatment is either a surgery or a medication) and a non-transferable patient-room relationship."
+      "Identified the core entities from hospital operations and assigned each one its attributes, primary keys and foreign keys.",
+      "Mapped the relationships between entities, from one-to-one and one-to-many links to a recursive and a non-transferable relationship.",
+      "Reviewed the design to meet Third Normal Form (3NF): atomic attributes with no partial or transitive dependencies.",
+      "Applied advanced modelling features: a Person supertype with Patient and Doctor subtypes, a doctor-supervises-doctor hierarchy, and an exclusive arc so each treatment is either a surgery or a medication.",
+      "Implemented the non-transferable patient-room assignment by placing Room_ID as a foreign key in the Patient entity."
     ],
     entities: ["Department", "Person", "Patient", "Doctor", "Room", "Bill", "Treatment", "Surgery", "Medication"],
+    relationships: [
+      { link: "Department employs Doctors", type: "1 : M" },
+      { link: "Department is led by a Head Doctor", type: "1 : 1" },
+      { link: "Doctor treats Patients", type: "1 : M" },
+      { link: "Patient is assigned to a Room", type: "Non-transferable" },
+      { link: "Patient receives Bills", type: "1 : M" },
+      { link: "Patient receives Treatments", type: "1 : M" },
+      { link: "Doctor performs Treatments", type: "1 : M" },
+      { link: "Treatment includes Surgery or Medication", type: "Exclusive arc" },
+      { link: "Doctor supervises Doctor", type: "Recursive" }
+    ],
     methods: ["data-modeling"],
-    tools: ["ERD", "Primary & foreign keys", "3NF normalization"],
-    results: [],
+    tools: ["ERD", "Primary & foreign keys", "Supertype / subtype", "3NF normalization"],
+    results: [
+      { value: "9", label: "Entities in the data model" },
+      { value: "9", label: "Relationships mapped, including 1:1, 1:M, recursive and exclusive-arc links" },
+      { value: "3NF", label: "Normalization level of the final design" }
+    ],
     caveat: "A data-modelling project. No hospital software was built or deployed.",
     recognition: null,
     relatedResearch: [],
-    cover: null,
-    gallery: [],
+    // Card image on the Projects page.
+    cover: { src: "assets/img/projects/hospital-db/title-slide", w: 1440, h: 810, alt: "Title slide: Hospital Management System, Entity Relationship Diagram, with 9 entities, 3NF normalized and advanced modelling" },
+    // Shown large on the project page.
+    feature: { src: "assets/img/projects/hospital-db/erd", w: 1871, h: 1563, alt: "Entity Relationship Diagram of the hospital management system showing Department, Person, Patient, Doctor, Room, Bill, Treatment, Surgery and Medication with their attributes, keys and relationships", caption: "The full Entity Relationship Diagram. Select the image to open it at full size." },
+    gallery: [
+      { src: "assets/img/projects/hospital-db/relationships", w: 1440, h: 810, alt: "Slide summarizing the entity groups (people, hospital resources, clinical actions) and the key relationships with their cardinalities", caption: "Entities and key relationships." },
+      { src: "assets/img/projects/hospital-db/design-highlights", w: 1440, h: 810, alt: "Slide summarizing the design highlights: supertype and subtype, arc relationship, recursive relationship and Third Normal Form", caption: "Advanced modelling techniques used in the design." }
+    ],
+    document: { src: "assets/docs/hospital-management-system-erd.pdf", label: "View the ERD presentation (PDF)" },
     featured: false
   }
 ];

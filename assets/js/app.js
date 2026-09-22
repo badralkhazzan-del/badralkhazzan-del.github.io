@@ -578,11 +578,22 @@
         '<source src="' + esc(p.video.src) + '" type="video/mp4"></video></div>' +
         '<p class="small muted" style="margin-top:10px">' + esc(p.video.label) + ". No audio.</p></section>";
     }
+    if (p.feature) {
+      main += '<section aria-labelledby="feature-h"><h2 id="feature-h">' + esc(p.featureTitle || "The design") + "</h2>" +
+        '<figure class="feature-figure"><a class="frame" href="' + esc(p.feature.src) + '.jpg" target="_blank" rel="noopener" aria-label="Open full-size image: ' + esc(p.feature.alt) + '">' + pic(p.feature) + "</a>" +
+        (p.feature.caption ? "<figcaption>" + esc(p.feature.caption) + (p.document ? ' <a href="' + esc(p.document.src) + '" target="_blank" rel="noopener">' + esc(p.document.label) + "</a>." : "") + "</figcaption>" : "") +
+        "</figure></section>";
+    }
     if (p.problem) main += "<section><h2>The problem</h2><p>" + esc(p.problem) + "</p></section>";
     if (p.context) main += "<section><h2>Context</h2><p>" + esc(p.context) + "</p></section>";
     if (p.role) main += "<section><h2>My role</h2><p>" + esc(p.role) + "</p></section>";
     if ((p.approach || []).length) main += '<section><h2>Approach</h2><ol class="steps">' + p.approach.map(function (a) { return "<li>" + esc(a) + "</li>"; }).join("") + "</ol></section>";
-    if (p.entities) main += '<section><h2>Data model</h2><p class="muted small">Nine entities in the ERD:</p><ul class="chip-list">' + p.entities.map(function (e) { return '<li><span class="chip">' + esc(e) + "</span></li>"; }).join("") + "</ul></section>";
+    if (p.entities) {
+      main += '<section><h2>Data model</h2><p class="muted small">Entities</p><ul class="chip-list">' + p.entities.map(function (e) { return '<li><span class="chip">' + esc(e) + "</span></li>"; }).join("") + "</ul>" +
+        ((p.relationships || []).length ? '<p class="muted small" style="margin:18px 0 6px">Relationships</p><ul class="rel-list">' + p.relationships.map(function (r) {
+          return "<li><span>" + esc(r.link) + '</span><span class="rel-type">' + esc(r.type) + "</span></li>";
+        }).join("") + "</ul>" : "") + "</section>";
+    }
     if ((p.results || []).length) main += '<section><h2>Results</h2><div class="stats stats-results">' + p.results.map(function (r) { return '<div class="stat"><div class="stat-value">' + esc(r.value) + '</div><div class="stat-label">' + esc(r.label) + "</div></div>"; }).join("") + "</div></section>";
     if ((p.findings || []).length) main += '<section><h2>Key findings so far</h2><ul class="now-list">' + p.findings.map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") + "</ul></section>";
     if (p.caveat) main += '<section><div class="note">' + icon("info") + "<p>" + esc(p.caveat) + "</p></div></section>";
@@ -603,6 +614,7 @@
     }
     var methods = (p.methods || []).map(function (m) { return S.methods[m]; }).filter(Boolean);
     if (methods.length) aside += '<div class="aside-block"><h2>Methods</h2><ul class="chip-list">' + methods.map(function (m) { return '<li><span class="chip">' + esc(m) + "</span></li>"; }).join("") + "</ul></div>";
+    if (p.document) aside += '<div class="aside-block"><h2>Document</h2><a class="btn btn-secondary btn-sm" href="' + esc(p.document.src) + '" target="_blank" rel="noopener">' + icon("file") + esc(p.document.label) + "</a></div>";
     if ((p.tools || []).length) aside += '<div class="aside-block"><h2>Tools & techniques</h2><ul class="chip-list">' + p.tools.map(function (m) { return '<li><span class="chip">' + esc(m) + "</span></li>"; }).join("") + "</ul></div>";
     var rel = (p.relatedResearch || []).map(function (rid) { return byId(P.research, rid); }).filter(Boolean);
     if (rel.length) aside += '<div class="aside-block"><h2>Related research</h2>' + rel.map(pubCard).join("") + "</div>";

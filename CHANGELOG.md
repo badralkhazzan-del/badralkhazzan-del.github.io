@@ -2,6 +2,11 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-09-22 · Hospital Management System ERD
+
+- Added the updated ERD presentation from Google Drive to the Hospital Management System project: full ERD diagram (large, opens full size), two summary slides, title-slide card image and a PDF of the presentation.
+- Added the nine relationships with their cardinalities, key figures (9 entities, 9 relationships, 3NF) and a fuller approach, based on the project report (individual project, August 2025).
+
 ## 2026-09-22 · New Master CV
 
 - Public CV replaced with the new Master CV from Google Drive (phone number removed). Its only content change is the language line: Indonesian (B2).
