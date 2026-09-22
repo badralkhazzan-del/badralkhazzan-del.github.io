@@ -2,6 +2,10 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-09-22 · Privacy checker
+
+- `tools/check.mjs` no longer contains any real private values, since the file is published with the site. It now uses general patterns, plus an optional local list (`tools/private-values.local.txt`, never committed) for exact values.
+
 ## 2026-09-22 · GPA 3.90
 
 - GPA updated to 3.90 / 4.00 (Home page, Education page and public CV).

@@ -101,27 +101,38 @@ for (const f of htmlFiles) {
   }
 }
 
-/* ---------- privacy scan of every published text file ---------- */
+/* ---------- privacy scan of every published text file ----------
+ * This file is published with the site, so it holds general patterns only, never real values.
+ * Exact private values (phone, passport and certificate numbers, date of birth, address words)
+ * go in tools/private-values.local.txt, one per line. That file is in .gitignore and stays local.
+ */
 const PRIVATE = [
-  [/\+62[\s\d-]{6,}/, "phone number"],
-  [/813[\s-]?1315[\s-]?5470/, "phone number"],
+  [/(?:\+62[\s-]?|(?<![\d.])0)8\d{2}[\s-]?\d{3,4}[\s-]?\d{3,5}(?![\d.])/, "Indonesian phone number"],
+  [/\+\d{1,3}[\s-]?\(?\d{2,4}\)?[\s-]?\d{3,4}[\s-]?\d{3,4}\b/, "phone number"],
   [/2352\d{4}/, "student number"],
-  [/students\.uii\.ac\.id/, "student email address"],
-  [/7870343/, "passport number"],
-  [/01 January 2003|2003-01-01/, "date of birth"],
-  [/Gg\.?\s*Mawar|Umbulmartani|Ngemplak/i, "home address"],
-  [/4377259/, "certificate number"],
-  [/2447\s?2032/, "test appointment number"]
+  [/students\.uii\.ac\.id/i, "student email address"],
+  [/(?<![\d.])\d{16}(?![\d.])/, "16-digit identity number"],
+  [/passport\s*(no\.?|number)\s*[:#]|date of birth\s*:|tanggal lahir|\bNIK\s*:|\bKTP\s*:/i, "identity-document details"]
 ];
+const LOCAL_VALUES = path.join(root, "tools", "private-values.local.txt");
+const squash = (s) => s.toLowerCase().replace(/[\s\-.()/]/g, "");
+const exactValues = fs.existsSync(LOCAL_VALUES)
+  ? fs.readFileSync(LOCAL_VALUES, "utf8").split(/\r?\n/).map((l) => l.trim()).filter((l) => l && !l.startsWith("#"))
+  : [];
+if (!exactValues.length) warn("tools/private-values.local.txt not found or empty: only general privacy patterns were checked");
 const TEXT_EXT = new Set([".html", ".js", ".mjs", ".css", ".md", ".txt", ".xml", ".json", ".svg"]);
 function walk(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     if (entry.name.startsWith(".git") || entry.name === "node_modules") continue;
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) walk(full);
-    else if (TEXT_EXT.has(path.extname(entry.name)) && !full.endsWith(path.join("tools", "check.mjs"))) {
+    else if (TEXT_EXT.has(path.extname(entry.name)) && full !== LOCAL_VALUES) {
       const text = fs.readFileSync(full, "utf8");
-      for (const [re, label] of PRIVATE) if (re.test(text)) err(`PRIVACY: possible ${label} in ${path.relative(root, full)}`);
+      const where = path.relative(root, full);
+      if (!full.endsWith(path.join("tools", "check.mjs")))
+        for (const [re, label] of PRIVATE) if (re.test(text)) err(`PRIVACY: possible ${label} in ${where}`);
+      const flat = squash(text);
+      for (const v of exactValues) if (flat.includes(squash(v))) err(`PRIVACY: a value from private-values.local.txt appears in ${where}`);
     }
   }
 }

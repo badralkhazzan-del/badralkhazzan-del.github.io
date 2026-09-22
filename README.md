@@ -173,6 +173,8 @@ node tools/check.mjs
 
 It confirms that every status is valid, every link between papers, projects and awards points to something real, every image exists with alt text, and that no private information (phone number, student number, passport, address, certificate numbers) appears in any published file.
 
+`check.mjs` is published with the site, so it only contains general patterns. The exact private values it also looks for are kept in `tools/private-values.local.txt`, one per line, which is listed in `.gitignore` and never committed. Create that file on any new computer before running the checks (the checker warns when it is missing).
+
 ---
 
 ## 7. Privacy rules

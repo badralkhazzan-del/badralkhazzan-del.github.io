@@ -1,3 +1,4 @@
 node_modules/
 .DS_Store
 assets/_cv_preview.png
+tools/private-values.local.txt
