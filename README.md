@@ -45,6 +45,7 @@ assets/
 tools/
   check.mjs           checks the data, missing files and privacy (run before publishing)
   set-site-url.mjs    changes the site address everywhere (after renaming or adding a domain)
+  make_public_cv.py   makes the public CV (phone number removed) from the Master CV
   update_cv_preview.py  regenerates the CV preview image after replacing the CV
 
 CHANGELOG.md          record of meaningful updates
@@ -147,9 +148,14 @@ Copy a block in `data/awards.js`. Use `type: "competition"` for competitive awar
 Add an entry to `data/programs.js` with `title`, `org`, `kind`, `date` and `sort` (`"YYYY-MM-DD"`).
 
 ### Replace the CV
-1. Export the new CV **without the phone number** and save it as `assets/Badr_Aldeen_CV.pdf` (same name).
-2. Run `python3 tools/update_cv_preview.py` (needs `pip install pymupdf pillow`). It also refuses a CV that contains a phone number.
-3. Update `cv.updated` in `data/site.js`.
+1. Download the new Master CV from Google Drive (it may include the phone number).
+2. Create the public copy. This removes the phone number, keeps the email and LinkedIn links, and saves `assets/Badr_Aldeen_CV.pdf`:
+   ```
+   python3 tools/make_public_cv.py path/to/Badr_Aldeen_Master_CV.pdf
+   python3 tools/update_cv_preview.py
+   ```
+   (Both need `pip install pymupdf pillow`. The scripts refuse to save a CV that still contains a phone number.)
+3. Update `cv.updated` in `data/site.js`, and any facts that changed (for example the GPA in `data/education.js`).
 
 ### Change the profile photo
 Replace `assets/profile/badr-aldeen.jpg` and `.webp` (800 × 1000 px, portrait) and `badr-aldeen-480.jpg` / `.webp` (480 × 600 px). Keep the same file names.

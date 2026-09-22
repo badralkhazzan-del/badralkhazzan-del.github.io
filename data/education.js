@@ -12,7 +12,7 @@ PORTFOLIO.education = {
       institution: "Universitas Islam Indonesia",
       location: "Yogyakarta, Indonesia",
       period: "2023 – expected 2027",
-      gpa: "3.91 / 4.00",
+      gpa: "3.90 / 4.00",
       scholarship: "fgls",
       coursework: [
         "Operations Research",

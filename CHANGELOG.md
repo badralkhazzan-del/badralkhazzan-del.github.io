@@ -2,6 +2,11 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-09-22 · GPA 3.90
+
+- GPA updated to 3.90 / 4.00 (Home page, Education page and public CV).
+- Public CV rebuilt from the latest Master CV with the new `tools/make_public_cv.py`, which removes the phone number automatically.
+
 ## 2026-09-22 · Hospital Management System ERD
 
 - Added the updated ERD presentation from Google Drive to the Hospital Management System project: full ERD diagram (large, opens full size), two summary slides, title-slide card image and a PDF of the presentation.
