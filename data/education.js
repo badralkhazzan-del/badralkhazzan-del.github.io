@@ -48,7 +48,7 @@ PORTFOLIO.education = {
   languages: [
     { name: "Arabic", level: "Native" },
     { name: "English", level: "B2", note: "TOEFL iBT 90" },
-    { name: "Bahasa Indonesia", level: "A2" },
+    { name: "Bahasa Indonesia", level: "B2" },
     { name: "German", level: "A1" }
   ]
 };

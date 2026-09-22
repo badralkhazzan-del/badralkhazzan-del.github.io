@@ -2,6 +2,10 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-09-22 · Bahasa Indonesia level
+
+- Bahasa Indonesia updated from A2 to B2 on the Education page and in the public CV (and its preview image).
+
 ## 2026-09-22 · Research grouping and portrait
 
 - Relief pre-positioning and wheat import Mean-CVaR are now listed as Research in Progress (confirmed by Badr), so that group holds 3 items and the separate "Research Project" group is no longer shown.
