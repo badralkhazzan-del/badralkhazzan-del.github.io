@@ -47,8 +47,8 @@ PORTFOLIO.site = {
     file: "assets/Badr_Aldeen_CV.pdf",
     // Image of page 1, shown where the browser cannot display PDFs (regenerate when the CV changes; see README).
     preview: "assets/cv-preview",
-    previewW: 1242,
-    previewH: 1755,
+    previewW: 1241,
+    previewH: 1754,
     updated: "2026-09-22",
     note: "For references or further details, please get in touch by email."
   },

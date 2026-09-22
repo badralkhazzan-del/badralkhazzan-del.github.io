@@ -2,6 +2,10 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-09-22 · New Master CV
+
+- Public CV replaced with the new Master CV from Google Drive (phone number removed). Its only content change is the language line: Indonesian (B2).
+
 ## 2026-09-22 · Bahasa Indonesia level
 
 - Bahasa Indonesia updated from A2 to B2 on the Education page and in the public CV (and its preview image).
