@@ -22,7 +22,8 @@ PORTFOLIO.researchStatuses = {
   "conference":       { label: "Conference",             order: 3, note: "Accepted for conference presentation." },
   "under-review":     { label: "Under Review",           order: 4, note: "Submitted and under review. Summary only; the manuscript is not public." },
   "in-progress":      { label: "Research in Progress",   order: 5, note: "Ongoing research. Summary only." },
-  "research-project": { label: "Research Project",       order: 6, note: "Completed research work shown without a publication-status claim." }
+  // Not used at the moment; kept for work that should be shown without any status claim.
+  "research-project": { label: "Research Project",       order: 6, note: "Research work shown without a publication-status claim." }
 };
 
 // Name used to highlight the site owner in author lists.
@@ -170,7 +171,7 @@ PORTFOLIO.research = [
     short: "Relief pre-positioning",
     title: "Relief Pre-Positioning under Correlated Road Failures",
     type: "Humanitarian logistics study",
-    status: "research-project",
+    status: "in-progress",
     year: 2026,
     venue: null,
     authors: ["Badr Aldeen Al-Khazan"],
@@ -186,7 +187,7 @@ PORTFOLIO.research = [
     short: "Wheat import Mean-CVaR",
     title: "Mean-CVaR Optimization for Indonesia's Wheat Import Sourcing",
     type: "Decision analytics study",
-    status: "research-project",
+    status: "in-progress",
     year: 2026,
     venue: null,
     authors: ["Badr Aldeen Al-Khazan"],

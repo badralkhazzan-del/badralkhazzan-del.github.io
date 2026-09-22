@@ -236,11 +236,8 @@ main { display: block; }
 .portrait-frame { position: relative; border-radius: var(--radius-lg); overflow: hidden; background: #DDE2E8; border: 1px solid var(--line-strong); box-shadow: var(--shadow); }
 .portrait-frame img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; }
 .portrait-media { position: relative; }
-.portrait-media::before {
-  content: ""; position: absolute; inset: 18px -18px -18px 18px; border: 1.5px solid var(--teal); border-radius: var(--radius-lg); opacity: .55; z-index: -1;
-}
 .portrait-motif { position: absolute; left: -46px; top: 16%; width: 120px; height: auto; color: var(--navy); opacity: .9; z-index: 2; pointer-events: none; }
-.portrait figcaption { display: flex; align-items: center; gap: 8px; margin-top: 30px; font-size: .88rem; color: var(--muted); justify-content: center; }
+.portrait figcaption { display: flex; align-items: center; gap: 8px; margin-top: 16px; font-size: .88rem; color: var(--muted); justify-content: center; }
 .portrait figcaption svg { width: 16px; height: 16px; color: var(--teal); }
 
 @media (max-width: 860px) {

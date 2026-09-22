@@ -2,6 +2,11 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-09-22 · Research grouping and portrait
+
+- Relief pre-positioning and wheat import Mean-CVaR are now listed as Research in Progress (confirmed by Badr), so that group holds 3 items and the separate "Research Project" group is no longer shown.
+- Removed the offset outline behind the home page portrait.
+
 ## 2026-09-22 · First version
 
 - Built the complete static portfolio: Home, About, Research, Projects (with a detail page per project), Experience, Awards, Education & Skills, CV, Contact and a 404 page.
