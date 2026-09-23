@@ -181,7 +181,7 @@ It confirms that every status is valid, every link between papers, projects and 
 
 - The Google Drive package is the private evidence layer. Only curated public assets belong in this repository.
 - Never publish: phone number, student number, home address, identity documents, date of birth, banking details, scholarship letters or applications, reviewer or editor correspondence, raw score reports, certificate numbers, or full manuscripts that are not published.
-- Certificates verify claims; they do not need to be public. The Awards page says certificates are available on request.
+- Certificates may be shown on the Awards page (`certificate` in `data/awards.js`) only after certificate numbers, IDs and QR codes are hidden. Publish them as images, not the original PDFs, so no file metadata is exposed.
 
 ---
 

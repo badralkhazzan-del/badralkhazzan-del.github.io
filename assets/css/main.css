@@ -475,6 +475,12 @@ figcaption { font-size: .85rem; color: var(--muted); margin-top: 8px; line-heigh
 .award-card .award-title { font-size: 1.35rem; margin: 10px 0 2px; }
 .award-card .award-event { font-size: 1rem; }
 @media (max-width: 520px) { .award-card { grid-template-columns: 1fr; } .award-card .award-img { max-width: 180px; } }
+.cert-link { display: inline-flex; align-items: center; gap: 12px; margin-top: 14px; padding: 8px 12px 8px 8px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); color: var(--navy); font-weight: 600; font-size: .88rem; text-decoration: none; max-width: 100%; }
+.cert-link:hover, .cert-link:focus-visible { border-color: var(--gold); box-shadow: 0 2px 10px rgba(16, 32, 64, .08); }
+.cert-thumb { flex: 0 0 auto; width: 96px; border-radius: 4px; overflow: hidden; border: 1px solid var(--line); line-height: 0; }
+.cert-thumb img { width: 100%; height: auto; display: block; }
+.cert-label { display: inline-flex; align-items: center; gap: 6px; }
+.cert-label svg { width: 16px; height: 16px; flex: 0 0 auto; }
 .award-mini { display: flex; flex-direction: column; gap: 4px; padding: 18px 20px; border-top: 3px solid var(--gold); }
 .award-mini .award-title { font-size: 1.12rem; margin: 0; }
 .award-mini .award-event { font-size: .92rem; }

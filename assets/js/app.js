@@ -696,6 +696,14 @@
       return out.length ? '<div class="pub-foot">' + out.join("") + "</div>" : "";
     }
 
+    function cert(a) {
+      var c = a.certificate;
+      if (!c) return "";
+      return '<a class="cert-link" href="' + esc(c.src) + '.jpg" target="_blank" rel="noopener" aria-label="View certificate (opens full size): ' + esc(c.alt) + '">' +
+        '<span class="cert-thumb">' + pic({ src: c.src + "-thumb", w: 480, h: Math.round(480 * c.h / c.w), alt: "" }) + "</span>" +
+        '<span class="cert-label">' + icon("badge") + "View certificate " + icon("external") + "</span></a>";
+    }
+
     var compHtml = comp.map(function (a) {
       return '<article class="card award-card" id="' + esc(a.id) + '">' +
         (a.image ? '<div class="award-img">' + pic(a.image) + "</div>" : "") +
@@ -706,7 +714,7 @@
           '<p class="award-sub">' + esc([a.eventDetail, a.date].filter(Boolean).join(" · ")) + "</p>" +
           "<p><strong>" + esc(a.for) + "</strong></p>" +
           (a.detail ? '<p class="muted">' + esc(a.detail) + "</p>" : "") +
-          links(a) +
+          links(a) + cert(a) +
         "</div></article>";
     }).join("");
 
@@ -715,7 +723,7 @@
         '<span class="badge badge-plain">' + esc(types[a.type] || "") + "</span>" +
         '<p class="award-title" style="font-size:1.2rem">' + esc(a.title) + "</p>" +
         '<p class="award-event">' + esc(a.event) + '</p><p class="award-sub">' + esc(a.date) + " · " + esc(a.for) + "</p>" +
-        (a.detail ? '<p class="muted small">' + esc(a.detail) + "</p>" : "") +
+        (a.detail ? '<p class="muted small">' + esc(a.detail) + "</p>" : "") + cert(a) +
       "</article>";
     }).join("");
 
@@ -732,7 +740,7 @@
         sectionHead("Scholarship & development", "Scholarship and leadership development", "Listed separately from competitive awards.") +
         '<div class="grid grid-2">' + otherHtml + "</div>" +
         (extra ? '<h3 style="margin-top:36px;font-size:1.05rem">Other recognition</h3><ul>' + extra + "</ul>" : "") +
-        '<p class="small muted" style="margin-top:24px">' + icon("info", "inline-icon") + " Supporting certificates are available on request.</p>" +
+        '<p class="small muted" style="margin-top:24px">' + icon("info", "inline-icon") + " Certificates are shown where available, with reference numbers hidden. Other supporting documents are available on request.</p>" +
       "</div></section>" + contactBand());
   };
 

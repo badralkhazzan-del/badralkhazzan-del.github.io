@@ -80,6 +80,10 @@ for (const a of P.awards || []) {
   if (a.project && !projectIds.has(a.project)) err(`${w}: project "${a.project}" does not exist`);
   if (a.research && !researchIds.has(a.research)) err(`${w}: research "${a.research}" does not exist`);
   checkImage(a.image, w);
+  if (a.certificate) {
+    checkImage(a.certificate, w + " certificate");
+    checkImage({ src: a.certificate.src + "-thumb", alt: a.certificate.alt }, w + " certificate thumbnail");
+  }
 }
 for (const r of (P.experience || {}).roles || []) checkImage(r.image, `role "${r.id}"`);
 for (const g of P.skills || []) for (const s of g.items) for (const e of s.evidence || []) checkRef(e, `skill "${s.name}"`);

@@ -2,6 +2,11 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-09-23 · Award certificates
+
+- Awards page: added certificates for Idea Champion 2.0, IYEC 12 (Outstanding Delegate), EXPO RSKE 2025 (Best Presentation) and the Aspire Leaders Program. Each card shows a thumbnail that opens the full certificate.
+- Certificates are published as images only (no original PDFs or file metadata). The IYEC 12 certificate reference number is hidden, and the scanning-app mark on the Best Presentation scan is cropped out.
+
 ## 2026-09-23 · CV with portfolio link
 
 - Public CV replaced with the updated CV from Google Drive (phone number removed). Its only change is the header, which now links to this portfolio ("My Portfolio") instead of LinkedIn.
