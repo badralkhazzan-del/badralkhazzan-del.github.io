@@ -90,9 +90,7 @@ PORTFOLIO.site = {
   // What is happening now (Home page).
   now: [
     "Completing the final year of my B.Sc. in Industrial Engineering (expected 2027).",
-    "Developing research on green vehicle routing for electric delivery trucks.",
-    "Bullwhip-effect simulation paper accepted for publication and in production.",
-    "Predictive-maintenance paper accepted for presentation at TMIC 2026."
+    "Developing research on green vehicle routing for electric delivery trucks."
   ],
 
   about: {

@@ -339,8 +339,13 @@ a.chip:hover { border-color: var(--teal); color: var(--teal); }
 .pub-authors strong { color: var(--ink); }
 .pub-summary { font-size: .97rem; margin-bottom: .8em; max-width: 72ch; }
 .pub-foot { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
-.pub-note { font-size: .84rem; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
-.pub-note svg { width: 15px; height: 15px; }
+.pub-more { margin: -.3em 0 .9em; }
+.pub-more > summary { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; font-size: .88rem; font-weight: 600; color: var(--teal); list-style: none; }
+.pub-more > summary::-webkit-details-marker { display: none; }
+.pub-more > summary::after { content: ""; width: 7px; height: 7px; border-right: 1.6px solid currentColor; border-bottom: 1.6px solid currentColor; transform: translateY(-2px) rotate(45deg); transition: transform .15s; }
+.pub-more[open] > summary::after { transform: translateY(1px) rotate(225deg); }
+.pub-more[open] > summary { margin-bottom: .6em; }
+.pub-topics { margin-top: 4px; }
 @media (max-width: 720px) {
   .pub { grid-template-columns: 1fr; }
   .pub-meta { flex-direction: row; flex-wrap: wrap; align-items: center; }

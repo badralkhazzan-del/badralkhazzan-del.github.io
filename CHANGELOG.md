@@ -2,6 +2,11 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-09-23 · Lighter Research and Home pages
+
+- Research: each entry now shows its first sentence, with the rest of the summary and the topics behind "Read more". The repeated "Summary only" note is removed (the status legend already explains it). Visible text on the page drops from about 1,100 to about 630 words.
+- Home: removed the extra findings paragraph from the flagship project cards and the two "Currently" items that repeated the Selected research cards.
+
 ## 2026-09-23 · Award certificates
 
 - Awards page: added certificates for Idea Champion 2.0, IYEC 12 (Outstanding Delegate), EXPO RSKE 2025 (Best Presentation) and the Aspire Leaders Program. Each card shows a thumbnail that opens the full certificate.

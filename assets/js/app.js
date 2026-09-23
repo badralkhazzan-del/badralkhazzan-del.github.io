@@ -254,14 +254,13 @@
     var researchLink = research.length
       ? '<a class="btn btn-ghost" href="research.html#r-' + esc(research[0].id) + '">Related research ' + statusBadge(research[0].status) + "</a>"
       : "";
-    var findings = !p.results.length && p.findings ? '<p class="small muted">' + esc(p.findings[0]) + "</p>" : "";
     return '<article class="project-feature">' +
       '<div class="project-media">' + pic(p.cover) + "</div>" +
       '<div class="project-body">' +
         '<p class="project-kicker">' + esc(p.category) + "</p>" +
         "<h3>" + esc(p.title) + "</h3>" +
         '<p class="tagline">' + esc(p.tagline) + "</p>" +
-        highlights(p, 2) + findings +
+        highlights(p, 2) +
         recognitionLine(p) +
         '<div class="btn-row"><a class="btn btn-primary" href="project.html?id=' + esc(p.id) + '">Read case study ' + icon("arrow") + "</a>" + researchLink + "</div>" +
       "</div>" +
@@ -504,18 +503,20 @@
     var extras = "";
     if (project) extras += '<a class="text-link small" href="project.html?id=' + esc(project.id) + '">Related project: ' + esc(shortTitle(project)) + " " + icon("arrow") + "</a>";
     if (award) extras += '<a class="text-link small" href="awards.html#' + esc(award.id) + '">' + esc(award.short || award.title + ", " + award.event) + " " + icon("arrow") + "</a>";
-    var note = r.status === "published" ? "" :
-      '<span class="pub-note">' + icon("lock") + "Summary only. The full text is not publicly available.</span>";
     var topics = (r.topics || []).length ? '<ul class="chip-list" aria-label="Topics">' + r.topics.map(function (t) { return '<li><span class="chip">' + esc(t) + "</span></li>"; }).join("") + "</ul>" : "";
+    // First sentence stays visible; the rest of the summary and the topics open on request.
+    var split = String(r.summary || "").match(/^(.+?[.?!])\s+(?=[A-Z])([\s\S]+)$/);
+    var lede = split ? split[1] : r.summary, rest = split ? split[2] : "";
+    var more = (rest || topics) ? '<details class="pub-more"><summary>Read more</summary>' +
+      (rest ? '<p class="pub-summary">' + esc(rest) + "</p>" : "") + (topics ? '<div class="pub-topics">' + topics + "</div>" : "") + "</details>" : "";
     return '<article class="pub" id="r-' + esc(r.id) + '">' +
       '<div class="pub-meta"><span class="pub-year">' + esc(r.year) + "</span>" + statusBadge(r.status) + "<span>" + esc(r.type || "") + "</span></div>" +
       "<div>" +
         "<h3>" + esc(r.title) + "</h3>" +
         '<p class="pub-venue">' + venueLine(r) + "</p>" +
         (r.authors ? '<p class="pub-authors">' + authorsHtml(r.authors) + "</p>" : "") +
-        '<p class="pub-summary">' + esc(r.summary) + "</p>" +
-        '<div class="pub-foot">' + links + note + extras + "</div>" +
-        (topics ? '<div style="margin-top:14px">' + topics + "</div>" : "") +
+        '<p class="pub-summary">' + esc(lede) + "</p>" + more +
+        ((links || extras) ? '<div class="pub-foot">' + links + extras + "</div>" : "") +
       "</div>" +
     "</article>";
   }
