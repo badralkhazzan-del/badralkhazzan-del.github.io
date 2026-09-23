@@ -2,6 +2,11 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-09-23 · CV with portfolio link
+
+- Public CV replaced with the updated CV from Google Drive (phone number removed). Its only change is the header, which now links to this portfolio ("My Portfolio") instead of LinkedIn.
+- `tools/make_public_cv.py` now moves link underlines together with their text and keeps each link on its own words.
+
 ## 2026-09-22 · Privacy checker
 
 - `tools/check.mjs` no longer contains any real private values, since the file is published with the site. It now uses general patterns, plus an optional local list (`tools/private-values.local.txt`, never committed) for exact values.

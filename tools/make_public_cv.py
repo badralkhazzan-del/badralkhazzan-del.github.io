@@ -49,18 +49,25 @@ else:
         drop.add(idx + 1)
     keep = [s for i, s in enumerate(spans) if i not in drop]
 
-    # Links on this line, matched to the span they cover.
+    # Links and underlines on this line, matched to the span they sit on, so they can move with it.
     y0, y1 = line["bbox"][1], line["bbox"][3]
     links = [l for l in page.get_links() if l["from"].y0 < y1 and l["from"].y1 > y0 and l.get("uri")]
-    span_uri = {}
-    for s in keep:
-        if SEPARATOR.match(s["text"]):
-            continue
-        r = pymupdf.Rect(s["bbox"])
-        centre = pymupdf.Point((r.x0 + r.x1) / 2, (r.y0 + r.y1) / 2)
-        for l in links:
-            if centre in l["from"]:
-                span_uri[id(s)] = l["uri"]
+
+    def owner(x):
+        return next((s for s in keep if s["bbox"][0] <= x <= s["bbox"][2] and not SEPARATOR.match(s["text"])), None)
+
+    span_links = {}
+    for l in links:
+        s = owner((l["from"].x0 + l["from"].x1) / 2)
+        if s:
+            span_links.setdefault(id(s), []).append(l)
+    span_lines = {}
+    for d in page.get_drawings():
+        r = d["rect"]
+        if r.height < 1.5 and y0 < r.y0 < y1 and d.get("fill"):
+            s = owner((r.x0 + r.x1) / 2)
+            if s:
+                span_lines.setdefault(id(s), []).append((r, d["fill"]))
 
     # Pick an embedded font that contains every character we need.
     needed = set("".join(s["text"] for s in keep))
@@ -86,7 +93,7 @@ else:
         page.delete_link(l)
     x_left, x_right = line["bbox"][0], line["bbox"][2]
     page.add_redact_annot(pymupdf.Rect(x_left - 1, y0 + 1, x_right + 2, y1 - 0.6))
-    page.apply_redactions(images=pymupdf.PDF_REDACT_IMAGE_NONE, graphics=pymupdf.PDF_REDACT_LINE_ART_NONE)
+    page.apply_redactions(images=pymupdf.PDF_REDACT_IMAGE_NONE, graphics=pymupdf.PDF_REDACT_LINE_ART_REMOVE_IF_COVERED)
 
     size = keep[0]["size"]
     baseline = keep[0]["origin"][1]
@@ -98,8 +105,11 @@ else:
         c = s["color"]
         page.insert_text((x, baseline), s["text"], fontname="PubCVFont", fontsize=size,
                          color=((c >> 16 & 255) / 255, (c >> 8 & 255) / 255, (c & 255) / 255))
-        if id(s) in span_uri:
-            page.insert_link({"kind": pymupdf.LINK_URI, "from": pymupdf.Rect(x, y0 - 2, x + w, y1 + 2), "uri": span_uri[id(s)]})
+        dx = x - s["bbox"][0]
+        for l in span_links.get(id(s), []):
+            page.insert_link({"kind": pymupdf.LINK_URI, "from": l["from"] + (dx, 0, dx, 0), "uri": l["uri"]})
+        for r, fill in span_lines.get(id(s), []):
+            page.draw_rect(r + (dx, 0, dx, 0), color=None, fill=fill, width=0)
         x += w
 
 doc.set_metadata({"title": "Badr Aldeen Al-Khazan, CV", "author": "Badr Aldeen Al-Khazan"})
