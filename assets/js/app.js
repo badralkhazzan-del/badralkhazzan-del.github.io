@@ -366,13 +366,13 @@
     // Featured research
     var featured = sortedResearch().filter(function (r) { return r.featured; });
     html += '<section class="section"><div class="wrap">' +
-      sectionHead("Selected research", "Each item carries its real status. Only published work links to a public copy.", "research.html", "All research") +
+      sectionHead("Research", "Each item carries its real status. Only published work links to a public copy.", "research.html", "All research") +
       '<div class="grid grid-2">' + featured.map(pubCard).join("") + "</div></div></section>";
 
     // Flagship projects
     var flagship = (P.projects || []).filter(function (p) { return p.tier === "flagship"; });
     html += '<section class="section section-alt"><div class="wrap">' +
-      sectionHead("Flagship projects", "The three projects closest to my current direction. Two of them won first place in competition.", "projects.html", "All projects") +
+      sectionHead("Projects", "The three projects closest to my current direction. Two of them won first place in competition.", "projects.html", "All projects") +
       flagship.map(projectFeature).join("") + "</div></section>";
 
     // Recognition + now
