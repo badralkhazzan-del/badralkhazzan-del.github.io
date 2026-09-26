@@ -2,6 +2,12 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-09-26 · Shorter About page
+
+- Story shortened from six paragraphs to three (375 to 225 words); earlier projects, the Delsim traineeship and the Aspire program remain on their own pages.
+- "Where I am heading" now follows the story, in one sentence. The methods map shows the eight core methods only.
+- Removed the Quick facts box (it repeated the story), trimmed Qualities to six, and removed Photography and Public speaking from Interests.
+
 ## 2026-09-26 · Main information first
 
 - Home: your name now comes first, with the field labels under it.

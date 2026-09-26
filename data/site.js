@@ -61,7 +61,7 @@ PORTFOLIO.site = {
   ],
 
   direction:
-    "I want to deepen my capability in Operations Research and Decision Analytics for industrial and supply-chain systems, gain technical experience in industry and research, and pursue graduate study in the field. In the long run, I hope to contribute to, or build, decision-intelligence and optimization tools that help industrial operations make better decisions.",
+    "Next, I want to deepen my work in Operations Research and Decision Analytics through industry experience and graduate study, and in the long run build decision tools that help industrial operations make better choices.",
 
   // Home page focus areas. "evidence" lists research/project ids used as examples.
   focusAreas: [
@@ -95,12 +95,9 @@ PORTFOLIO.site = {
 
   about: {
     story: [
-      "I am a final-year Industrial Engineering student in the International Program at Universitas Islam Indonesia in Yogyakarta, where I study on the Future Global Leaders Scholarship. The thread that runs through my work is a practical one: given the constraints an operation really faces, what is the better decision, and how can we show that it is better?",
-      "My earlier projects were classic industrial engineering. I helped manufacture and assemble a hydraulic press in the manufacturing process laboratory, designed a normalized data model for a hospital management system, and worked with my team on an ergonomic, multifunctional pen that received the Best Presentation award at EXPO RSKE 2025. Those projects taught me to see products and processes as systems with users, constraints and trade-offs.",
-      "Operations Research changed the way I work. In my second year I let an AI tool solve the linear programming problems on production planning in my Operations Research course, and then I could not rebuild the model myself in the lab session that followed. I later wrote about that experience in a published essay, and since then I have tried to understand every problem from the model up.",
-      "Most of my recent work follows the same pattern: define the decision, build a model that is honest about its assumptions, and test it. As a trainee at the Delsim Laboratory I built and validated discrete-event and system-dynamics models in FlexSim and PowerSim. I have used simulation to study the bullwhip effect in a multi-echelon supply chain, queueing analysis to evaluate an RFID parking gate our team built, calibrated machine learning for predictive-maintenance decisions, and optimization for electric-truck routing, wheat-import sourcing and disaster-relief planning.",
-      "Sustainability and resilience keep appearing in these problems as real constraints: battery range in electric logistics, post-harvest losses that a better dryer could reduce, road networks that fail together after a flood, and the footprint of the AI tools we use to teach sustainability itself.",
-      "Studying in Indonesia as an international student has shaped how I work with people. I have led events and served as the Industrial Engineering ambassador for UII Global, represented Germany at the 12th International Youth Exchange and Conference in Malaysia and Singapore, where I was named Outstanding Delegate, and completed the Aspire Leaders Program."
+      "I am a final-year Industrial Engineering student in the International Program at Universitas Islam Indonesia in Yogyakarta, where I study on the Future Global Leaders Scholarship. My work keeps returning to one practical question: given the constraints an operation really faces, what is the better decision, and how can we show that it is better?",
+      "Operations Research changed the way I work. In my second year I let an AI tool solve the linear programming problems in my Operations Research course, and then I could not rebuild the model myself in the lab session that followed. I later wrote about that experience in a published essay, and since then I have tried to understand every problem from the model up. Most of my work now follows the same pattern: define the decision, build a model that is honest about its assumptions, and test it, using simulation, queueing analysis, machine learning and optimization on problems that range from supply chains to electric-truck routing and disaster relief.",
+      "Sustainability and resilience keep appearing in these problems as real constraints, such as battery range in electric logistics or road networks that fail together after a flood. Studying in Indonesia as an international student has also shaped how I work with people, from leading events for UII Global to representing Germany at IYEC 12, where I was named Outstanding Delegate."
     ],
     qualities: [
       "Analytical thinking",
@@ -108,16 +105,11 @@ PORTFOLIO.site = {
       "Project management",
       "Technical writing",
       "Leadership",
-      "Cross-cultural communication",
-      "Public speaking",
-      "Team collaboration",
-      "Learning across disciplines"
+      "Cross-cultural communication"
     ],
     interests: [
       "Reading and continuous learning",
       "Learning languages",
-      "Public speaking",
-      "Photography",
       "Travel and cultural exploration",
       "Nature and outdoor activities",
       "Volunteering and community work"
@@ -143,6 +135,9 @@ PORTFOLIO.site = {
     "manufacturing": "Manufacturing processes",
     "qualitative": "Document & framework analysis"
   },
+
+  // Methods shown on the About page map (the core of the current direction).
+  aboutMethods: ["optimization", "routing", "stochastic-programming", "simulation", "queueing", "statistics", "machine-learning", "supply-chain"],
 
   nav: [
     { id: "about", label: "About", href: "about.html" },

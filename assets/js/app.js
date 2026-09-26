@@ -401,7 +401,7 @@
     var story = (A.story || []).map(function (p) { return "<p>" + esc(p) + "</p>"; }).join("");
 
     // Methods map: which research and projects use each method.
-    var rows = Object.keys(S.methods || {}).map(function (key) {
+    var rows = (S.aboutMethods || Object.keys(S.methods || {})).map(function (key) {
       var items = [];
       (P.projects || []).forEach(function (p) { if ((p.methods || []).indexOf(key) > -1) items.push({ id: p.id, href: "project.html?id=" + p.id, label: shortTitle(p), kind: "Project" }); });
       (P.research || []).forEach(function (r) {
@@ -421,22 +421,17 @@
         '<div class="prose">' + story + "</div>" +
         '<aside class="stack">' +
           (iyec && iyec.image ? '<figure class="about-figure"><div class="frame">' + pic(iyec.image) + "</div><figcaption>Delegate of Germany at IYEC 12, Malaysia and Singapore, November 2025.</figcaption></figure>" : "") +
-          '<div class="card"><h2 style="font-size:1.05rem">Quick facts</h2><ul class="now-list">' +
-            "<li>" + esc(S.stage) + "</li>" +
-            "<li>Based in " + esc(S.location) + "</li>" +
-            "<li>" + esc(((P.education || {}).languages || []).map(function (l) { return l.name; }).join(", ")) + "</li>" +
-          "</ul></div>" +
         "</aside>" +
       "</div></section>" +
 
       '<section class="section section-alt"><div class="wrap">' +
-        sectionHead("Methods and where I have used them", "Generated from my research and project records, so it stays current as new work is added.") +
-        '<div class="methods-map">' + rows + "</div>" +
+        sectionHead("Where I am heading") +
+        '<blockquote class="pull">' + esc(S.direction) + "</blockquote>" +
       "</div></section>" +
 
       '<section class="section"><div class="wrap">' +
-        sectionHead("Direction") +
-        '<blockquote class="pull">' + esc(S.direction) + "</blockquote>" +
+        sectionHead("Core methods and where I have used them") +
+        '<div class="methods-map">' + rows + "</div>" +
       "</div></section>" +
 
       '<section class="section section-alt"><div class="wrap two-col">' +
