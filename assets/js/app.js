@@ -35,6 +35,8 @@
     if (node) node.innerHTML = html;
     return node;
   }
+  /* Escaped name that keeps a hyphenated surname ("Al-Khazan") on one line. */
+  function nameHtml(name) { return esc(name).replace(/(\S+-\S+)$/, '<span class="nowrap">$1</span>'); }
   function plural(n, one, many) { return n === 1 ? one : many; }
   function shortTitle(project) { return project.short || project.title.split(":")[0]; }
 
@@ -164,7 +166,7 @@
       '<div class="wrap">' +
         '<a class="brand" href="' + esc(u("index.html")) + '" aria-label="' + esc(S.name) + ', home">' +
           '<span class="brand-mark" aria-hidden="true">' + esc(S.initials) + "</span>" +
-          '<span class="brand-text"><span class="brand-name">' + esc(S.name) + '</span><span class="brand-role">' + esc(S.identity.slice(0, 2).join(" · ")) + "</span></span>" +
+          '<span class="brand-text"><span class="brand-name">' + nameHtml(S.name) + '</span><span class="brand-role">' + esc(S.identity.slice(0, 2).join(" · ")) + "</span></span>" +
         "</a>" +
         '<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle-bars" aria-hidden="true"><span></span></span>Menu</button>' +
         '<nav class="site-nav" id="site-nav" aria-label="Main"><ul>' + items +
@@ -317,9 +319,9 @@
       '<section class="hero"><div class="wrap">' +
         "<div>" +
           '<ul class="hero-identity" aria-label="Fields">' + identity + "</ul>" +
-          "<h1>" + esc(S.name).replace(/(\S+-\S+)$/, '<span class="nowrap">$1</span>') + "</h1>" +
+          "<h1>" + nameHtml(S.name) + "</h1>" +
           '<p class="lead">' + esc(S.statement) + "</p>" +
-          '<p class="hero-stage">' + icon("cap") + "<span>" + esc(S.stage) + (edu.gpa ? " GPA " + esc(edu.gpa) + "." : "") + "</span></p>" +
+          '<p class="hero-stage">' + icon("cap") + "<span>" + esc(S.stage) + (edu.gpa ? ' <span class="nowrap">GPA ' + esc(edu.gpa) + ".</span>" : "") + "</span></p>" +
           '<div class="btn-row">' +
             '<a class="btn btn-primary" href="research.html">Explore research ' + icon("arrow") + "</a>" +
             '<a class="btn btn-secondary" href="projects.html">View projects</a>' +
@@ -628,12 +630,13 @@
       (next ? '<a class="next" href="project.html?id=' + esc(next.id) + '"><span>Next</span><strong>' + esc(shortTitle(next)) + "</strong></a>" : "") +
     "</nav>";
 
+    // The pager follows the aside so that on one-column layouts it comes last, after the project facts.
     fill("page-content",
       '<section class="section"><div class="wrap">' +
-        '<div class="detail-grid"><div class="detail-main">' + main + pager + "</div>" +
+        '<div class="detail-grid"><div class="detail-main">' + main + "</div>" +
         '<aside class="detail-aside" aria-label="Project facts">' + aside +
           '<a class="text-link" href="projects.html">' + icon("arrow") + " All projects</a>" +
-        "</aside></div>" +
+        "</aside></div>" + pager +
       "</div></section>");
 
     var load = document.getElementById("demo-load");
@@ -735,7 +738,7 @@
     fill("page-content",
       '<section class="section"><div class="wrap">' +
         sectionHead("Competitive awards", "Awards", "Results from competitions and an international conference, each linked to the work behind it.") +
-        '<div class="grid grid-2">' + compHtml + "</div>" +
+        '<div class="grid grid-2 award-grid">' + compHtml + "</div>" +
       "</div></section>" +
       '<section class="section section-alt"><div class="wrap">' +
         sectionHead("Scholarship & development", "Scholarship and leadership development", "Listed separately from competitive awards.") +
@@ -831,10 +834,10 @@
 
   pages.contact = function () {
     var items =
-      '<li><div class="contact-item"><span class="ci-icon">' + icon("mail") + '</span><a href="mailto:' + esc(L.email) + '" style="text-decoration:none;color:inherit"><strong>Email</strong><span>' + esc(L.email) + "</span></a>" +
+      '<li><div class="contact-item contact-email"><span class="ci-icon">' + icon("mail") + '</span><a href="mailto:' + esc(L.email) + '" style="text-decoration:none;color:inherit"><strong>Email</strong><span>' + esc(L.email).replace("@", "@<wbr>") + "</span></a>" +
         '<button class="btn btn-secondary btn-sm copy-btn" type="button" data-copy="' + esc(L.email) + '">' + icon("copy") + '<span>Copy</span></button></div></li>' +
       '<li><a class="contact-item" href="' + esc(L.linkedin) + '" rel="me noopener"><span class="ci-icon">' + icon("linkedin") + "</span><span><strong>LinkedIn</strong><span>Professional profile and updates</span></span></a></li>" +
-      '<li><a class="contact-item" href="' + esc(L.github) + '" rel="me noopener"><span class="ci-icon">' + icon("github") + "</span><span><strong>GitHub</strong><span>" + esc(L.github.replace("https://", "")) + "</span></span></a></li>" +
+      '<li><a class="contact-item" href="' + esc(L.github) + '" rel="me noopener"><span class="ci-icon">' + icon("github") + "</span><span><strong>GitHub</strong><span>" + esc(L.github.replace("https://", "")).replace("/", "/<wbr>") + "</span></span></a></li>" +
       '<li><div class="contact-item"><span class="ci-icon">' + icon("pin") + "</span><span><strong>Location</strong><span>" + esc(S.location) + "</span></span></div></li>";
 
     fill("page-content",

@@ -2,6 +2,15 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-09-26 · Layout fixes for phones and tablets
+
+- Awards: on tablet-width screens the "View certificate" buttons ran past the cards and made the page scroll sideways. Competitive awards now show in a single column below 960 px.
+- SEA-Save project page: the long semifinalist label at the top was cut off on phones and small tablets. Labels at the top of project pages now wrap onto more lines.
+- Contact: on phones the Copy button was squeezed until its label broke into "Cop / y". It now sits under the email address, and the email and GitHub addresses wrap at "@" and "/" instead of mid-word. The Email, LinkedIn, GitHub and Location labels are now the same size, and the Copy label uses the button colour.
+- Experience: on phones the dates in the UII Global progression now sit above each step instead of squeezing the text into a narrow column.
+- Project pages: on phones and tablets the Previous / Next links now come at the end of the page, after the project facts, instead of between the case study and the facts. On desktop they now span the full width.
+- Smaller fixes: the Green vehicle routing card on Home and Projects no longer clips its text on 320 px screens, the Contact button in the mobile menu is centred, "Al-Khazan" no longer breaks across two lines in the header, and "GPA 3.90 / 4.00." stays on one line in the hero.
+
 ## 2026-09-23 · Lighter Research and Home pages
 
 - Research: each entry now shows its first sentence, with the rest of the summary and the topics behind "Read more". The repeated "Summary only" note is removed (the status legend already explains it). Visible text on the page drops from about 1,100 to about 630 words.
