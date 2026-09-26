@@ -219,8 +219,8 @@
 
   function pubCard(r) {
     return '<article class="card pub-card">' +
-      '<div class="pub-card-top">' + statusBadge(r.status) + '<span class="small muted">' + esc(r.year) + "</span></div>" +
       "<h3>" + esc(r.title) + "</h3>" +
+      '<div class="pub-card-top">' + statusBadge(r.status) + '<span class="small muted">' + esc(r.year) + "</span></div>" +
       "<p>" + venueLine(r) + "</p>" +
       '<a class="text-link" href="research.html#r-' + esc(r.id) + '">Read summary ' + icon("arrow") + "</a>" +
     "</article>";
@@ -257,8 +257,8 @@
     return '<article class="project-feature">' +
       '<div class="project-media">' + pic(p.cover) + "</div>" +
       '<div class="project-body">' +
-        '<p class="project-kicker">' + esc(p.category) + "</p>" +
         "<h3>" + esc(p.title) + "</h3>" +
+        '<p class="project-kicker">' + esc(p.category) + "</p>" +
         '<p class="tagline">' + esc(p.tagline) + "</p>" +
         highlights(p, 2) +
         recognitionLine(p) +
@@ -278,8 +278,8 @@
     }
     return '<article class="card project-card">' + thumb +
       '<div class="body">' +
-        '<p class="project-kicker">' + esc(p.category) + "</p>" +
         "<h3>" + esc(p.title) + "</h3>" +
+        '<p class="project-kicker">' + esc(p.category) + "</p>" +
         "<p>" + esc(p.tagline) + "</p>" +
         recognitionLine(p) +
         '<a class="text-link" href="project.html?id=' + esc(p.id) + '">Project details ' + icon("arrow") + "</a>" +
@@ -287,9 +287,8 @@
     "</article>";
   }
 
-  function sectionHead(eyebrow, title, intro, linkHref, linkText) {
+  function sectionHead(title, intro, linkHref, linkText) {
     return '<div class="section-head"><div>' +
-      (eyebrow ? '<p class="eyebrow">' + esc(eyebrow) + "</p>" : "") +
       "<h2>" + esc(title) + "</h2>" +
       (intro ? "<p>" + esc(intro) + "</p>" : "") +
       "</div>" +
@@ -316,8 +315,8 @@
     var html =
       '<section class="hero"><div class="wrap">' +
         "<div>" +
-          '<ul class="hero-identity" aria-label="Fields">' + identity + "</ul>" +
           "<h1>" + esc(S.name).replace(/(\S+-\S+)$/, '<span class="nowrap">$1</span>') + "</h1>" +
+          '<ul class="hero-identity" aria-label="Fields">' + identity + "</ul>" +
           '<p class="lead">' + esc(S.statement) + "</p>" +
           '<p class="hero-stage">' + icon("cap") + "<span>" + esc(S.stage) + (edu.gpa ? " GPA " + esc(edu.gpa) + "." : "") + "</span></p>" +
           '<div class="btn-row">' +
@@ -358,7 +357,7 @@
     // Focus areas
     var focusIcons = ["route", "wave", "decision", "leaf"];
     html += '<section class="section section-alt"><div class="wrap">' +
-      sectionHead("What I work on", "Better decisions for complex operational systems", "The same questions come up across my research and projects: how a system behaves, where it breaks, and which decision improves it.") +
+      sectionHead("What I work on", "Better decisions for complex operational systems: how a system behaves, where it breaks, and which decision improves it.") +
       '<div class="grid grid-4">' + (S.focusAreas || []).map(function (f, i) {
         var ev = (f.evidence || []).map(ref).filter(Boolean).map(function (r) { return '<a class="chip" href="' + esc(r.href) + '">' + esc(r.label) + "</a>"; }).join("");
         return '<article class="card focus-card">' + icon(focusIcons[i % focusIcons.length], "focus-icon") + "<h3>" + esc(f.title) + "</h3><p>" + esc(f.text) + '</p><div class="evidence">' + ev + "</div></article>";
@@ -367,20 +366,20 @@
     // Featured research
     var featured = sortedResearch().filter(function (r) { return r.featured; });
     html += '<section class="section"><div class="wrap">' +
-      sectionHead("Research", "Selected research", "Each item carries its real status. Only published work links to a public copy.", "research.html", "All research") +
+      sectionHead("Selected research", "Each item carries its real status. Only published work links to a public copy.", "research.html", "All research") +
       '<div class="grid grid-2">' + featured.map(pubCard).join("") + "</div></div></section>";
 
     // Flagship projects
     var flagship = (P.projects || []).filter(function (p) { return p.tier === "flagship"; });
     html += '<section class="section section-alt"><div class="wrap">' +
-      sectionHead("Projects", "Flagship projects", "The three projects closest to my current direction. Two of them won first place in competition.", "projects.html", "All projects") +
+      sectionHead("Flagship projects", "The three projects closest to my current direction. Two of them won first place in competition.", "projects.html", "All projects") +
       flagship.map(projectFeature).join("") + "</div></section>";
 
     // Recognition + now
     var comp = (P.awards || []).filter(function (a) { return a.type === "competition"; });
     html += '<section class="section"><div class="wrap two-col">' +
-      "<div>" + sectionHead("Recognition", "Awards", null, "awards.html", "All recognition") + '<div class="grid grid-2">' + comp.map(awardMini).join("") + "</div></div>" +
-      "<div>" + sectionHead("Now", "Currently") + '<ul class="now-list">' + (S.now || []).map(function (n) { return "<li>" + esc(n) + "</li>"; }).join("") + "</ul>" +
+      "<div>" + sectionHead("Awards", null, "awards.html", "All recognition") + '<div class="grid grid-2">' + comp.map(awardMini).join("") + "</div></div>" +
+      "<div>" + sectionHead("Currently") + '<ul class="now-list">' + (S.now || []).map(function (n) { return "<li>" + esc(n) + "</li>"; }).join("") + "</ul>" +
         '<h3 style="margin-top:32px;font-size:1.05rem">Open to</h3><ul class="now-list">' + (S.openTo || []).map(function (n) { return "<li>" + esc(n) + "</li>"; }).join("") + "</ul>" +
       "</div>" +
     "</div></section>";
@@ -431,18 +430,18 @@
       "</div></section>" +
 
       '<section class="section section-alt"><div class="wrap">' +
-        sectionHead("How it connects", "Methods and where I have used them", "Generated from my research and project records, so it stays current as new work is added.") +
+        sectionHead("Methods and where I have used them", "Generated from my research and project records, so it stays current as new work is added.") +
         '<div class="methods-map">' + rows + "</div>" +
       "</div></section>" +
 
       '<section class="section"><div class="wrap">' +
-        '<p class="eyebrow">Direction</p>' +
+        sectionHead("Direction") +
         '<blockquote class="pull">' + esc(S.direction) + "</blockquote>" +
       "</div></section>" +
 
       '<section class="section section-alt"><div class="wrap two-col">' +
-        "<div>" + sectionHead("Working style", "Qualities") + '<ul class="tag-list">' + (A.qualities || []).map(function (q) { return "<li>" + esc(q) + "</li>"; }).join("") + "</ul></div>" +
-        "<div>" + sectionHead("Beyond work", "Interests") + '<ul class="tag-list">' + (A.interests || []).map(function (q) { return "<li>" + esc(q) + "</li>"; }).join("") + "</ul></div>" +
+        "<div>" + sectionHead("Qualities") + '<ul class="tag-list">' + (A.qualities || []).map(function (q) { return "<li>" + esc(q) + "</li>"; }).join("") + "</ul></div>" +
+        "<div>" + sectionHead("Interests") + '<ul class="tag-list">' + (A.interests || []).map(function (q) { return "<li>" + esc(q) + "</li>"; }).join("") + "</ul></div>" +
       "</div></section>" +
       contactBand();
     fill("page-content", html);
@@ -526,11 +525,11 @@
     var supporting = (P.projects || []).filter(function (p) { return p.tier !== "flagship"; });
     fill("page-content",
       '<section class="section"><div class="wrap">' +
-        sectionHead("Current direction", "Flagship projects", "Operations research, queueing and sustainable engineering, each with a full case study.") +
+        sectionHead("Flagship projects", "Operations research, queueing and sustainable engineering, each with a full case study.") +
         flagship.map(projectFeature).join("") +
       "</div></section>" +
       '<section class="section section-alt"><div class="wrap">' +
-        sectionHead("Foundations", "Supporting projects", "Engineering, design, business and data-modelling projects that broaden the base behind my current direction.") +
+        sectionHead("Supporting projects", "Engineering, design, business and data-modelling projects that broaden the base behind my current direction.") +
         '<div class="grid grid-2">' + supporting.map(projectCard).join("") + "</div>" +
       "</div></section>" + contactBand());
   };
@@ -676,11 +675,11 @@
 
     fill("page-content",
       '<section class="section"><div class="wrap">' +
-        sectionHead("Roles", "Technical and leadership roles", "Technical training in simulation and modelling, and leadership in student and community organizations.") +
+        sectionHead("Technical and leadership roles", "Technical training in simulation and modelling, and leadership in student and community organizations.") +
         '<ol class="timeline">' + roles + "</ol>" +
       "</div></section>" +
       '<section class="section section-alt"><div class="wrap">' +
-        sectionHead("Community", "Community & volunteering") +
+        sectionHead("Community & volunteering") +
         '<div class="grid grid-2">' + community + "</div>" +
       "</div></section>" + contactBand());
   };
@@ -709,7 +708,6 @@
       return '<article class="card award-card" id="' + esc(a.id) + '">' +
         (a.image ? '<div class="award-img">' + pic(a.image) + "</div>" : "") +
         "<div>" +
-          '<span class="badge badge-award">' + esc(types[a.type] || "") + "</span>" +
           '<p class="award-title">' + esc(a.title) + "</p>" +
           '<p class="award-event">' + esc(a.event) + "</p>" +
           '<p class="award-sub">' + esc([a.eventDetail, a.date].filter(Boolean).join(" · ")) + "</p>" +
@@ -721,8 +719,7 @@
 
     var otherHtml = other.map(function (a) {
       return '<article class="card" id="' + esc(a.id) + '">' +
-        '<span class="badge badge-plain">' + esc(types[a.type] || "") + "</span>" +
-        '<p class="award-title" style="font-size:1.2rem">' + esc(a.title) + "</p>" +
+        '<p class="award-title" style="font-size:1.2rem;margin-top:0">' + esc(a.title) + "</p>" +
         '<p class="award-event">' + esc(a.event) + '</p><p class="award-sub">' + esc(a.date) + " · " + esc(a.for) + "</p>" +
         (a.detail ? '<p class="muted small">' + esc(a.detail) + "</p>" : "") + cert(a) +
       "</article>";
@@ -734,11 +731,11 @@
 
     fill("page-content",
       '<section class="section"><div class="wrap">' +
-        sectionHead("Competitive awards", "Awards", "Results from competitions and an international conference, each linked to the work behind it.") +
+        sectionHead("Competitive awards", "Results from competitions and an international conference, each linked to the work behind it.") +
         '<div class="grid grid-2">' + compHtml + "</div>" +
       "</div></section>" +
       '<section class="section section-alt"><div class="wrap">' +
-        sectionHead("Scholarship & development", "Scholarship and leadership development", "Listed separately from competitive awards.") +
+        sectionHead("Scholarship and leadership development", "Listed separately from competitive awards.") +
         '<div class="grid grid-2">' + otherHtml + "</div>" +
         (extra ? '<h3 style="margin-top:36px;font-size:1.05rem">Other recognition</h3><ul>' + extra + "</ul>" : "") +
         '<p class="small muted" style="margin-top:24px">' + icon("info", "inline-icon") + " Certificates are shown where available, with reference numbers hidden. Other supporting documents are available on request.</p>" +
@@ -787,17 +784,17 @@
     }).join("");
 
     fill("page-content",
-      '<section class="section" id="degree"><div class="wrap">' + sectionHead("Education", "Degree") + degrees + "</div></section>" +
+      '<section class="section" id="degree"><div class="wrap">' + sectionHead("Degree") + degrees + "</div></section>" +
       '<section class="section section-alt" id="credentials"><div class="wrap two-col">' +
-        "<div>" + sectionHead("Credentials", "Certifications") + '<div class="stack">' + creds + "</div></div>" +
-        "<div>" + sectionHead("Languages", "Languages", "CEFR levels. Arabic is my native language.") + '<ul class="lang-list">' + langs + "</ul></div>" +
+        "<div>" + sectionHead("Certifications") + '<div class="stack">' + creds + "</div></div>" +
+        "<div>" + sectionHead("Languages", "CEFR levels. Arabic is my native language.") + '<ul class="lang-list">' + langs + "</ul></div>" +
       "</div></section>" +
       '<section class="section" id="skills"><div class="wrap">' +
-        sectionHead("Skills", "Skills by area", "Grouped by area, with a link to where each skill was used when there is a clear example.") +
+        sectionHead("Skills by area", "Grouped by area, with a link to where each skill was used when there is a clear example.") +
         '<div class="grid grid-3">' + skills + "</div>" +
       "</div></section>" +
       '<section class="section section-alt" id="programs"><div class="wrap">' +
-        sectionHead("Academic engagement", "Programs, courses & workshops", "Summer courses, international programs and short academic events, newest first.") +
+        sectionHead("Programs, courses & workshops", "Summer courses, international programs and short academic events, newest first.") +
         '<ul class="program-list">' + programs + "</ul>" +
       "</div></section>" + contactBand());
   };
@@ -841,7 +838,7 @@
       '<section class="section"><div class="wrap two-col">' +
         '<div><ul class="contact-list">' + items + "</ul></div>" +
         "<div>" +
-          sectionHead("Open to", "What I am looking for") +
+          sectionHead("What I am looking for") +
           '<ul class="now-list">' + (S.openTo || []).map(function (o) { return "<li>" + esc(o) + "</li>"; }).join("") + "</ul>" +
           '<div class="btn-row" style="margin-top:28px"><a class="btn btn-primary" href="mailto:' + esc(L.email) + '">' + icon("mail") + "Send an email</a>" +
           '<a class="btn btn-secondary" href="cv.html">' + icon("file") + "View CV</a></div>" +
