@@ -2,6 +2,10 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-09-26 · About story
+
+- Removed the anecdote about using an AI tool in the Operations Research course from the About story.
+
 ## 2026-09-26 · Shorter About page
 
 - Story shortened from six paragraphs to three (375 to 225 words); earlier projects, the Delsim traineeship and the Aspire program remain on their own pages.
