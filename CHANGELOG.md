@@ -2,6 +2,14 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-10-05 · Three languages, dark mode, Lembah Susu Dairy
+
+- Language switch in the header: English, Bahasa Indonesia and Arabic. All interface text and content are translated; Arabic uses a right-to-left layout and an Arabic font. Paper titles, people's names and certificate names stay in their original form.
+- Light and dark mode, following the system setting until the visitor picks one.
+- The header now switches to the compact Menu button whenever the full menu does not fit, in any language.
+- New project: Lembah Susu Dairy: From Cow to Cup (The INDEX 2026, Telkom University Purwokerto), with a link to the live demo website. The card shows the six journey steps until the website screenshot and poster are added.
+- The checker also validates the translation files.
+
 ## 2026-09-26 · About story
 
 - Removed the anecdote about using an AI tool in the Operations Research course from the About story.

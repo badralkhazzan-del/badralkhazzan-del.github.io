@@ -31,6 +31,8 @@ data/                 ALL CONTENT LIVES HERE (edit these files to update the sit
   education.js        degree, certifications, languages
   programs.js         summer courses, workshops, seminars
   skills.js           grouped skills
+  lang-id.js          Bahasa Indonesia: interface labels, page intros and translated content
+  lang-ar.js          Arabic (right-to-left): interface labels, page intros and translated content
 
 assets/
   Badr_Aldeen_CV.pdf  public CV (phone number removed)
@@ -162,6 +164,20 @@ Replace `assets/profile/badr-aldeen.jpg` and `.webp` (800 × 1000 px, portrait) 
 
 ### Add a public profile (Google Scholar, ORCID…)
 Add it to `data/links.js`. To show it on the page, add a line next to LinkedIn and GitHub in `assets/js/app.js` (search for `L.github`).
+
+---
+
+### Languages (English, Bahasa Indonesia, Arabic)
+English in the data files is the source. The `EN · ID · ع` switch in the header loads `data/lang-id.js` or `data/lang-ar.js`, which hold:
+
+- `ui`: interface labels (buttons, headings), keyed by the English text in `assets/js/app.js`
+- `pages`: each page's title and intro
+- `content`: translated fields, matched to the English data by `id` (or by position for lists without ids)
+
+Anything not translated shows in English, so the site never breaks. When you change English text in `data/`, update the same field in both language files (or ask Claude to do it). The checker flags translations that point to ids that no longer exist, lists with the wrong number of entries, and unused labels, but it cannot tell when a translation has become out of date. Paper titles, people's names and certificate names are deliberately left in their original form. Arabic switches the whole layout to right-to-left.
+
+### Light and dark mode
+The sun/moon button switches themes. Without a choice, the site follows the visitor's system setting. Both choices (language and theme) are remembered in the visitor's browser. Colours live as variables at the top of `assets/css/main.css`, with the dark values right below them.
 
 ---
 

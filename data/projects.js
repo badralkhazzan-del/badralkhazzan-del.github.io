@@ -135,6 +135,40 @@ PORTFOLIO.projects = [
     featured: true
   },
   {
+    id: "lembah-susu",
+    short: "Lembah Susu Dairy",
+    tier: "supporting",
+    title: "Lembah Susu Dairy: From Cow to Cup",
+    year: "2026",
+    category: "Web design · Front-end development · Education",
+    tagline: "A bilingual demo website for a dairy farm in Baturraden, Indonesia, that teaches visitors how milk is made and makes it easy to buy products and book visits.",
+    problem:
+      "During our visit to Mini Ranch Baturraden in Banyumas, Central Java, we saw a large dairy business with no website: no company profile, product prices or visitor information online. The case study also asked how one interesting lesson about cows or milk production could be made easy for a first-time visitor to understand and remember.",
+    context:
+      "The INDEX 2026: The Indonesia Experience, Telkom University Purwokerto, 28 September to 3 October 2026 (Cultural Exchange, Case Study 2 \"From Cow to Cup\"). Team Six Seven: Badr, Mel, Ayman and Guli.",
+    role: "Team member: website and poster design and development.",
+    approachTitle: "What we built",
+    approach: [
+      "A complete demo website for a fictional dairy farm, Lembah Susu Dairy (\"Milk Valley Dairy\"), that the real business could use as an example.",
+      "An interactive From Cow to Cup journey in six illustrated steps (feeding, milking, quality testing, pasteurization, processing, packaging and delivery), each with one \"Remember this\" line and a fun fact, plus a Milk Master quiz with instant feedback and badges.",
+      "A product catalog with filters, search and ordering through WhatsApp, a visit planner with a live ticket price calculator in Rupiah, and a clickable illustrated farm map.",
+      "Simulated before-and-after business impact charts, a full Indonesian and English switch, and light and dark mode. Works on phones, tablets and desktops, and with a keyboard."
+    ],
+    methods: ["web-design"],
+    tools: ["HTML", "CSS", "JavaScript", "Inline SVG illustrations", "Netlify", "Claude Code (AI assistance)"],
+    tags: ["Web Design", "Front-End Development", "UX", "Education", "Case Study", "Bilingual"],
+    results: [],
+    caveat: "The company, people, prices and data on the demo website are fictional.",
+    link: { url: "https://lembah-susu-dairy.netlify.app/" },
+    // Shown on the project card until a screenshot is added as `cover`.
+    thumbChips: ["Feeding", "Milking", "Quality testing", "Pasteurization", "Processing", "Packaging & delivery"],
+    recognitionNote: null,
+    recognition: null,
+    relatedResearch: [],
+    gallery: [],
+    featured: false
+  },
+  {
     id: "ergonomic-pen",
     short: "Ergonomic pen",
     tier: "supporting",

@@ -29,6 +29,7 @@ const exists = (rel) => fs.existsSync(path.join(root, rel));
 const ids = (list) => new Set((list || []).map((x) => x.id));
 const researchIds = ids(P.research), projectIds = ids(P.projects), awardIds = ids(P.awards);
 const roleIds = ids((P.experience || {}).roles);
+const htmlPages = new Set(fs.readdirSync(root).filter((f) => f.endsWith(".html")).map((f) => (fs.readFileSync(path.join(root, f), "utf8").match(/data-page="([^"]+)"/) || [])[1]).filter(Boolean));
 
 function checkImage(img, where) {
   if (!img) return;
@@ -92,6 +93,44 @@ if (!exists(S.cv.file)) err(`CV file missing: ${S.cv.file}`);
 if (S.cv.preview) for (const ext of [".jpg", ".webp"]) if (!exists(S.cv.preview + ext)) err(`CV preview missing: ${S.cv.preview}${ext}`);
 for (const ext of [".jpg", ".webp"]) if (!exists(S.portrait.src + ext)) err(`portrait missing: ${S.portrait.src}${ext}`);
 if (!/^\d{4}-\d{2}-\d{2}$/.test(S.lastUpdated || "")) err(`site.lastUpdated must be YYYY-MM-DD`);
+
+/* ---------- translations (data/lang-*.js) ---------- */
+const appSource = fs.readFileSync(path.join(root, "assets", "js", "app.js"), "utf8");
+const usedKeys = new Set([...appSource.matchAll(/\bt\(\s*"((?:[^"\\]|\\.)*)"/g)].map((m) => m[1]));
+// Strings passed to t() indirectly (plurals, tier labels, section titles stored in data).
+["Published work", "Published works", "Conference paper", "Conference papers", "Manuscript under review", "Manuscripts under review",
+ "Competitive award", "Competitive awards", "{n} item", "{n} items", "Flagship project", "Supporting project", "Approach",
+ "Visual evidence", "Native", "What we built"].forEach((k) => usedKeys.add(k));
+for (const file of fs.readdirSync(path.join(root, "data")).filter((f) => /^lang-[a-z]+\.js$/.test(f))) {
+  const code = file.slice(5, -3);
+  const lctx = { window: {} }; lctx.window = lctx; lctx.PORTFOLIO = lctx.window.PORTFOLIO = {};
+  vm.createContext(lctx);
+  try { vm.runInContext(fs.readFileSync(path.join(root, "data", file), "utf8"), lctx, { filename: file }); }
+  catch (e) { err(`data/${file} does not load: ${e.message}`); continue; }
+  const T = ((lctx.PORTFOLIO || {}).i18n || {})[code];
+  if (!T) { err(`data/${file}: expected PORTFOLIO.i18n.${code}`); continue; }
+  const w = `data/${file}`;
+  for (const k of Object.keys(T.ui || {})) if (!usedKeys.has(k)) err(`${w}: ui key not used by the site (typo?): "${k}"`);
+  const missing = [...usedKeys].filter((k) => !(k in (T.ui || {})) && !/^[A-C][12]$/.test(k));
+  if (missing.length) warn(`${w}: ${missing.length} interface string(s) not translated (shown in English): ${missing.slice(0, 5).join(" | ")}`);
+  const C = T.content || {};
+  const checkIds = (patch, list, label) => { for (const id of Object.keys(patch || {})) if (!list.has(id)) err(`${w}: ${label} "${id}" does not exist`); };
+  checkIds(C.research, researchIds, "research");
+  checkIds(C.projects, projectIds, "project");
+  checkIds(C.awards, awardIds, "award");
+  checkIds((C.experience || {}).roles, roleIds, "role");
+  checkIds((C.experience || {}).community, ids((P.experience || {}).community), "community item");
+  const sameLength = (a, b, label) => { if (a && b && a.length !== b.length) err(`${w}: ${label} has ${a.length} entries, English has ${b.length}`); };
+  for (const [id, pp] of Object.entries(C.projects || {})) {
+    const en = (P.projects || []).find((x) => x.id === id) || {};
+    for (const f of ["results", "gallery", "relationships", "thumbChips", "tags"]) sameLength(pp[f], en[f], `project "${id}" ${f}`);
+  }
+  sameLength(C.programs, P.programs, "programs");
+  sameLength(C.skills, P.skills, "skill groups");
+  (C.skills || []).forEach((g, i) => sameLength(g.items, ((P.skills || [])[i] || {}).items, `skill group ${i + 1} items`));
+  sameLength(((C.education || {}).languages), ((P.education || {}).languages), "languages");
+  for (const pg of Object.keys(T.pages || {})) if (pg !== "homeTitle" && !htmlPages.has(pg)) err(`${w}: page "${pg}" does not exist`);
+}
 
 /* ---------- local links in HTML ---------- */
 const htmlFiles = fs.readdirSync(root).filter((f) => f.endsWith(".html"));
