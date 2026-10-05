@@ -2,11 +2,13 @@
  * SKILLS
  * Grouped, not a keyword cloud. Only list skills supported by the CV, research or projects.
  * `evidence` (optional) points to where the skill was used: "research:<id>", "project:<id>", "experience:<id>".
+ * `id` names the group for the translations in data/i18n/.
  */
 window.PORTFOLIO = window.PORTFOLIO || {};
 
 PORTFOLIO.skills = [
   {
+    id: "or",
     group: "Operations Research & Optimization",
     items: [
       { name: "Linear programming", evidence: ["research:wheat-cvar"] },
@@ -18,6 +20,7 @@ PORTFOLIO.skills = [
     ]
   },
   {
+    id: "simulation",
     group: "Simulation & Modeling",
     items: [
       { name: "Discrete-event simulation (FlexSim)", evidence: ["experience:delsim"] },
@@ -28,6 +31,7 @@ PORTFOLIO.skills = [
     ]
   },
   {
+    id: "supply-chain",
     group: "Supply Chain & Operations",
     items: [
       { name: "Supply chain analytics" },
@@ -38,6 +42,7 @@ PORTFOLIO.skills = [
     ]
   },
   {
+    id: "manufacturing",
     group: "Manufacturing & Process Improvement",
     items: [
       { name: "SPC & Six Sigma" },
@@ -49,6 +54,7 @@ PORTFOLIO.skills = [
     ]
   },
   {
+    id: "data",
     group: "Data & Technical Tools",
     items: [
       { name: "Python (NumPy, SciPy, scikit-learn)", evidence: ["research:bullwhip", "research:predictive-maintenance", "research:wheat-cvar"] },
@@ -60,6 +66,7 @@ PORTFOLIO.skills = [
     ]
   },
   {
+    id: "professional",
     group: "Project & Professional",
     items: [
       { name: "Project management (CAPM®)" },

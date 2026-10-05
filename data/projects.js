@@ -9,6 +9,8 @@
  *         Optional `focus` (CSS object-position, e.g. "50% 30%") controls cropping in cards.
  * results: short verified figures only. Never add a metric that is not in the source material.
  * recognition: id from data/awards.js.   relatedResearch: ids from data/research.js.
+ * Optional: features ("Key features" list), tags (chips), links ([{ label, url }] buttons at the top).
+ * Translations: data/i18n/id.js and data/i18n/ar.js, under content.projects.<id>.
  */
 window.PORTFOLIO = window.PORTFOLIO || {};
 
@@ -133,6 +135,48 @@ PORTFOLIO.projects = [
       { src: "assets/img/projects/green-vrp/case-network", w: 1000, h: 769, alt: "Plot of the case network: one depot, seven Indomaret stores and five public charging stations (SPKLU) in Yogyakarta by latitude and longitude", caption: "Case network in the study: one depot, seven stores and five public charging stations." }
     ],
     featured: true
+  },
+  {
+    id: "lembah-susu",
+    short: "Lembah Susu Dairy",
+    tier: "supporting",
+    title: "Lembah Susu Dairy: From Cow to Cup",
+    year: "2026",
+    category: "Web design · Front-end development · UX",
+    tagline: "A bilingual demo website for a dairy farm in Baturraden, Indonesia, that teaches visitors how milk is made and makes it easy to buy products and book visits.",
+    problem:
+      "During a visit to Mini Ranch Baturraden in Banyumas, Central Java, we saw a large dairy business with no website: no company profile, product prices or visitor information online. The case study also asked how one lesson about cows or milk production could be made easy for a first-time visitor to understand and remember.",
+    context:
+      "Built at The INDEX 2026: The Indonesia Experience, a cultural exchange program at Telkom University Purwokerto (28 September to 3 October 2026), for Case Study 2, \"From Cow to Cup\".",
+    role:
+      "Team member in Six Seven (with Mel, Ayman and Guli), responsible for designing and developing the website and the poster.",
+    approach: [
+      "Built a complete demo website for a fictional dairy farm, Lembah Susu Dairy (\"Milk Valley Dairy\"), as an example the real business could use.",
+      "Made an interactive \"From Cow to Cup\" journey its centerpiece: six illustrated steps covering feeding, milking, quality testing, pasteurization, processing, and packaging and delivery.",
+      "Gave each step one short \"Remember this\" line and a fun fact, followed by a \"Milk Master\" quiz that tests what visitors remember."
+    ],
+    // Shown as a "Key features" list on the project page.
+    features: [
+      "Six-step learning journey with a milk-bottle progress bar",
+      "\"Milk Master\" quiz with instant feedback and badges",
+      "Product catalog with filters, search and ordering through WhatsApp",
+      "Visit planner with a live ticket price calculator in rupiah",
+      "Clickable illustrated farm map",
+      "Simulated before-and-after charts of the website's business impact",
+      "Full Indonesian and English versions, with light and dark mode",
+      "Works on phones, tablets and desktops, and with a keyboard"
+    ],
+    methods: [],
+    tools: ["HTML", "CSS", "JavaScript", "Inline SVG illustrations", "Netlify hosting", "AI assistance (Claude Code)"],
+    tags: ["Web design", "Front-end development", "UX", "Education", "Case study", "Bilingual"],
+    results: [],
+    caveat: "The company, people, prices and data on the demo website are fictional.",
+    // Shown as buttons at the top of the project page.
+    links: [{ label: "Visit the live website", url: "https://lembah-susu-dairy.netlify.app/" }],
+    recognition: null,
+    relatedResearch: [],
+    gallery: [],
+    featured: false
   },
   {
     id: "ergonomic-pen",

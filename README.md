@@ -31,6 +31,8 @@ data/                 ALL CONTENT LIVES HERE (edit these files to update the sit
   education.js        degree, certifications, languages
   programs.js         summer courses, workshops, seminars
   skills.js           grouped skills
+  i18n/id.js          Bahasa Indonesia translation (interface text + content)
+  i18n/ar.js          Arabic translation (interface text + content)
 
 assets/
   Badr_Aldeen_CV.pdf  public CV (phone number removed)
@@ -38,8 +40,9 @@ assets/
   profile/            portrait (badr-aldeen.jpg / .webp)
   img/                project, event and experience images (.jpg and .webp)
   demos/              interactive EV routing explorer
-  css/main.css        design
-  js/app.js           builds every page from the data files
+  css/main.css        design (light and dark theme, right-to-left layout for Arabic)
+  js/prefs.js         applies the saved language and theme before the page is drawn
+  js/app.js           builds every page from the data files, language and theme switches
   og-image.jpg        preview image shown when the link is shared
 
 tools/
@@ -52,6 +55,8 @@ CHANGELOG.md          record of meaningful updates
 ```
 
 Every fact is written once, in `data/`. The pages read it from there. For example, changing a paper's `status` in `data/research.js` updates its badge on the Research page, the Home page, the linked project page and the search-engine data at the same time.
+
+English is the source. The Indonesian and Arabic files only hold translated text, so dates, statuses, links and images still come from the English data files.
 
 ---
 
@@ -138,8 +143,9 @@ In `data/experience.js`, copy a block inside `roles`, set `kind: "Internship"`, 
 
 ### Add a project
 1. Put images in `assets/img/projects/<project-id>/` as both `.jpg` and `.webp` (about 1200 px wide at most).
-2. Copy a block in `data/projects.js`, set a new `id`, `short`, `tier` (`"flagship"` or `"supporting"`), and the text fields.
+2. Copy a block in `data/projects.js`, set a new `id`, `short`, `tier` (`"flagship"` or `"supporting"`), and the text fields. Optional: `features` (a "Key features" list), `tags`, and `links` (buttons such as a live website).
 3. The detail page appears automatically at `project.html?id=<project-id>`. Add that address to `sitemap.xml`.
+4. Add the Indonesian and Arabic text under `content.projects["<project-id>"]` in `data/i18n/id.js` and `data/i18n/ar.js` (see "Languages" below).
 
 ### Add an award or scholarship
 Copy a block in `data/awards.js`. Use `type: "competition"` for competitive awards, `"scholarship"` for scholarships and `"program"` for leadership programs, so the site labels them correctly. Link it with `project: "<project-id>"` or `research: "<paper-id>"`.
@@ -159,6 +165,19 @@ Add an entry to `data/programs.js` with `title`, `org`, `kind`, `date` and `sort
 
 ### Change the profile photo
 Replace `assets/profile/badr-aldeen.jpg` and `.webp` (800 × 1000 px, portrait) and `badr-aldeen-480.jpg` / `.webp` (480 × 600 px). Keep the same file names.
+
+### Languages (English, Bahasa Indonesia, Arabic)
+Visitors switch language in the bar above the header; the choice is remembered. A link can also open a language directly: `https://badralkhazzan-del.github.io/?lang=id` or `?lang=ar`. English is always the default.
+
+- **Content** is translated in `data/i18n/id.js` and `data/i18n/ar.js`, under `content`, by id. For example, a new project with `id: "my-project"` is translated under `content.projects["my-project"]`. Only text fields go there (title, tagline, approach, alt text...); everything else comes from the English entry.
+- Lists inside an entry (approach steps, results, gallery captions) must have the same number of items as in English, in the same order. If they do not match, the English list is shown.
+- **Interface text** (buttons, headings) is under `ui`. In `assets/js/app.js` it is written as `t("key", "English text")`; the key is what the language files translate. Static page intros use `data-i18n="key"` in the HTML.
+- Anything not translated yet is shown in English, so the site never breaks. `node tools/check.mjs` lists what is missing and stops on mistakes (an unknown id or a list of the wrong length).
+- Paper titles and official names (events, organizations, certifications) stay as written in every language.
+- Arabic switches the whole layout to right-to-left automatically. Numbers use Western digits, as in the CV.
+
+### Light and dark mode
+The theme follows the visitor's device setting until they pick Light or Dark in the bar above the header. The dark colours are the variables under `:root[data-theme="dark"]` in `assets/css/main.css`; change colours there, not in individual rules, so both themes stay consistent.
 
 ### Add a public profile (Google Scholar, ORCID…)
 Add it to `data/links.js`. To show it on the page, add a line next to LinkedIn and GitHub in `assets/js/app.js` (search for `L.github`).
@@ -189,6 +208,7 @@ It confirms that every status is valid, every link between papers, projects and 
 
 - Plain scripts are used instead of ES modules, so the site also works when opened directly from the file system.
 - Images use WebP with a JPEG fallback and load lazily; the portrait loads first.
-- Accessibility: semantic landmarks, skip link, keyboard-operable menu and filters, visible focus, alt text, WCAG AA colour contrast, reduced-motion support. Audited with axe-core (no violations at desktop and mobile widths).
+- Accessibility: semantic landmarks, skip link, keyboard-operable menu and filters, visible focus, alt text, WCAG AA colour contrast in both themes, reduced-motion support. Audited with axe-core (no violations in all three languages, both themes, at desktop and mobile widths).
+- Languages: `<html lang>` and `dir` are set per language; English text inside an Indonesian or Arabic page (paper titles, official names) is marked `lang="en"`. Arabic loads IBM Plex Sans Arabic and Noto Naskh Arabic only when it is chosen. Search engines index the English version.
 - SEO: per-page titles and descriptions, OpenGraph and Twitter tags, `sitemap.xml`, `robots.txt`, Person JSON-LD, and ScholarlyArticle JSON-LD for published papers only.
-- Fonts: Source Serif 4 (headings) and Inter (text) from Google Fonts.
+- Fonts: Source Serif 4 (headings) and Inter (text) from Google Fonts; Arabic adds IBM Plex Sans Arabic and Noto Naskh Arabic.

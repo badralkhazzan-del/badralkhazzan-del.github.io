@@ -2,6 +2,13 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-10-05 · Three languages, dark mode, Lembah Susu Dairy
+
+- Languages: every page is now available in English, Bahasa Indonesia and Arabic, switched from a bar above the header. The choice is remembered, and a link can open a language directly (`?lang=id`, `?lang=ar`). Arabic uses a right-to-left layout and Arabic fonts. Paper titles and official names (events, organizations, certifications) stay as written.
+- Theme: light and dark mode. Until a visitor picks one, the site follows their device setting. Dark mode keeps WCAG AA contrast.
+- New supporting project: Lembah Susu Dairy: From Cow to Cup (The INDEX 2026, Telkom University Purwokerto), with a link to the live website. The project page can now show key features, tags and website links.
+- Translations live in `data/i18n/id.js` and `data/i18n/ar.js`; `tools/check.mjs` now checks them. Programs and skill groups got an `id` so translations stay matched.
+
 ## 2026-09-23 · Lighter Research and Home pages
 
 - Research: each entry now shows its first sentence, with the rest of the summary and the topics behind "Read more". The repeated "Summary only" note is removed (the status legend already explains it). Visible text on the page drops from about 1,100 to about 630 words.

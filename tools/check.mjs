@@ -93,6 +93,76 @@ if (S.cv.preview) for (const ext of [".jpg", ".webp"]) if (!exists(S.cv.preview 
 for (const ext of [".jpg", ".webp"]) if (!exists(S.portrait.src + ext)) err(`portrait missing: ${S.portrait.src}${ext}`);
 if (!/^\d{4}-\d{2}-\d{2}$/.test(S.lastUpdated || "")) err(`site.lastUpdated must be YYYY-MM-DD`);
 
+/* ---------- translations (data/i18n/<lang>.js) ----------
+ * Missing translations only warn: the site shows English instead.
+ * Errors are mistakes that would hide a translation: an id that does not exist,
+ * or a list with a different number of entries than the English one.
+ */
+const appJs = fs.readFileSync(path.join(root, "assets", "js", "app.js"), "utf8");
+const htmlAll = fs.readdirSync(root).filter((f) => f.endsWith(".html")).map((f) => [f, fs.readFileSync(path.join(root, f), "utf8")]);
+const uiKeys = new Set([...appJs.matchAll(/\btn?\("([a-zA-Z0-9_.-]+)"/g)].map((m) => m[1]).filter((k) => !k.endsWith(".")));
+for (const [, html] of htmlAll) {
+  for (const m of html.matchAll(/data-i18n="([^"]+)"/g)) uiKeys.add(m[1]);
+  const pg = (html.match(/<body data-page="([^"]+)"/) || [])[1];
+  if (pg) uiKeys.add("title." + pg);
+}
+for (const n of S.nav || []) uiKeys.add("nav." + n.id);
+for (const r of (P.experience || {}).roles || []) uiKeys.add("kind." + r.kind);
+// Optional keys: the project page sets its own title, the CV note is empty in English,
+// and "Internship" is ready for the first internship added to data/experience.js.
+const OPTIONAL_UI = new Set(["title.project", "cv.languageNote", "kind.Internship"]);
+for (const k of OPTIONAL_UI) uiKeys.delete(k);
+
+function compareShape(base, over, where, lang) {
+  if (over == null || base == null) return;
+  if (Array.isArray(over)) {
+    if (!Array.isArray(base)) return err(`i18n ${lang}: ${where} is a list here but not in English`);
+    if (over.length !== base.length) return err(`i18n ${lang}: ${where} has ${over.length} entries, English has ${base.length} (English is shown until they match)`);
+    over.forEach((o, i) => compareShape(base[i], o, `${where}[${i}]`, lang));
+  } else if (typeof over === "object") {
+    if (typeof base !== "object" || Array.isArray(base)) return err(`i18n ${lang}: ${where} does not match the English structure`);
+    for (const k of Object.keys(over)) compareShape(base[k], over[k], `${where}.${k}`, lang);
+  }
+}
+function checkById(list, over, where, lang) {
+  const byIdMap = new Map((list || []).map((x) => [x.id, x]));
+  for (const id of Object.keys(over || {})) {
+    if (!byIdMap.has(id)) err(`i18n ${lang}: ${where} "${id}" does not exist in English`);
+    else compareShape(byIdMap.get(id), over[id], `${where}.${id}`, lang);
+  }
+  for (const id of byIdMap.keys()) if (!(over || {})[id]) warn(`i18n ${lang}: ${where} "${id}" has no translation (shown in English)`);
+}
+const I18N_DIR = path.join(root, "data", "i18n");
+const langFiles = fs.existsSync(I18N_DIR) ? fs.readdirSync(I18N_DIR).filter((f) => f.endsWith(".js")) : [];
+for (const f of langFiles) {
+  const lang = f.replace(/\.js$/, "");
+  try { vm.runInContext(fs.readFileSync(path.join(I18N_DIR, f), "utf8"), ctx, { filename: f }); }
+  catch (e) { err(`data/i18n/${f} does not load: ${e.message}`); continue; }
+  const pack = ((ctx.PORTFOLIO || {}).i18n || {})[lang];
+  if (!pack) { err(`data/i18n/${f} must set PORTFOLIO.i18n.${lang}`); continue; }
+  const ui = pack.ui || {}, c = pack.content || {};
+  const missing = [...uiKeys].filter((k) => ui[k] == null);
+  if (missing.length) warn(`i18n ${lang}: ${missing.length} interface text(s) not translated: ${missing.join(", ")}`);
+  const unused = Object.keys(ui).filter((k) => !uiKeys.has(k) && !OPTIONAL_UI.has(k));
+  if (unused.length) warn(`i18n ${lang}: unused interface key(s): ${unused.join(", ")}`);
+  compareShape(S, c.site, "site", lang);
+  compareShape(P.researchStatuses, c.researchStatuses, "researchStatuses", lang);
+  compareShape(P.awardTypes, c.awardTypes, "awardTypes", lang);
+  checkById(P.research, c.research, "research", lang);
+  checkById(P.projects, c.projects, "project", lang);
+  checkById(P.awards, c.awards, "award", lang);
+  checkById(P.programs, c.programs, "program", lang);
+  checkById(P.skills, c.skills, "skill group", lang);
+  checkById((P.experience || {}).roles, (c.experience || {}).roles, "role", lang);
+  checkById((P.experience || {}).community, (c.experience || {}).community, "community item", lang);
+  const E = P.education || {}, ce = c.education || {};
+  compareShape(E.degrees, ce.degrees, "education.degrees", lang);
+  compareShape(E.languages, ce.languages, "education.languages", lang);
+  checkById(E.certifications, ce.certifications, "certification", lang);
+}
+for (const p of P.programs || []) if (!p.id) err(`program "${p.title}" needs an id (used by the translations)`);
+for (const g of P.skills || []) if (!g.id) err(`skill group "${g.group}" needs an id (used by the translations)`);
+
 /* ---------- local links in HTML ---------- */
 const htmlFiles = fs.readdirSync(root).filter((f) => f.endsWith(".html"));
 for (const f of htmlFiles) {
