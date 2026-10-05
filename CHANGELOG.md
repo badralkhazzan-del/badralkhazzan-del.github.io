@@ -9,6 +9,7 @@ Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in 
 - The header now switches to the compact Menu button whenever the full menu does not fit, in any language.
 - New project: Lembah Susu Dairy: From Cow to Cup (The INDEX 2026, Telkom University Purwokerto), with a link to the live demo website. The card shows the six journey steps until the website screenshot and poster are added.
 - The checker also validates the translation files.
+- Arabic pages show the name in Arabic script: بدر الدين الخزان. Search-engine data keeps the Latin spelling, with the Arabic name as an alternate name.
 
 ## 2026-09-26 · About story
 

@@ -8,6 +8,7 @@
 
   var P = window.PORTFOLIO || {};
   var S = P.site || {};
+  var NAME_EN = S.name; // structured data keeps the Latin spelling in every language
   var L = P.links || {};
   var body = document.body;
   var page = body.getAttribute("data-page") || "";
@@ -971,7 +972,8 @@
     var person = {
       "@context": "https://schema.org",
       "@type": "Person",
-      name: S.name,
+      name: NAME_EN,
+      alternateName: S.name !== NAME_EN ? S.name : undefined,
       url: S.url,
       image: absolute(S.portrait.src + ".jpg"),
       email: "mailto:" + L.email,
@@ -988,7 +990,7 @@
       award: (P.awards || []).filter(function (a) { return a.type === "competition"; }).map(function (a) { return a.title + ", " + a.event; })
     };
     if (page === "home" || page === "about" || page === "contact") blocks.push(person);
-    if (page === "home") blocks.push({ "@context": "https://schema.org", "@type": "WebSite", name: S.name, url: S.url });
+    if (page === "home") blocks.push({ "@context": "https://schema.org", "@type": "WebSite", name: NAME_EN, url: S.url });
 
     // ScholarlyArticle only for published items with an official link.
     if (page === "research") {
