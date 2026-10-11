@@ -60,7 +60,7 @@
 }
 
 /* ---------- Dark theme ----------
-   Used when the visitor picks dark mode, or when the system prefers dark and no choice was made. */
+   Used only when the visitor picks dark mode; light is the default. */
 :root[data-theme="dark"] {
   --bg: #0F141D; --bg-alt: #141B27; --surface: #1A2230; --line: #283245; --line-strong: #394559;
   --ink: #EEF1F6; --text: #CED5E1; --muted: #9AA5B8;
@@ -78,26 +78,6 @@
   --media-bg: #1E2635; --media-bg-2: #1E2635; --portrait-bg: #1E2635;
   --dot: rgba(170, 190, 230, .09);
   color-scheme: dark;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0F141D; --bg-alt: #141B27; --surface: #1A2230; --line: #283245; --line-strong: #394559;
-    --ink: #EEF1F6; --text: #CED5E1; --muted: #9AA5B8;
-    --navy: #9DB9EC; --navy-deep: #C3D4F3;
-    --teal: #68BDB3; --teal-soft: #17312F;
-    --gold: #CBA251; --gold-text: #E4C47F; --gold-soft: #352B16;
-    --st-published: #86D3C9; --st-published-bg: #17312F;
-    --st-accepted: #B3C8F0;  --st-accepted-bg: #1C2943;
-    --st-conference: #E4C47F; --st-conference-bg: #352B16;
-    --st-review: #C6CEDB;    --st-review-bg: #242C3A;
-    --st-progress: #86D3C9;  --st-project: #A9B0BC;
-    --shadow: 0 1px 2px rgba(0, 0, 0, .35), 0 6px 18px rgba(0, 0, 0, .25);
-    --primary: #2E4D86; --primary-hover: #3A5D9C; --panel: #1B2C4D; --footer-bg: #0A0E15;
-    --header-bg: rgba(15, 20, 29, .92);
-    --media-bg: #1E2635; --media-bg-2: #1E2635; --portrait-bg: #1E2635;
-    --dot: rgba(170, 190, 230, .09);
-    color-scheme: dark;
-  }
 }
 
 /* ---------- Base ---------- */
@@ -473,6 +453,7 @@ a.chip:hover { border-color: var(--teal); color: var(--teal); }
 .cover img { width: 100%; max-height: 560px; object-fit: contain; background: var(--media-bg-2); }
 .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; align-items: start; }
 .gallery figure { margin: 0; }
+.gallery figure.wide { grid-column: 1 / -1; }
 .gallery .frame { display: block; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--media-bg-2); }
 .gallery .frame img { width: 100%; height: auto; max-height: 460px; object-fit: contain; margin-inline: auto; }
 .gallery a.frame:hover { border-color: var(--navy); }
@@ -525,6 +506,7 @@ figcaption { font-size: .85rem; color: var(--muted); margin-top: 8px; line-heigh
 .award-card { position: relative; display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 20px; padding: 22px; border-top: 3px solid var(--gold); }
 .award-card .award-img { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); aspect-ratio: 3 / 4; background: var(--media-bg-2); }
 .award-card .award-img img { width: 100%; height: 100%; object-fit: cover; }
+.award-card.no-img { grid-template-columns: minmax(0, 1fr); }
 .award-title { font-family: var(--font-serif); font-size: 1.35rem; color: var(--ink); font-weight: 600; margin: 6px 0 2px; line-height: 1.2; }
 .award-event { font-weight: 600; color: var(--navy); margin-bottom: 2px; }
 .award-sub { font-size: .9rem; color: var(--muted); margin-bottom: 8px; }
@@ -670,7 +652,7 @@ noscript p { padding: 16px var(--gutter); background: var(--gold-soft); margin: 
 }
 
 @media print {
-  :root, :root[data-theme="dark"], :root:not([data-theme="light"]) {
+  :root, :root[data-theme="dark"] {
     --bg: #fff; --bg-alt: #fff; --surface: #fff; --line: #ddd; --line-strong: #ccc;
     --ink: #000; --text: #222; --muted: #444; --navy: #1B2F55; --teal: #2B6763; color-scheme: light;
   }
@@ -699,10 +681,6 @@ noscript p { padding: 16px var(--gutter); background: var(--gold-soft); margin: 
 .theme-toggle .i-sun { display: none; }
 :root[data-theme="dark"] .theme-toggle .i-sun { display: block; }
 :root[data-theme="dark"] .theme-toggle .i-moon { display: none; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .theme-toggle .i-sun { display: block; }
-  :root:not([data-theme="light"]) .theme-toggle .i-moon { display: none; }
-}
 @media (max-width: 600px) {
   .brand-text { display: none; }
   .nav-toggle { padding-inline: 10px; }

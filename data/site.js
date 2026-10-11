@@ -28,7 +28,7 @@ PORTFOLIO.site = {
   location: "Yogyakarta, Indonesia",
 
   // Update this whenever the portfolio content changes (YYYY-MM-DD).
-  lastUpdated: "2026-10-05",
+  lastUpdated: "2026-10-11",
 
   // Final public address of the site. Change it here and in the <meta property="og:*"> tags
   // if the site moves (see README, "Changing the site address").
@@ -49,7 +49,7 @@ PORTFOLIO.site = {
     preview: "assets/cv-preview",
     previewW: 1241,
     previewH: 1754,
-    updated: "2026-09-23",
+    updated: "2026-10-11",
     note: "For references or further details, please get in touch by email."
   },
 
@@ -90,7 +90,7 @@ PORTFOLIO.site = {
   // What is happening now (Home page).
   now: [
     "Completing the final year of my B.Sc. in Industrial Engineering (expected 2027).",
-    "Developing research on green vehicle routing for electric delivery trucks."
+    "Developing an electric vehicle routing framework for urban retail delivery in Yogyakarta."
   ],
 
   about: {

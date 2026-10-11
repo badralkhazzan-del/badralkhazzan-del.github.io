@@ -14,7 +14,7 @@ PORTFOLIO.experience = {
       kind: "Technical",
       title: "Simulation & Modelling Trainee",
       org: "Delsim Laboratory, Universitas Islam Indonesia",
-      start: "2025-07",
+      start: "2025-04",
       end: "2025-09",
       summary: "Industrial modelling and simulation laboratory in the Industrial Engineering department.",
       bullets: [
@@ -30,7 +30,7 @@ PORTFOLIO.experience = {
       kind: "Leadership",
       title: "Deputy Head, Events Division & Industrial Engineering Ambassador",
       org: "UII Global (Volunteer)",
-      start: "2025-07",
+      start: "2025-01",
       end: "2025-12",
       summary: "UII Global supports the international student community at Universitas Islam Indonesia.",
       bullets: [
@@ -39,7 +39,7 @@ PORTFOLIO.experience = {
       progression: [
         { when: "2023/2024 term", what: "Member, Events Division" },
         { when: "March 2025", what: "Person in charge, Iftar Drive 2025" },
-        { when: "Jul–Dec 2025", what: "Deputy Head, Events Division & Industrial Engineering Ambassador" }
+        { when: "Jan–Dec 2025", what: "Deputy Head, Events Division & Industrial Engineering Ambassador" }
       ],
       tags: ["Event management", "Partnerships", "Cross-cultural communication"],
       image: { src: "assets/img/experience/uii-global-ambassador", w: 358, h: 464, alt: "UII Global student ambassador announcement featuring Badr Aldeen Alkhazan, Industrial Engineering '23" }

@@ -100,7 +100,8 @@ const usedKeys = new Set([...appSource.matchAll(/\bt\(\s*"((?:[^"\\]|\\.)*)"/g)]
 // Strings passed to t() indirectly (plurals, tier labels, section titles stored in data).
 ["Published work", "Published works", "Conference paper", "Conference papers", "Manuscript under review", "Manuscripts under review",
  "Competitive award", "Competitive awards", "{n} item", "{n} items", "Flagship project", "Supporting project", "Approach",
- "Visual evidence", "Native", "What we built"].forEach((k) => usedKeys.add(k));
+ "Visual evidence", "Native"].forEach((k) => usedKeys.add(k));
+for (const p of P.projects || []) [p.approachTitle, p.galleryTitle].filter(Boolean).forEach((k) => usedKeys.add(k));
 for (const file of fs.readdirSync(path.join(root, "data")).filter((f) => /^lang-[a-z]+\.js$/.test(f))) {
   const code = file.slice(5, -3);
   const lctx = { window: {} }; lctx.window = lctx; lctx.PORTFOLIO = lctx.window.PORTFOLIO = {};

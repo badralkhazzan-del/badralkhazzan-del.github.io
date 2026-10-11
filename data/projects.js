@@ -160,12 +160,16 @@ PORTFOLIO.projects = [
     results: [],
     caveat: "The company, people, prices and data on the demo website are fictional.",
     link: { url: "https://lembah-susu-dairy.netlify.app/" },
-    // Shown on the project card until a screenshot is added as `cover`.
-    thumbChips: ["Feeding", "Milking", "Quality testing", "Pasteurization", "Processing", "Packaging & delivery"],
     recognitionNote: null,
     recognition: null,
     relatedResearch: [],
-    gallery: [],
+    cover: { src: "assets/img/projects/lembah-susu/website", w: 1440, h: 900, focus: "50% 30%", alt: "Home page of the Lembah Susu Dairy demo website in Indonesian, with the headline about fresh milk from the slopes of Mount Slamet and an illustrated cow beside a red barn" },
+    galleryTitle: "Website and poster",
+    gallery: [
+      { src: "assets/img/projects/lembah-susu/website", w: 1440, h: 900, wide: true, alt: "Home page of the Lembah Susu Dairy demo website in Indonesian, with the headline about fresh milk from the slopes of Mount Slamet and an illustrated cow beside a red barn", caption: "Home page of the demo website, shown here in Indonesian." },
+      { src: "assets/img/projects/lembah-susu/poster", w: 1200, h: 1697, alt: "Case study poster titled From Cow to Cup, One Click Away for The INDEX 2026 at Telkom University Purwokerto, by team Six Seven, showing the visit, the challenge, the six-step milk journey, the demo website and what we learned", caption: "Case study poster for The INDEX 2026, team Six Seven." },
+      { src: "assets/img/projects/lembah-susu/website-mobile", w: 600, h: 1298, alt: "The Lembah Susu Dairy demo website on a phone screen, showing the hero section with the product and visit buttons", caption: "The same home page on a phone." }
+    ],
     featured: false
   },
   {

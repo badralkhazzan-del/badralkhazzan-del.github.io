@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 """
 Make the public CV from the Master CV: removes the phone number from the header line,
-re-centres the remaining items in the original font, keeps the email/LinkedIn links,
-and saves the result as assets/Badr_Aldeen_CV.pdf.
+re-centres the remaining items in the original font, keeps the email/portfolio links,
+removes links to private Google Drive/Docs files (manuscripts, abstracts), and saves the
+result as assets/Badr_Aldeen_CV.pdf.
 
-    python3 tools/make_public_cv.py path/to/Badr_Aldeen_Master_CV.pdf
+    python3 tools/make_public_cv.py path/to/Badr_Aldeen_Master_CV.pdf [fallback-font.ttf]
+
+The header is rewritten with the CV's own embedded font when it has every character needed.
+CVs exported by LibreOffice embed fonts without a character map; then pass the matching font
+file (for example Carlito-Regular.ttf from Google Fonts for Calibri/Carlito CVs).
     python3 tools/update_cv_preview.py
 
 Requires:  pip install pymupdf pillow
@@ -20,11 +25,26 @@ SEPARATOR = re.compile(r"^\s*[|·•]\s*$")
 
 root = Path(__file__).resolve().parent.parent
 out = root / "assets" / "Badr_Aldeen_CV.pdf"
-if len(sys.argv) != 2:
+if len(sys.argv) not in (2, 3):
     sys.exit(__doc__)
 
 doc = pymupdf.open(sys.argv[1])
 page = doc[0]
+
+# Links to Google Drive/Docs files point at private material (manuscripts under review, abstracts
+# with student emails). The text stays; only the link is removed.
+PRIVATE_LINK = re.compile(r"^https?://(drive|docs)\.google\.com/", re.I)
+removed = 0
+for pg in doc:
+    while True:  # delete one at a time: deleting shifts the remaining links
+        hit = next((l for l in pg.get_links() if PRIVATE_LINK.match(l.get("uri") or "")), None)
+        if hit is None:
+            break
+        pg.delete_link(hit)
+        removed += 1
+if removed:
+    print(f"Removed {removed} link(s) to Google Drive/Docs files.")
+
 
 
 def find_phone_line():
@@ -86,8 +106,12 @@ else:
         if all(f.has_glyph(ord(c)) for c in needed):
             font_buf, font = buf, f
             break
+    if font is None and len(sys.argv) == 3:
+        f = pymupdf.Font(fontfile=sys.argv[2])
+        if all(f.has_glyph(ord(c)) for c in needed):
+            font_buf, font = open(sys.argv[2], "rb").read(), f
     if font is None:
-        sys.exit("Could not find an embedded font with all characters; edit the CV by hand instead.")
+        sys.exit("Could not find a font with all characters. Pass a matching .ttf as the second argument.")
 
     for l in links:
         page.delete_link(l)
@@ -115,7 +139,11 @@ else:
 doc.set_metadata({"title": "Badr Aldeen Al-Khazan, CV", "author": "Badr Aldeen Al-Khazan"})
 doc.save(out, garbage=4, deflate=True)
 
-text = "".join(p.get_text() for p in pymupdf.open(out))
+saved = pymupdf.open(out)
+text = "".join(p.get_text() for p in saved)
+if any(PRIVATE_LINK.match(l.get("uri") or "") for p in saved for l in p.get_links()):
+    out.unlink()
+    sys.exit("A Google Drive/Docs link is still present. The public CV was NOT saved.")
 if PHONE.search(text.replace("\xa0", " ")):
     out.unlink()
     sys.exit("A phone number is still present. The public CV was NOT saved.")

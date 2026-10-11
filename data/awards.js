@@ -19,6 +19,19 @@ PORTFOLIO.awardTypes = {
 
 PORTFOLIO.awards = [
   {
+    id: "tmic-2026",
+    short: "Best Presenter, TMIC 2026",
+    type: "competition",
+    title: "Best Presenter",
+    event: "TMIC 2026",
+    eventDetail: "4th Trunodjoyo Madura International Conference, University of Trunodjoyo Madura",
+    for: "Calibration and Cost-Sensitive Threshold Selection for Imbalanced Predictive Maintenance",
+    date: "October 2026",
+    detail: "Awarded in the parallel session where I presented the paper.",
+    research: "predictive-maintenance",
+    certificate: { src: "assets/img/certificates/tmic-2026", w: 1600, h: 1185, alt: "Certificate from the 4th Trunodjoyo Madura International Conference (TMIC) naming Badr Aldeen Al-Khazan Best Presenter for the article Calibration and Cost-Sensitive Threshold Selection for Imbalanced Predictive Maintenance: An AI4I 2020 Study, 8 October 2026" }
+  },
+  {
     id: "expo-psit-2026",
     type: "competition",
     title: "1st Place",

@@ -6,6 +6,10 @@
  *   PORTFOLIO.researchStatuses below. The badge, grouping, Home page, linked
  *   projects and search-engine data all update automatically.
  *
+ * ORDER
+ *   Groups follow `order` in PORTFOLIO.researchStatuses; inside a group, papers keep
+ *   their order in the list below (the same order as the CV).
+ *
  * WHEN A PAPER IS PUBLISHED
  *   status: "published", set `venue`, `year`, and add the official link in `links`.
  *   Add `doi` (without https://doi.org/) only when an official DOI exists.
@@ -17,11 +21,11 @@
 window.PORTFOLIO = window.PORTFOLIO || {};
 
 PORTFOLIO.researchStatuses = {
-  "published":        { label: "Published",              order: 1, note: "Publicly available through an official repository or publisher." },
-  "accepted":         { label: "Accepted / Forthcoming", order: 2, note: "Accepted for publication. No public link until the official page is live." },
-  "conference":       { label: "Conference",             order: 3, note: "Accepted for conference presentation." },
-  "under-review":     { label: "Under Review",           order: 4, note: "Submitted and under review. Summary only; the manuscript is not public." },
-  "in-progress":      { label: "Research in Progress",   order: 5, note: "Ongoing research. Summary only." },
+  "accepted":         { label: "Accepted / Forthcoming", order: 1, note: "Accepted for publication. No public link until the official page is live." },
+  "conference":       { label: "Conference",             order: 2, note: "Accepted for, or presented at, a conference." },
+  "under-review":     { label: "Under Review",           order: 3, note: "Submitted and under review. Summary only; the manuscript is not public." },
+  "in-progress":      { label: "Research in Progress",   order: 4, note: "Ongoing research. Summary only." },
+  "published":        { label: "Published",              order: 5, note: "Publicly available through an official repository or publisher." },
   // Not used at the moment; kept for work that should be shown without any status claim.
   "research-project": { label: "Research Project",       order: 6, note: "Research work shown without a publication-status claim." }
 };
@@ -30,6 +34,162 @@ PORTFOLIO.researchStatuses = {
 PORTFOLIO.authorSelf = "Badr Aldeen Al-Khazan";
 
 PORTFOLIO.research = [
+  {
+    id: "bullwhip",
+    short: "Bullwhip effect simulation",
+    title: "Simulation-Based Analysis of the Bullwhip Effect in a Multi-Echelon Bottled Water Supply Chain",
+    type: "Journal article",
+    status: "accepted",
+    year: 2026,
+    venue: "JTMIT",
+    statusDetail: "Accepted for publication; currently in production",
+    authors: ["Badr Aldeen Al-Khazan", "Agus Mansur"],
+    summary:
+      "A reproducible discrete-time simulation of a three-stage bottled-water supply chain (retailer, distributor, manufacturer) in which each stage follows a weekly order-up-to policy with moving-average forecasts, variable lead times, safety stock and batching. Across 1,000 replications, both ordering interfaces amplified relative demand variability, measured consistently as a coefficient-of-variation ratio. The model is a hypothetical scenario and makes no claim about a real company.",
+    topics: ["Bullwhip effect", "Inventory policy", "Multi-echelon supply chain"],
+    methods: ["simulation", "supply-chain", "statistics"],
+    tools: ["Python", "NumPy"],
+    links: [],
+    featured: true
+  },
+  {
+    id: "relief-prepositioning",
+    short: "Relief pre-positioning",
+    title: "Where Floods Strike and How Roads Fail: Testing Two Assumptions of Relief Pre-Positioning on the 2025 Cyclone Senyar Floods in Aceh",
+    type: "Conference paper",
+    status: "conference",
+    year: 2026,
+    venue: "16th AIC 2026, Universitas Syiah Kuala",
+    statusDetail: "Accepted for presentation",
+    authors: ["Badr Aldeen Al-Khazan"],
+    summary:
+      "Tests two common assumptions of relief pre-positioning, that every district is equally likely to flood and that roads fail independently, for the 21 mainland regencies of Aceh, Indonesia. A two-stage stochastic model built only from public data decides where to store relief stock on a 2,107 km road network, and the plans were tested on simulated floods and on the November 2025 Cyclone Senyar floods, which were not used to build any plan. In the real flood, exposure taken from national village records reduced unmet demand from 57.2% to 44.3%, while linked road failures helped mainly because road cuts arrive in clusters.",
+    topics: ["Humanitarian logistics", "Relief pre-positioning", "Flood exposure", "Correlated road failures"],
+    methods: ["optimization", "stochastic-programming", "simulation", "supply-chain", "risk"],
+    links: [],
+    featured: true
+  },
+  {
+    id: "risk-aware-routing",
+    short: "Risk-aware last-mile routing",
+    title: "When Does Risk-Aware Workload Balancing Pay Off? A Three-City Last-Mile Routing Benchmark Using Industrial Traces",
+    type: "Conference abstract",
+    status: "conference",
+    year: 2026,
+    venue: "ICORSI 2026, IIT Delhi, 21–23 December 2026",
+    statusDetail: "Abstract accepted",
+    authors: ["Badr Aldeen Al-Khazan"],
+    summary:
+      "Asks when workload-aware routing can reduce courier imbalance and overtime risk in last-mile delivery without an excessive travel penalty. Using public LaDe-D delivery traces from Chongqing, Jilin and Yantai (about 1.17 million package records), a gradient-boosting model estimated courier effort, and six routing policies were compared on 36 real region-day instances. Relative to distance-only routing, scenario-CVaR balancing added 3.63% travel while cutting average workload imbalance by 39.50% and overtime probability by 32.67%, although it did not significantly outperform simpler balancing benchmarks.",
+    topics: ["Last-mile logistics", "Workload balancing", "Conditional value at risk", "Predictive analytics"],
+    methods: ["routing", "optimization", "machine-learning", "risk"],
+    links: [],
+    featured: true
+  },
+  {
+    id: "wheat-cvar",
+    short: "Wheat import Mean-CVaR",
+    title: "Balancing Cost and Tail Risk in the Indonesian Wheat Import Portfolio Using Nested Mean CVaR Optimization",
+    type: "Conference paper",
+    status: "conference",
+    year: 2026,
+    venue: "ICOBLAST 2026, Diponegoro University",
+    statusDetail: "Full paper accepted",
+    authors: ["Badr Aldeen Al-Khazan"],
+    summary:
+      "A sourcing-portfolio study that balances cost against severe supply shortfalls in Indonesia's wheat imports. Using public UN Comtrade monthly records (2015 to 2025, 49 suppliers), a Mean-CVaR linear program with nested rolling validation selects annual supplier shares, which are then tested out of sample against seven benchmarks with bootstrap uncertainty and stress tests.",
+    topics: ["Supply chain resilience", "Sourcing portfolio", "Tail risk", "Food security"],
+    methods: ["optimization", "risk", "supply-chain", "statistics"],
+    tools: ["Python", "SciPy (HiGHS)"],
+    links: [],
+    featured: false
+  },
+  {
+    id: "predictive-maintenance",
+    short: "Predictive maintenance calibration",
+    title: "Calibration and Cost-Sensitive Threshold Selection for Imbalanced Predictive Maintenance: An AI4I 2020 Study",
+    type: "Conference paper",
+    status: "conference",
+    year: 2026,
+    venue: "TMIC 2026, 4th Trunodjoyo Madura International Conference",
+    statusDetail: "Presented",
+    authors: ["Badr Aldeen Al-Khazan", "Muhammad Ridwan Andi Purnomo"],
+    summary:
+      "Examines how class-imbalance handling, probability calibration and alarm-threshold choice interact in predictive maintenance on the public AI4I 2020 benchmark. Resampling with SMOTE gave no consistent ranking gain and inflated predicted probabilities, so cost-based thresholds applied to them performed poorly. Training on the original distribution and choosing the alarm threshold by validation-set cost was the most stable strategy across the cost ratios tested.",
+    topics: ["Predictive maintenance", "Probability calibration", "Cost-sensitive decisions"],
+    methods: ["machine-learning", "statistics", "risk"],
+    tools: ["Python", "scikit-learn", "imbalanced-learn"],
+    links: [],
+    relatedAward: "tmic-2026",
+    featured: true
+  },
+  {
+    id: "school-meals",
+    short: "School-meal kitchen capacity",
+    title: "Safe Capacity and Time Compliance in School-Meal Kitchens: Evidence from Indonesia's Free Nutritious Meal Program",
+    type: "Manuscript",
+    status: "under-review",
+    year: 2026,
+    venue: "Spektrum Industri",
+    authors: ["Badr Aldeen Al-Khazan", "Muhammad Mahdy Fadhlullah", "Muhammad Ridwan Andi Purnomo"],
+    summary:
+      "Asks whether school-meal kitchens in Indonesia's Free Nutritious Meal (MBG) program can keep every portion within the four-hour cook-to-consume limit. The study derives a safe-capacity condition for staggered meal deadlines and tests five readings of the operating rules in Sidoarjo Regency with a time-indexed scheduling model, a capacitated kitchen-location model and a 500-run Monte Carlo simulation. Reading the 02:00 to 08:00 kitchen hours as a cooking deadline caps compliance at 54.8 to 67.4%, whereas following the production-wave schedule reaches 89.7 to 97.4% with a network of 195 kitchens.",
+    topics: ["School feeding", "Production and distribution scheduling", "Facility location", "Food safety"],
+    methods: ["optimization", "simulation", "supply-chain", "risk"],
+    links: [],
+    featured: false
+  },
+  {
+    id: "scor-governance",
+    short: "SCOR supply chain governance",
+    title: "Supply Chain Governance in Sustainability Reporting: A SCOR Orchestrate Analysis of an Indonesian State-Owned Enterprise",
+    type: "Manuscript",
+    status: "under-review",
+    year: 2026,
+    venue: "IJPMB",
+    authors: null, // Author list not shown while under review.
+    summary:
+      "A document-based case study of how the 2024 sustainability report of an Indonesian state-owned fertiliser enterprise evidences the capabilities needed to orchestrate an end-to-end supply chain. The report was assessed against 40 indicators across 13 SCOR Digital Standard Orchestrate categories and linked to GRI disclosures, scoring both disclosure quality and reported substance to give an auditable instrument for reporting and governance priorities.",
+    topics: ["Supply chain governance", "Sustainability reporting", "SCOR", "GRI"],
+    methods: ["supply-chain", "sustainability", "qualitative"],
+    links: [],
+    featured: false
+  },
+  {
+    id: "sigap-parking",
+    short: "SIGAP parking study",
+    title: "Reducing University Motorcycle Exit Time through Automated Parking Access Control (SIGAP)",
+    type: "Manuscript",
+    status: "under-review",
+    year: 2026,
+    venue: "JuTISI",
+    authors: ["Badr Aldeen Al-Khazan", "Prabaswara Mahameru Wangid", "Muhammad Mahdy Fadhlullah", "Harwati"],
+    summary:
+      "Evaluates the SIGAP RFID access-control prototype against manual paper-ticket checks at a university motorcycle parking exit. The study combines field time study, statistical testing and an M/G/1 queueing scenario to estimate the reduction in service time and the gain in capacity margin, and adds a usability trial with first-time users.",
+    topics: ["Queueing analysis", "RFID", "Service time", "Process improvement"],
+    methods: ["queueing", "statistics", "prototyping"],
+    relatedProject: "sigap",
+    links: [],
+    featured: false
+  },
+  {
+    id: "green-vrp",
+    short: "Electric vehicle routing",
+    title: "A Configurable Electric Vehicle Routing Framework for Urban Retail Delivery with Public Charging: A Yogyakarta Case Study",
+    type: "Ongoing research",
+    status: "in-progress",
+    year: 2026,
+    venue: null,
+    authors: null,
+    summary:
+      "A configurable routing framework for electric retail delivery, applied to 87 publicly identified convenience stores in Kota Yogyakarta. It combines load-dependent energy consumption, public charging, route optimisation and independent feasibility checks, and minimises the number of vehicles before road distance. The reference solution serves every store with four vehicles over 121.6 km, and daily planning finds feasible plans for all 30 synthetic operating days, compared with 17 for an adaptive reference policy.",
+    topics: ["Electric vehicle routing", "Public charging", "Urban freight", "Retail distribution"],
+    methods: ["optimization", "routing", "supply-chain", "sustainability"],
+    tools: ["Python", "PyVRP", "OR-Tools", "SciPy (HiGHS)", "OSRM"],
+    relatedProject: "green-vrp",
+    links: [],
+    featured: false
+  },
   {
     id: "ai-critical-thinking",
     short: "AI dependence and critical thinking",
@@ -61,142 +221,6 @@ PORTFOLIO.research = [
     methods: ["sustainability", "qualitative"],
     links: [{ label: "View in UII Repository", url: "https://dspace.uii.ac.id/handle/123456789/58910" }],
     relatedAward: "iyec12",
-    featured: false
-  },
-  {
-    id: "bullwhip",
-    short: "Bullwhip effect simulation",
-    title: "Simulation-Based Analysis of the Bullwhip Effect in a Multi-Echelon Bottled Water Supply Chain",
-    type: "Journal article",
-    status: "accepted",
-    year: 2026,
-    venue: null, // Add the journal name only once the official publication page is live.
-    statusDetail: "Accepted for publication; currently in production",
-    authors: ["Badr Aldeen Al-Khazan", "Agus Mansur"],
-    summary:
-      "A reproducible discrete-time simulation of a three-stage bottled-water supply chain (retailer, distributor, manufacturer) in which each stage follows a weekly order-up-to policy with moving-average forecasts, variable lead times, safety stock and batching. Across 1,000 replications, both ordering interfaces amplified relative demand variability, measured consistently as a coefficient-of-variation ratio. The model is a hypothetical scenario and makes no claim about a real company.",
-    topics: ["Bullwhip effect", "Inventory policy", "Multi-echelon supply chain"],
-    methods: ["simulation", "supply-chain", "statistics"],
-    tools: ["Python", "NumPy"],
-    links: [],
-    featured: true
-  },
-  {
-    id: "predictive-maintenance",
-    short: "Predictive maintenance calibration",
-    title: "Calibration and Cost-Sensitive Threshold Selection for Imbalanced Predictive Maintenance: An AI4I 2020 Study",
-    type: "Conference paper",
-    status: "conference",
-    year: 2026,
-    venue: "TMIC 2026",
-    statusDetail: "Accepted for presentation",
-    authors: ["Badr Aldeen Al-Khazan", "Muhammad Ridwan Andi Purnomo"],
-    summary:
-      "Examines how class-imbalance handling, probability calibration and alarm-threshold choice interact in predictive maintenance on the public AI4I 2020 benchmark. Resampling with SMOTE gave no consistent ranking gain and inflated predicted probabilities, so cost-based thresholds applied to them performed poorly. Training on the original distribution and choosing the alarm threshold by validation-set cost was the most stable strategy across the cost ratios tested.",
-    topics: ["Predictive maintenance", "Probability calibration", "Cost-sensitive decisions"],
-    methods: ["machine-learning", "statistics", "risk"],
-    tools: ["Python", "scikit-learn", "imbalanced-learn"],
-    links: [],
-    featured: true
-  },
-  {
-    id: "scor-governance",
-    short: "SCOR supply chain governance",
-    title: "Supply Chain Governance in Sustainability Reporting: A SCOR Orchestrate Analysis of an Indonesian State-Owned Enterprise",
-    type: "Manuscript",
-    status: "under-review",
-    year: 2026,
-    venue: null,
-    authors: null, // Author list not shown while under review.
-    summary:
-      "A document-based case study of how the 2024 sustainability report of an Indonesian state-owned fertiliser enterprise evidences the capabilities needed to orchestrate an end-to-end supply chain. The report was assessed against 40 indicators across 13 SCOR Digital Standard Orchestrate categories and linked to GRI disclosures, scoring both disclosure quality and reported substance to give an auditable instrument for reporting and governance priorities.",
-    topics: ["Supply chain governance", "Sustainability reporting", "SCOR", "GRI"],
-    methods: ["supply-chain", "sustainability", "qualitative"],
-    links: [],
-    featured: false
-  },
-  {
-    id: "sigap-parking",
-    short: "SIGAP parking study",
-    title: "Reducing University Motorcycle Exit Time through Automated Parking Access Control (SIGAP)",
-    type: "Manuscript",
-    status: "under-review",
-    year: 2026,
-    venue: null,
-    authors: ["Badr Aldeen Al-Khazan", "Prabaswara Mahameru Wangid", "Muhammad Mahdy Fadhlullah", "Harwati"],
-    summary:
-      "Evaluates the SIGAP RFID access-control prototype against manual paper-ticket checks at a university motorcycle parking exit. The study combines field time study, statistical testing and an M/G/1 queueing scenario to estimate the reduction in service time and the gain in capacity margin, and adds a usability trial with first-time users.",
-    topics: ["Queueing analysis", "RFID", "Service time", "Process improvement"],
-    methods: ["queueing", "statistics", "prototyping"],
-    relatedProject: "sigap",
-    links: [],
-    featured: true
-  },
-  {
-    id: "green-ai-literacy",
-    short: "Reflexive Green-AI literacy",
-    title: "Teaching Sustainability with Unsustainable Tools: Toward a Reflexive Green-AI Literacy Framework for Education for Sustainable Development",
-    type: "Manuscript",
-    status: "under-review",
-    year: 2026,
-    venue: null,
-    authors: null,
-    summary:
-      "A conceptual study of a tension in sustainability education: learners are taught environmental responsibility with AI tools whose energy and water footprint is rarely examined. Through a scoping review (2020 to 2026), a comparison of competence frameworks and an interpretive synthesis, it identifies a reflexivity gap and proposes Reflexive Green-AI Literacy with four dimensions: footprint awareness, critical cost-benefit assessment, sufficiency practices and reflexivity.",
-    topics: ["Education for sustainable development", "Green AI", "Competence frameworks"],
-    methods: ["sustainability", "qualitative"],
-    links: [],
-    featured: false
-  },
-  {
-    id: "green-vrp",
-    short: "Green vehicle routing",
-    title: "Green Vehicle Routing for Electric Truck Distribution with Load-Dependent Energy Consumption",
-    type: "Ongoing research",
-    status: "in-progress",
-    year: 2026,
-    venue: null,
-    authors: null,
-    summary:
-      "A green capacitated vehicle routing problem with time windows in which battery energy is tracked along each route with a load-dependent consumption model, and vehicles divert to the nearest reachable public charging station when needed. The model is applied to a retail delivery network in Yogyakarta built from real store and charging-station locations, and tested across battery-capacity scenarios.",
-    topics: ["Electric vehicle routing", "Energy consumption", "Charging stations", "Logistics"],
-    methods: ["optimization", "routing", "supply-chain", "sustainability"],
-    tools: ["Python"],
-    relatedProject: "green-vrp",
-    links: [],
-    featured: true
-  },
-  {
-    id: "relief-prepositioning",
-    short: "Relief pre-positioning",
-    title: "Relief Pre-Positioning under Correlated Road Failures",
-    type: "Humanitarian logistics study",
-    status: "in-progress",
-    year: 2026,
-    venue: null,
-    authors: ["Badr Aldeen Al-Khazan"],
-    summary:
-      "Asks when modelling spatially correlated road failures produces better disaster-relief plans. A two-stage stochastic program chooses depot locations and stock levels before a disaster and then routes supplies over the roads that remain open, using an open-data model of the 21 mainland regencies of Aceh, Indonesia. Plans are tested on simulated events and on a reconstruction of the late-2025 Cyclone Senyar floods.",
-    topics: ["Humanitarian logistics", "Relief pre-positioning", "Correlated disruptions"],
-    methods: ["optimization", "stochastic-programming", "simulation", "supply-chain", "risk"],
-    links: [],
-    featured: false
-  },
-  {
-    id: "wheat-cvar",
-    short: "Wheat import Mean-CVaR",
-    title: "Mean-CVaR Optimization for Indonesia's Wheat Import Sourcing",
-    type: "Decision analytics study",
-    status: "in-progress",
-    year: 2026,
-    venue: null,
-    authors: ["Badr Aldeen Al-Khazan"],
-    summary:
-      "A sourcing-portfolio study that balances cost against severe supply shortfalls in Indonesia's wheat imports. Using public UN Comtrade monthly records (2015 to 2025, 49 suppliers), a Mean-CVaR linear program with nested rolling validation selects annual supplier shares, which are then tested out of sample against seven benchmarks with bootstrap uncertainty and stress tests.",
-    topics: ["Supply chain resilience", "Sourcing portfolio", "Tail risk", "Food security"],
-    methods: ["optimization", "risk", "supply-chain", "statistics"],
-    tools: ["Python", "SciPy (HiGHS)"],
-    links: [],
     featured: false
   }
 ];

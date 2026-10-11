@@ -65,7 +65,7 @@
   function currentTheme() {
     var a = docEl.getAttribute("data-theme");
     if (a === "dark" || a === "light") return a;
-    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    return "light"; // light is the default until the visitor picks dark
   }
   function syncThemeColor() {
     var m = document.querySelector('meta[name="theme-color"]');
@@ -200,10 +200,11 @@
   }
 
   function sortedResearch() {
-    var st = P.researchStatuses || {};
-    return (P.research || []).slice().sort(function (a, b) {
+    var st = P.researchStatuses || {}, list = P.research || [];
+    // Groups follow the status order; inside a group, papers keep their order in data/research.js.
+    return list.slice().sort(function (a, b) {
       var d = (st[a.status] ? st[a.status].order : 99) - (st[b.status] ? st[b.status].order : 99);
-      return d !== 0 ? d : (b.year || 0) - (a.year || 0);
+      return d !== 0 ? d : list.indexOf(a) - list.indexOf(b);
     });
   }
   function countStatus(key) {
@@ -223,6 +224,7 @@
       if (r.venue) bits.push("<em>" + esc(r.venue) + "</em>");
     } else if (r.status === "under-review") {
       bits.push(esc(t("Submitted, under review")));
+      if (r.venue) bits.push("<em>" + esc(r.venue) + "</em>");
     } else if (r.status === "in-progress") {
       bits.push(esc(t("Ongoing research")));
     } else {
@@ -453,10 +455,10 @@
     // At a glance (computed from data)
     var competitive = (P.awards || []).filter(function (a) { return a.type === "competition"; }).length;
     var tiles = [
-      [countStatus("published"), t(plural(countStatus("published"), "Published work", "Published works"))],
       [countStatus("accepted"), t("Accepted, forthcoming")],
       [countStatus("conference"), t(plural(countStatus("conference"), "Conference paper", "Conference papers"))],
       [countStatus("under-review"), t(plural(countStatus("under-review"), "Manuscript under review", "Manuscripts under review"))],
+      [countStatus("published"), t(plural(countStatus("published"), "Published work", "Published works"))],
       [competitive, t(plural(competitive, "Competitive award", "Competitive awards"))],
       [(edu.gpa || "").split("/")[0].trim(), t("GPA out of 4.00")]
     ].filter(function (t) { return t[0] !== 0 && t[0] !== ""; });
@@ -707,7 +709,7 @@
     var gallery = p.gallery || [];
     if (gallery.length) {
       main += "<section><h2>" + esc(t(p.galleryTitle || "Visual evidence")) + '</h2><div class="gallery">' + gallery.map(function (g) {
-        return '<figure><a class="frame" href="' + esc(g.src) + '.jpg" target="_blank" rel="noopener" aria-label="' + esc(t("Open full-size image: {alt}", { alt: g.alt })) + '">' + pic(g) + "</a>" + (g.caption ? "<figcaption>" + esc(g.caption) + "</figcaption>" : "") + "</figure>";
+        return '<figure' + (g.wide ? ' class="wide"' : "") + '><a class="frame" href="' + esc(g.src) + '.jpg" target="_blank" rel="noopener" aria-label="' + esc(t("Open full-size image: {alt}", { alt: g.alt })) + '">' + pic(g) + "</a>" + (g.caption ? "<figcaption>" + esc(g.caption) + "</figcaption>" : "") + "</figure>";
       }).join("") + "</div></section>";
     } else if (p.cover && !p.video && !p.demo) {
       main += "<section><h2>" + esc(t("Visual")) + '</h2><figure class="cover">' + pic(p.cover) + "</figure>" + (p.coverCaption ? "<figcaption>" + esc(p.coverCaption) + "</figcaption>" : "") + "</section>";
@@ -812,7 +814,7 @@
     }
 
     var compHtml = comp.map(function (a) {
-      return '<article class="card award-card" id="' + esc(a.id) + '">' +
+      return '<article class="card award-card' + (a.image ? "" : " no-img") + '" id="' + esc(a.id) + '">' +
         (a.image ? '<div class="award-img">' + pic(a.image) + "</div>" : "") +
         "<div>" +
           '<p class="award-title">' + esc(a.title) + "</p>" +
@@ -838,7 +840,7 @@
 
     fill("page-content",
       '<section class="section"><div class="wrap">' +
-        sectionHead(t("Competitive awards"), t("Results from competitions and an international conference, each linked to the work behind it.")) +
+        sectionHead(t("Competitive awards"), t("Results from competitions and international conferences, each linked to the work behind it.")) +
         '<div class="grid grid-2">' + compHtml + "</div>" +
       "</div></section>" +
       '<section class="section section-alt"><div class="wrap">' +

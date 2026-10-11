@@ -88,6 +88,7 @@ PORTFOLIO.i18n.id = {
     "My role": "Peran saya",
     "Approach": "Pendekatan",
     "What we built": "Yang kami bangun",
+    "Website and poster": "Situs web dan poster",
     "Data model": "Model data",
     "Entities": "Entitas",
     "Relationships": "Relasi",
@@ -114,7 +115,7 @@ PORTFOLIO.i18n.id = {
     "View certificate (opens full size): {alt}": "Lihat sertifikat (ukuran penuh): {alt}",
     "View certificate": "Lihat sertifikat",
     "Competitive awards": "Penghargaan kompetisi",
-    "Results from competitions and an international conference, each linked to the work behind it.": "Hasil dari kompetisi dan konferensi internasional, masing-masing ditautkan ke karya di baliknya.",
+    "Results from competitions and international conferences, each linked to the work behind it.": "Hasil dari kompetisi dan konferensi internasional, masing-masing ditautkan ke karya di baliknya.",
     "Scholarship and leadership development": "Beasiswa dan pengembangan kepemimpinan",
     "Listed separately from competitive awards.": "Dicantumkan terpisah dari penghargaan kompetisi.",
     "Other recognition": "Pengakuan lainnya",
@@ -190,7 +191,7 @@ PORTFOLIO.i18n.id = {
       direction: "Selanjutnya, saya ingin memperdalam pekerjaan saya di bidang Riset Operasi dan Analitik Keputusan melalui pengalaman industri dan studi pascasarjana, dan dalam jangka panjang membangun alat bantu keputusan yang membantu operasi industri mengambil pilihan yang lebih baik.",
       now: [
         "Menyelesaikan tahun terakhir S1 Teknik Industri (perkiraan lulus 2027).",
-        "Mengembangkan riset tentang rute kendaraan ramah lingkungan untuk truk pengiriman listrik."
+        "Mengembangkan kerangka rute kendaraan listrik untuk pengiriman ritel perkotaan di Yogyakarta."
       ],
       focusAreas: [
         { title: "Optimasi & Riset Operasi", text: "Model rute, pengadaan, dan alokasi yang mengubah kendala nyata menjadi keputusan yang lebih baik." },
@@ -241,7 +242,7 @@ PORTFOLIO.i18n.id = {
     researchStatuses: {
       "published": { label: "Terbit", note: "Tersedia untuk publik melalui repositori atau penerbit resmi." },
       "accepted": { label: "Diterima / Segera Terbit", note: "Diterima untuk publikasi. Belum ada tautan publik sampai halaman resminya tersedia." },
-      "conference": { label: "Konferensi", note: "Diterima untuk dipresentasikan di konferensi." },
+      "conference": { label: "Konferensi", note: "Diterima atau telah dipresentasikan di konferensi." },
       "under-review": { label: "Dalam Peninjauan", note: "Telah dikirim dan sedang ditinjau. Hanya ringkasan; naskahnya tidak dipublikasikan." },
       "in-progress": { label: "Riset Berjalan", note: "Riset yang sedang berlangsung. Hanya ringkasan." },
       "research-project": { label: "Proyek Riset", note: "Karya riset yang ditampilkan tanpa klaim status publikasi." }
@@ -274,7 +275,8 @@ PORTFOLIO.i18n.id = {
       "predictive-maintenance": {
         short: "Kalibrasi pemeliharaan prediktif",
         type: "Makalah konferensi",
-        statusDetail: "Diterima untuk presentasi",
+        statusDetail: "Telah dipresentasikan",
+        venue: "TMIC 2026, Trunodjoyo Madura International Conference ke-4",
         summary: "Mengkaji bagaimana penanganan ketidakseimbangan kelas, kalibrasi probabilitas, dan pemilihan ambang alarm saling memengaruhi dalam pemeliharaan prediktif pada benchmark publik AI4I 2020. Resampling dengan SMOTE tidak memberikan peningkatan peringkat yang konsisten dan menggelembungkan probabilitas prediksi, sehingga ambang berbasis biaya yang diterapkan padanya berkinerja buruk. Melatih model pada distribusi asli dan memilih ambang alarm berdasarkan biaya pada data validasi merupakan strategi paling stabil di semua rasio biaya yang diuji.",
         topics: ["Pemeliharaan prediktif", "Kalibrasi probabilitas", "Keputusan sensitif biaya"]
       },
@@ -290,27 +292,39 @@ PORTFOLIO.i18n.id = {
         summary: "Mengevaluasi prototipe kendali akses RFID SIGAP dibandingkan pemeriksaan karcis kertas manual di pintu keluar parkir sepeda motor sebuah universitas. Studi ini menggabungkan studi waktu di lapangan, uji statistik, dan skenario antrean M/G/1 untuk memperkirakan penurunan waktu layanan dan peningkatan margin kapasitas, serta uji kegunaan dengan pengguna pertama kali.",
         topics: ["Analisis antrean", "RFID", "Waktu layanan", "Perbaikan proses"]
       },
-      "green-ai-literacy": {
-        short: "Literasi Green-AI reflektif",
+      "school-meals": {
+        short: "Kapasitas dapur makan sekolah",
         type: "Naskah",
-        summary: "Studi konseptual tentang sebuah ketegangan dalam pendidikan keberlanjutan: peserta didik diajari tanggung jawab lingkungan menggunakan alat AI yang jejak energi dan airnya jarang diperiksa. Melalui scoping review (2020 hingga 2026), perbandingan kerangka kompetensi, dan sintesis interpretatif, studi ini mengidentifikasi kesenjangan refleksivitas dan mengusulkan Literasi Green-AI Reflektif dengan empat dimensi: kesadaran jejak, penilaian biaya-manfaat yang kritis, praktik kecukupan, dan refleksivitas.",
-        topics: ["Pendidikan untuk pembangunan berkelanjutan", "Green AI", "Kerangka kompetensi"]
+        summary: "Mempertanyakan apakah dapur Program Makan Bergizi Gratis (MBG) di Indonesia dapat menjaga setiap porsi dalam batas empat jam dari selesai memasak hingga dikonsumsi. Studi ini menurunkan kondisi kapasitas aman untuk waktu makan yang bertahap dan menguji lima penafsiran aturan operasional di Kabupaten Sidoarjo dengan model penjadwalan berbasis waktu, model lokasi dapur berkapasitas, dan simulasi Monte Carlo 500 kali. Menafsirkan jam dapur 02.00 hingga 08.00 sebagai batas akhir memasak membatasi kepatuhan pada 54,8 hingga 67,4%, sedangkan mengikuti jadwal gelombang produksi mencapai 89,7 hingga 97,4% dengan jaringan 195 dapur.",
+        topics: ["Makan sekolah", "Penjadwalan produksi dan distribusi", "Lokasi fasilitas", "Keamanan pangan"]
       },
       "green-vrp": {
-        short: "Rute kendaraan ramah lingkungan",
+        short: "Rute kendaraan listrik",
         type: "Riset berjalan",
-        summary: "Masalah rute kendaraan berkapasitas yang ramah lingkungan dengan jendela waktu, di mana energi baterai dilacak di sepanjang setiap rute dengan model konsumsi yang bergantung pada muatan, dan kendaraan dialihkan ke stasiun pengisian umum terdekat yang dapat dijangkau bila diperlukan. Model ini diterapkan pada jaringan pengiriman ritel di Yogyakarta yang dibangun dari lokasi toko dan stasiun pengisian yang nyata, dan diuji pada beberapa skenario kapasitas baterai.",
-        topics: ["Rute kendaraan listrik", "Konsumsi energi", "Stasiun pengisian", "Logistik"]
+        summary: "Kerangka rute yang dapat dikonfigurasi untuk pengiriman ritel dengan kendaraan listrik, diterapkan pada 87 toko swalayan yang teridentifikasi secara publik di Kota Yogyakarta. Kerangka ini menggabungkan konsumsi energi yang bergantung pada muatan, pengisian daya umum, optimasi rute, dan pemeriksaan kelayakan independen, serta meminimalkan jumlah kendaraan sebelum jarak tempuh. Solusi acuan melayani semua toko dengan empat kendaraan sejauh 121,6 km, dan perencanaan harian menemukan rencana yang layak untuk ke-30 hari operasi sintetis, dibandingkan 17 hari untuk kebijakan acuan adaptif.",
+        topics: ["Rute kendaraan listrik", "Pengisian daya umum", "Logistik perkotaan", "Distribusi ritel"]
       },
       "relief-prepositioning": {
         short: "Penempatan awal bantuan bencana",
-        type: "Studi logistik kemanusiaan",
-        summary: "Mempertanyakan kapan pemodelan kerusakan jalan yang berkorelasi secara spasial menghasilkan rencana penanggulangan bencana yang lebih baik. Program stokastik dua tahap memilih lokasi depo dan tingkat stok sebelum bencana, lalu merutekan pasokan melalui jalan yang masih terbuka, menggunakan model data terbuka untuk 21 kabupaten daratan di Aceh, Indonesia. Rencana diuji pada kejadian simulasi dan pada rekonstruksi banjir akibat Siklon Senyar pada akhir 2025.",
-        topics: ["Logistik kemanusiaan", "Penempatan awal bantuan", "Gangguan berkorelasi"]
+        type: "Makalah konferensi",
+        statusDetail: "Diterima untuk presentasi",
+        venue: "AIC 2026 ke-16, Universitas Syiah Kuala",
+        summary: "Menguji dua asumsi umum dalam penempatan awal bantuan bencana, yaitu bahwa setiap wilayah memiliki peluang banjir yang sama dan bahwa jalan rusak secara independen, untuk 21 kabupaten daratan di Aceh, Indonesia. Model stokastik dua tahap yang dibangun hanya dari data publik menentukan lokasi penyimpanan stok bantuan pada jaringan jalan sepanjang 2.107 km, lalu rencananya diuji pada banjir simulasi dan pada banjir Siklon Senyar November 2025, yang tidak digunakan untuk menyusun rencana mana pun. Pada banjir nyata tersebut, paparan yang diambil dari data desa nasional menurunkan permintaan yang tidak terpenuhi dari 57,2% menjadi 44,3%, sedangkan kerusakan jalan yang saling terkait membantu terutama karena jalan terputus secara berkelompok.",
+        topics: ["Logistik kemanusiaan", "Penempatan awal bantuan", "Paparan banjir", "Kerusakan jalan berkorelasi"]
+      },
+      "risk-aware-routing": {
+        short: "Rute last-mile yang sadar risiko",
+        type: "Abstrak konferensi",
+        statusDetail: "Abstrak diterima",
+        venue: "ICORSI 2026, IIT Delhi, 21–23 Desember 2026",
+        summary: "Mempertanyakan kapan rute yang memperhitungkan beban kerja dapat mengurangi ketimpangan beban kurir dan risiko lembur dalam pengiriman last-mile tanpa penalti jarak tempuh yang berlebihan. Menggunakan data pengiriman publik LaDe-D dari Chongqing, Jilin, dan Yantai (sekitar 1,17 juta catatan paket), model gradient boosting memperkirakan beban kerja kurir, lalu enam kebijakan rute dibandingkan pada 36 instans wilayah-hari yang nyata. Dibandingkan rute berbasis jarak saja, penyeimbangan scenario-CVaR menambah jarak tempuh 3,63% sambil menurunkan ketimpangan beban kerja rata-rata sebesar 39,50% dan probabilitas lembur sebesar 32,67%, meskipun tidak secara signifikan mengungguli pembanding penyeimbangan yang lebih sederhana.",
+        topics: ["Logistik last-mile", "Penyeimbangan beban kerja", "Conditional value at risk", "Analitik prediktif"]
       },
       "wheat-cvar": {
         short: "Mean-CVaR impor gandum",
-        type: "Studi analitik keputusan",
+        type: "Makalah konferensi",
+        statusDetail: "Makalah lengkap diterima",
+        venue: "ICOBLAST 2026, Universitas Diponegoro",
         summary: "Studi portofolio pengadaan yang menyeimbangkan biaya dengan risiko kekurangan pasokan yang parah dalam impor gandum Indonesia. Menggunakan data bulanan publik UN Comtrade (2015 hingga 2025, 49 pemasok), program linear Mean-CVaR dengan validasi bergulir bersarang memilih pangsa pemasok tahunan, yang kemudian diuji di luar sampel terhadap tujuh pembanding dengan ketidakpastian bootstrap dan uji tekanan.",
         topics: ["Ketahanan rantai pasok", "Portofolio pengadaan", "Risiko ekor", "Ketahanan pangan"]
       }
@@ -410,7 +424,11 @@ PORTFOLIO.i18n.id = {
           "Grafik simulasi dampak bisnis sebelum dan sesudah memiliki situs web, peralihan penuh bahasa Indonesia dan Inggris, serta mode terang dan gelap. Dapat digunakan di ponsel, tablet, dan desktop, juga dengan papan ketik."
         ],
         caveat: "Perusahaan, orang, harga, dan data pada situs web demo ini fiktif.",
-        thumbChips: ["Pakan", "Pemerahan", "Uji kualitas", "Pasteurisasi", "Pengolahan", "Pengemasan & pengiriman"],
+        gallery: [
+          { caption: "Halaman beranda situs web demo, di sini dalam bahasa Indonesia." },
+          { caption: "Poster studi kasus untuk The INDEX 2026, tim Six Seven." },
+          { caption: "Halaman beranda yang sama di ponsel." }
+        ],
         tags: ["Desain Web", "Pengembangan Front-End", "UX", "Edukasi", "Studi Kasus", "Dwibahasa"],
         tools: ["HTML", "CSS", "JavaScript", "Ilustrasi SVG inline", "Netlify", "Claude Code (bantuan AI)"]
       },
@@ -530,7 +548,7 @@ PORTFOLIO.i18n.id = {
           progression: [
             { when: "Periode 2023/2024", what: "Anggota, Divisi Acara" },
             { when: "Maret 2025", what: "Penanggung jawab, Iftar Drive 2025" },
-            { when: "Jul–Des 2025", what: "Wakil Kepala Divisi Acara & Duta Teknik Industri" }
+            { when: "Jan–Des 2025", what: "Wakil Kepala Divisi Acara & Duta Teknik Industri" }
           ],
           tags: ["Manajemen acara", "Kemitraan", "Komunikasi lintas budaya"]
         },
@@ -561,6 +579,13 @@ PORTFOLIO.i18n.id = {
     awardTypes: { "competition": "Penghargaan kompetisi", "scholarship": "Beasiswa", "program": "Pengembangan kepemimpinan" },
 
     awards: {
+      "tmic-2026": {
+        short: "Presenter Terbaik, TMIC 2026",
+        title: "Presenter Terbaik",
+        eventDetail: "Trunodjoyo Madura International Conference ke-4, Universitas Trunodjoyo Madura",
+        date: "Oktober 2026",
+        detail: "Diberikan pada sesi paralel tempat saya mempresentasikan makalah tersebut."
+      },
       "expo-psit-2026": {
         title: "Juara 1",
         for: "Sistem Akses Parkir Otomatis RFID SIGAP",

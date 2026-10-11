@@ -2,6 +2,22 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-10-11 · New CV, research update, TMIC award
+
+- Light mode is now the default; dark mode applies only when the visitor picks it.
+- CV replaced with the October 2026 version (phone number and links to private Google Drive files removed). `make_public_cv.py` now strips Drive/Docs links and accepts a fallback font.
+- Research follows the new CV: groups ordered Accepted, Conference, Under Review, In Progress, Published, and papers inside each group in CV order.
+  - Relief pre-positioning: new title, accepted for presentation at the 16th AIC 2026 (Universitas Syiah Kuala).
+  - New: risk-aware last-mile routing, abstract accepted at ICORSI 2026 (IIT Delhi).
+  - New: school-meal kitchen capacity (MBG), under review at Spektrum Industri.
+  - Wheat import study: new title, full paper accepted at ICOBLAST 2026 (Diponegoro University).
+  - Electric vehicle routing: new title and summary for the configurable framework.
+  - Predictive maintenance: presented at TMIC 2026. Venues added for the bullwhip (JTMIT), SCOR (IJPMB) and SIGAP (JuTISI) papers.
+  - Removed the Green-AI literacy manuscript, which is not in the current CV.
+- New award: Best Presenter, TMIC 2026, with the certificate (reference number hidden).
+- Experience dates follow the CV: Delsim from April 2025, UII Global from January 2025.
+- Lembah Susu Dairy: website screenshot as the cover, plus the case study poster and the phone view.
+
 ## 2026-10-05 · Three languages, dark mode, Lembah Susu Dairy
 
 - Language switch in the header: English, Bahasa Indonesia and Arabic. All interface text and content are translated; Arabic uses a right-to-left layout and an Arabic font. Paper titles, people's names and certificate names stay in their original form.

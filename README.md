@@ -133,7 +133,7 @@ Open `data/research.js`, find the paper by its `id`, and change `status`:
 Only published work may have `links` or a `doi`; the checker stops you otherwise. Never add a journal, DOI or date that is not official.
 
 ### Add a new paper
-Copy one block in `data/research.js`, give it a new `id`, and fill in `title`, `year`, `status`, `summary`, `topics`, `methods` (keys from `methods` in `data/site.js`). Set `featured: true` to show it on the Home page.
+Copy one block in `data/research.js`, give it a new `id`, and fill in `title`, `year`, `status`, `summary`, `topics`, `methods` (keys from `methods` in `data/site.js`). Set `featured: true` to show it on the Home page. Papers are grouped by status (group order is `order` in `researchStatuses`) and keep their list order inside a group, so place the block where it sits in the CV.
 
 ### Add an internship or a new role
 In `data/experience.js`, copy a block inside `roles`, set `kind: "Internship"`, `title`, `org`, `start: "2027-01"`, `end: "2027-06"` (or `end: null` while ongoing) and `bullets`. Put it first in the list if it is the most important role.
@@ -153,10 +153,10 @@ Add an entry to `data/programs.js` with `title`, `org`, `kind`, `date` and `sort
 1. Download the new Master CV from Google Drive (it may include the phone number).
 2. Create the public copy. This removes the phone number, keeps the email and LinkedIn links, and saves `assets/Badr_Aldeen_CV.pdf`:
    ```
-   python3 tools/make_public_cv.py path/to/Badr_Aldeen_Master_CV.pdf
+   python3 tools/make_public_cv.py path/to/Badr_Aldeen_Master_CV.pdf [Carlito-Regular.ttf]
    python3 tools/update_cv_preview.py
    ```
-   (Both need `pip install pymupdf pillow`. The scripts refuse to save a CV that still contains a phone number.)
+   (Both need `pip install pymupdf pillow`. The scripts remove links to Google Drive/Docs files and refuse to save a CV that still contains a phone number or such a link. If the CV was exported by LibreOffice, pass the matching font file, for example Carlito-Regular.ttf from Google Fonts, as the second argument.)
 3. Update `cv.updated` in `data/site.js`, and any facts that changed (for example the GPA in `data/education.js`).
 
 ### Change the profile photo
@@ -177,7 +177,7 @@ English in the data files is the source. The `EN · ID · ع` switch in the head
 Anything not translated shows in English, so the site never breaks. When you change English text in `data/`, update the same field in both language files (or ask Claude to do it). The checker flags translations that point to ids that no longer exist, lists with the wrong number of entries, and unused labels, but it cannot tell when a translation has become out of date. Paper titles, people's names and certificate names are deliberately left in their original form. Arabic switches the whole layout to right-to-left.
 
 ### Light and dark mode
-The sun/moon button switches themes. Without a choice, the site follows the visitor's system setting. Both choices (language and theme) are remembered in the visitor's browser. Colours live as variables at the top of `assets/css/main.css`, with the dark values right below them.
+The sun/moon button switches themes. Light is the default until a visitor picks dark. Both choices (language and theme) are remembered in the visitor's browser. Colours live as variables at the top of `assets/css/main.css`, with the dark values right below them.
 
 ---
 
