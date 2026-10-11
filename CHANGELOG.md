@@ -17,6 +17,7 @@ Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in 
 - New award: Best Presenter, TMIC 2026, with the certificate (reference number hidden).
 - Experience dates follow the CV: Delsim from April 2025, UII Global from January 2025.
 - Lembah Susu Dairy: website screenshot as the cover, plus the case study poster and the phone view.
+- Removed the decorative route sign beside the portrait on the Home page.
 
 ## 2026-10-05 · Three languages, dark mode, Lembah Susu Dairy
 

@@ -268,14 +268,12 @@ main { display: block; }
 .portrait-frame { position: relative; border-radius: var(--radius-lg); overflow: hidden; background: var(--portrait-bg); border: 1px solid var(--line-strong); box-shadow: var(--shadow); }
 .portrait-frame img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; }
 .portrait-media { position: relative; }
-.portrait-motif { position: absolute; inset-inline-start: -46px; top: 16%; width: 120px; height: auto; color: var(--navy); opacity: .9; z-index: 2; pointer-events: none; }
 .portrait figcaption { display: flex; align-items: center; gap: 8px; margin-top: 16px; font-size: .88rem; color: var(--muted); justify-content: center; }
 .portrait figcaption svg { width: 16px; height: 16px; color: var(--teal); }
 
 @media (max-width: 860px) {
   .hero .wrap { grid-template-columns: 1fr; }
   .portrait { order: -1; width: min(78%, 340px); }
-  .portrait-motif { display: none; }
   .hero::before { -webkit-mask-image: radial-gradient(ellipse 80% 40% at 50% 20%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse 80% 40% at 50% 20%, #000 20%, transparent 75%); }
 }
 
@@ -689,7 +687,6 @@ noscript p { padding: 16px var(--gutter); background: var(--gold-soft); margin: 
 /* ---------- Right-to-left (Arabic) ---------- */
 [dir="rtl"] .i-arrow { transform: scaleX(-1); }
 [dir="rtl"] .text-link:hover svg.i-arrow { transform: scaleX(-1) translateX(3px); }
-[dir="rtl"] .portrait-motif { transform: scaleX(-1); }
 [dir="rtl"] .page-intro::after { -webkit-mask-image: linear-gradient(270deg, transparent 45%, #000 100%); mask-image: linear-gradient(270deg, transparent 45%, #000 100%); }
 [dir="rtl"] .hero::before { -webkit-mask-image: radial-gradient(ellipse 60% 70% at 22% 45%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse 60% 70% at 22% 45%, #000 20%, transparent 75%); }
 [dir="rtl"] .cta-band::after { -webkit-mask-image: linear-gradient(270deg, transparent 40%, #000); mask-image: linear-gradient(270deg, transparent 40%, #000); }

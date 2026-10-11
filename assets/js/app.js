@@ -415,14 +415,6 @@
   pages.home = function () {
     var edu = ((P.education || {}).degrees || [])[0] || {};
     var identity = S.identity.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("");
-    var motif =
-      '<svg class="portrait-motif" viewBox="0 0 120 150" fill="none" aria-hidden="true">' +
-        '<path d="M14 18 L70 44 L30 92 L96 120" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 4"/>' +
-        '<circle cx="14" cy="18" r="6" style="fill:var(--bg)" stroke="currentColor" stroke-width="1.6"/>' +
-        '<circle cx="70" cy="44" r="6" style="fill:var(--teal)"/>' +
-        '<circle cx="30" cy="92" r="6" style="fill:var(--bg)" stroke="currentColor" stroke-width="1.6"/>' +
-        '<rect x="90" y="114" width="12" height="12" rx="2" style="fill:var(--navy)"/>' +
-      "</svg>";
 
     var html =
       '<section class="hero"><div class="wrap">' +
@@ -443,7 +435,7 @@
             '<li><a href="contact.html">' + icon("arrow") + esc(t("Contact")) + "</a></li>" +
           "</ul>" +
         "</div>" +
-        '<figure class="portrait">' + motif +
+        '<figure class="portrait">' +
           '<div class="portrait-media"><div class="portrait-frame"><picture>' +
             '<source type="image/webp" srcset="' + esc(S.portrait.small) + ".webp 480w, " + esc(S.portrait.src) + '.webp 800w" sizes="(max-width: 860px) 340px, 420px">' +
             '<img src="' + esc(S.portrait.src) + '.jpg" srcset="' + esc(S.portrait.small) + ".jpg 480w, " + esc(S.portrait.src) + '.jpg 800w" sizes="(max-width: 860px) 340px, 420px" width="' + S.portrait.width + '" height="' + S.portrait.height + '" alt="' + esc(S.portrait.alt) + '" fetchpriority="high" decoding="async">' +
