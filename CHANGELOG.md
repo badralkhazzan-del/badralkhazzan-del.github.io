@@ -2,6 +2,11 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-10-12 · CV email fix
+
+- CV replaced with the latest Drive version, which corrects the email address.
+- The site's email (Contact page, footer, CV page and search-engine data) is corrected to badralkhazzan@gmail.com; it was missing an "l".
+
 ## 2026-10-11 · New CV, research update, TMIC award
 
 - Light mode is now the default; dark mode applies only when the visitor picks it.
