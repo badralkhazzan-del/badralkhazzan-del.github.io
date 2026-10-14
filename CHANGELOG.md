@@ -2,6 +2,10 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-10-14 · CV layout update
+
+- CV replaced with the latest Drive version (same content; status labels now sit in each paper's line).
+
 ## 2026-10-12 · CV email fix
 
 - CV replaced with the latest Drive version, which corrects the email address.
