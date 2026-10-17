@@ -2,6 +2,12 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-10-17 · Ergonomic pen project rewritten
+
+- New 3D concept render as the project image and a labelled component view (tip, grip, ruler, PLA body, voice recorder, telescopic body, eraser); old renders removed.
+- Shorter, clearer text: the problem, four design steps, and corrected results. The usability score is now the report's own average (SUS 65.5 from 5 respondents) instead of the top individual score (75), and the participant count for the hand measurements is no longer quoted because the report gives conflicting numbers.
+- Tools now list SolidWorks (3D model) and Blender (render).
+
 ## 2026-10-14 · CV layout update
 
 - CV replaced with the latest Drive version (same content; status labels now sit in each paper's line).

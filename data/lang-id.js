@@ -436,26 +436,26 @@ PORTFOLIO.i18n.id = {
         short: "Pena ergonomis",
         title: "Pena Multifungsi yang Ergonomis & Berkelanjutan",
         category: "Ergonomi · Desain produk · Keberlanjutan",
-        tagline: "Pena yang berpusat pada pengguna, menggabungkan kenyamanan ergonomis, fungsi tambahan yang berguna, dan bahan yang dapat didaur ulang.",
-        problem: "Pena konvensional sering kali tidak nyaman untuk penggunaan lama, hanya memiliki satu fungsi, dan terbuat dari plastik yang tidak dapat didaur ulang.",
+        tagline: "Konsep pena yang menyesuaikan dengan tangan, dilengkapi penggaris dan perekam suara, serta dapat dibongkar agar setiap bagiannya bisa diganti atau didaur ulang.",
+        problem: "Kebanyakan pena dibuang utuh ketika tintanya habis, hanya tersedia dalam satu ukuran untuk semua tangan, dan hanya punya satu fungsi.",
         context: "Big Project WSDE 2025, proyek mata kuliah sistem kerja dan ergonomi di Jurusan Teknik Industri, Universitas Islam Indonesia.",
         role: "Anggota tim empat orang.",
         approach: [
-          "Merancang prototipe dari PLA yang dapat terurai dan aluminium yang dapat didaur ulang, dengan batang teleskopik (12 hingga 15 cm), pegangan lembut, penggaris 10 cm, perekam suara mini, dan modul yang dapat diganti.",
-          "Mengevaluasi kegunaan dengan 15 responden menggunakan System Usability Scale.",
-          "Memeriksa kesesuaian fisik dengan pengukuran antropometri dari 5 partisipan terhadap persentil P5 hingga P95."
+          "Menggunakan ukuran tangan (P5 hingga P95) untuk menentukan ukuran pegangan lembut dan badan teleskopik yang dapat disetel dari 12 hingga 15 cm, sehingga pena cocok untuk tangan kecil maupun besar.",
+          "Menambahkan tiga fungsi sehari-hari: penggaris 10 cm di sepanjang badan pena, perekam suara untuk catatan 60 detik, dan penghapus yang dapat diganti.",
+          "Merancangnya agar dapat dibongkar: isi tinta, penghapus, dan modul perekam dapat diganti, dan komponen elektronik dilepas sebelum badan PLA didaur ulang atau dikomposkan secara industri.",
+          "Memodelkan pena dalam 3D dan mengujinya dengan pengguna menggunakan System Usability Scale (SUS)."
         ],
         results: [
-          { label: "Skor System Usability Scale dari 15 responden" },
-          { label: "Rentang ukuran tangan yang digunakan untuk memeriksa desain" }
+          { label: "Rata-rata skor kegunaan (SUS) dari 5 responden" },
+          { label: "Panjang yang dapat disetel, ditentukan dari ukuran tangan" }
         ],
-        caveat: "Pengguna meminta tampilan yang lebih sederhana dan mempertanyakan manfaat penggaris, yang dicatat tim sebagai perbaikan utama untuk versi berikutnya.",
+        caveat: "Skor ini sedikit di bawah tolok ukur umum SUS, yaitu 68. Penguji menilai pena mudah dipelajari tetapi terlalu ramai, serta meminta tampilan yang lebih sederhana dan fungsi penggaris yang lebih jelas, yang menjadi rencana untuk versi berikutnya.",
         gallery: [
-          { caption: "Render desain pena." },
-          { caption: "Tampak samping dengan penggaris bawaan." },
+          { caption: "Pena dan komponen-komponennya." },
           { caption: "Menerima sertifikat Best Presentation." }
         ],
-        tools: ["System Usability Scale", "Antropometri", "Cetak 3D (PLA)"]
+        tools: ["SolidWorks (model 3D)", "Blender (render)", "System Usability Scale", "Antropometri"]
       },
       "sea-save": {
         title: "SEA-Save: Fitur Tabungan Pembulatan",

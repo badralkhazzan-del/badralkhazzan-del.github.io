@@ -179,30 +179,30 @@ PORTFOLIO.projects = [
     title: "Multifunctional Ergonomic & Sustainable Pen",
     year: "2025",
     category: "Ergonomics · Product design · Sustainability",
-    tagline: "A human-centred pen that combines ergonomic fit, useful extra functions and recyclable materials.",
+    tagline: "A concept pen that adjusts to the hand, adds a ruler and a voice recorder, and comes apart so its parts can be replaced or recycled.",
     problem:
-      "Conventional pens are often uncomfortable in long use, serve a single purpose and are made of non-recyclable plastic.",
+      "Most pens are thrown away whole when the ink runs out, come in one size for every hand and do only one job.",
     context:
       "Big Project WSDE 2025, a work-system and ergonomics course project in the Department of Industrial Engineering, Universitas Islam Indonesia.",
     role: "Member of a four-person team.",
     approach: [
-      "Designed a prototype in biodegradable PLA and recyclable aluminium with a telescopic barrel (12 to 15 cm), soft grip, built-in 10 cm ruler, mini voice recorder and replaceable modules.",
-      "Evaluated usability with 15 respondents using the System Usability Scale.",
-      "Checked physical fit with anthropometric measurements from 5 participants against P5 to P95 percentiles."
+      "Used hand measurements (P5 to P95) to size the soft grip and a telescopic body that adjusts from 12 to 15 cm, so the pen fits small and large hands.",
+      "Added three everyday functions: a 10 cm ruler along the barrel, a voice recorder for 60-second notes and a replaceable eraser.",
+      "Designed it to come apart: the refill, eraser and recorder module are replaceable, and the electronics are removed before the PLA body is recycled or industrially composted.",
+      "Modelled the pen in 3D and tested it with users on the System Usability Scale (SUS)."
     ],
     methods: ["ergonomics", "prototyping", "sustainability", "statistics"],
-    tools: ["System Usability Scale", "Anthropometry", "3D printing (PLA)"],
+    tools: ["SolidWorks (3D model)", "Blender (render)", "System Usability Scale", "Anthropometry"],
     results: [
-      { value: "75", label: "System Usability Scale score from 15 respondents" },
-      { value: "P5–P95", label: "Hand-size range the design was checked against" }
+      { value: "65.5", label: "Average usability score (SUS) from 5 respondents" },
+      { value: "12–15 cm", label: "Adjustable length, sized from hand measurements" }
     ],
-    caveat: "Users asked for a simpler look and questioned the value of the ruler, which the team recorded as the main improvements for a next version.",
+    caveat: "The score is just below the common SUS benchmark of 68. Testers found the pen easy to learn but busy, and asked for a simpler look and a clearer use for the ruler, which set the plan for a next version.",
     recognition: "expo-rske-2025",
     relatedResearch: [],
-    cover: { src: "assets/img/projects/ergonomic-pen/render", w: 705, h: 443, alt: "3D render of the multifunctional pen design with a wood-textured barrel, green grip module and recorder button" },
+    cover: { src: "assets/img/projects/ergonomic-pen/pen-render", w: 1600, h: 1000, focus: "50% 50%", alt: "3D concept render of the multifunctional pen with an off-white body, a ruler strip along the barrel, a black soft grip, an oval record button and an eraser at the rear end" },
     gallery: [
-      { src: "assets/img/projects/ergonomic-pen/render", w: 705, h: 443, alt: "3D render of the multifunctional pen design with a wood-textured barrel, green grip module and recorder button", caption: "Design render of the pen." },
-      { src: "assets/img/projects/ergonomic-pen/render-side", w: 641, h: 357, alt: "Side view render of the pen showing the built-in ruler markings along the barrel", caption: "Side view with the built-in ruler." },
+      { src: "assets/img/projects/ergonomic-pen/pen-components", w: 1600, h: 729, wide: true, alt: "Labelled render of the pen: writing tip with replaceable refill, soft-touch grip, 10 cm ruler, PLA body, removable voice recorder, telescopic body adjusting from 12 to 15 cm and replaceable eraser", caption: "The pen and its components." },
       { src: "assets/img/projects/ergonomic-pen/award", w: 756, h: 1008, alt: "Badr Aldeen Al-Khazan (right) and a teammate holding the Best Presentation certificate at the Big Project WSDE Awards 2025", caption: "Receiving the Best Presentation certificate." }
     ],
     featured: false
