@@ -48,7 +48,9 @@ PORTFOLIO.experience = {
       id: "ysu",
       kind: "Leadership",
       title: "Deputy Head, Social Responsibility Circle",
-      org: "Yemeni Students' Union in Indonesia",
+      org: "Yemeni Students' Union in Indonesia (Volunteer)",
+      start: "2025-04",
+      end: "2026-03",
       bullets: [
         "Coordinated student-support and community programs and major cultural events."
       ],

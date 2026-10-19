@@ -12,10 +12,8 @@ PORTFOLIO.site = {
 
   // Shown under the name in the hero and in the footer.
   identity: [
-    "Industrial Engineering",
     "Operations Research",
-    "Decision Analytics",
-    "Supply Chain & Sustainable Systems"
+    "Supply Chain"
   ],
 
   statement:
@@ -23,12 +21,12 @@ PORTFOLIO.site = {
 
   // Current stage, one line.
   stage:
-    "Final-year B.Sc. Industrial Engineering (International Program) student at Universitas Islam Indonesia.",
+    "Final-year B.Eng. Industrial Engineering (International Program) student at Universitas Islam Indonesia.",
 
   location: "Yogyakarta, Indonesia",
 
   // Update this whenever the portfolio content changes (YYYY-MM-DD).
-  lastUpdated: "2026-10-17",
+  lastUpdated: "2026-10-19",
 
   // Final public address of the site. Change it here and in the <meta property="og:*"> tags
   // if the site moves (see README, "Changing the site address").
@@ -49,19 +47,19 @@ PORTFOLIO.site = {
     preview: "assets/cv-preview",
     previewW: 1241,
     previewH: 1754,
-    updated: "2026-10-14",
+    updated: "2026-10-19",
     note: "For references or further details, please get in touch by email."
   },
 
   // What Badr is looking for (from the long-term direction in the Source of Truth).
   openTo: [
     "Technical internships in operations research, supply chain or industrial analytics",
-    "Research collaboration in optimization, simulation and decision analytics",
+    "Research collaboration in optimization, simulation and supply chain analytics",
     "Graduate study opportunities in operations research and related fields"
   ],
 
   direction:
-    "Next, I want to deepen my work in Operations Research and Decision Analytics through industry experience and graduate study, and in the long run build decision tools that help industrial operations make better choices.",
+    "Next, I want to deepen my work in Operations Research and Supply Chain through industry experience and graduate study, and in the long run build decision tools that help industrial operations make better choices.",
 
   // Home page focus areas. "evidence" lists research/project ids used as examples.
   focusAreas: [
@@ -76,7 +74,7 @@ PORTFOLIO.site = {
       evidence: ["research:bullwhip", "experience:delsim"]
     },
     {
-      title: "Decision Analytics & AI",
+      title: "Analytics & AI",
       text: "Statistics, queueing and machine learning used as decision support and judged by the decisions they lead to.",
       evidence: ["research:predictive-maintenance", "project:sigap"]
     },
@@ -89,7 +87,7 @@ PORTFOLIO.site = {
 
   // What is happening now (Home page).
   now: [
-    "Completing the final year of my B.Sc. in Industrial Engineering (expected 2027).",
+    "Completing the final year of my B.Eng. in Industrial Engineering (expected 2027).",
     "Developing an electric vehicle routing framework for urban retail delivery in Yogyakarta."
   ],
 

@@ -166,8 +166,8 @@ PORTFOLIO.i18n.id = {
   },
 
   pages: {
-    homeTitle: "Badr Aldeen Al-Khazan · Teknik Industri, Riset Operasi & Analitik Keputusan",
-    about: { h1: "Tentang saya", p: "Bagaimana pekerjaan saya berkembang dari proyek teknik industri menuju riset operasi dan analitik keputusan." },
+    homeTitle: "Badr Aldeen Al-Khazan · Riset Operasi & Rantai Pasok",
+    about: { h1: "Tentang saya", p: "Bagaimana pekerjaan saya berkembang dari proyek teknik industri menuju riset operasi dan rantai pasok." },
     research: { h1: "Riset & Publikasi", p: "Karya terbit, makalah yang diterima dan makalah konferensi, naskah dalam peninjauan, serta riset yang sedang berjalan. Setiap karya ditampilkan dengan status sebenarnya, dan hanya karya terbit yang ditautkan ke salinan publik." },
     projects: { h1: "Proyek", p: "Proyek rekayasa dan analitik, dari akses parkir RFID dan pengering tenaga surya hingga rute kendaraan listrik, beserta bukti di baliknya." },
     experience: { h1: "Pengalaman & Kepemimpinan", p: "Pelatihan simulasi dan pemodelan, kepemimpinan mahasiswa, dan kegiatan komunitas." },
@@ -180,15 +180,15 @@ PORTFOLIO.i18n.id = {
 
   content: {
     site: {
-      identity: ["Teknik Industri", "Riset Operasi", "Analitik Keputusan", "Rantai Pasok & Sistem Berkelanjutan"],
+      identity: ["Riset Operasi", "Rantai Pasok"],
       statement: "Saya memodelkan, menganalisis, dan mengoptimalkan sistem industri dan rantai pasok menggunakan simulasi, optimasi, data, dan AI, dengan fokus pada efisiensi, ketahanan, dan keberlanjutan.",
       stage: "Mahasiswa tingkat akhir S1 Teknik Industri (Program Internasional) di Universitas Islam Indonesia.",
       openTo: [
         "Magang teknis di bidang riset operasi, rantai pasok, atau analitik industri",
-        "Kolaborasi riset di bidang optimasi, simulasi, dan analitik keputusan",
+        "Kolaborasi riset di bidang optimasi, simulasi, dan analitik rantai pasok",
         "Peluang studi pascasarjana di bidang riset operasi dan bidang terkait"
       ],
-      direction: "Selanjutnya, saya ingin memperdalam pekerjaan saya di bidang Riset Operasi dan Analitik Keputusan melalui pengalaman industri dan studi pascasarjana, dan dalam jangka panjang membangun alat bantu keputusan yang membantu operasi industri mengambil pilihan yang lebih baik.",
+      direction: "Selanjutnya, saya ingin memperdalam pekerjaan saya di bidang Riset Operasi dan Rantai Pasok melalui pengalaman industri dan studi pascasarjana, dan dalam jangka panjang membangun alat bantu keputusan yang membantu operasi industri mengambil pilihan yang lebih baik.",
       now: [
         "Menyelesaikan tahun terakhir S1 Teknik Industri (perkiraan lulus 2027).",
         "Mengembangkan kerangka rute kendaraan listrik untuk pengiriman ritel perkotaan di Yogyakarta."
@@ -196,7 +196,7 @@ PORTFOLIO.i18n.id = {
       focusAreas: [
         { title: "Optimasi & Riset Operasi", text: "Model rute, pengadaan, dan alokasi yang mengubah kendala nyata menjadi keputusan yang lebih baik." },
         { title: "Simulasi & Pemodelan Stokastik", text: "Model kejadian diskret, dinamika sistem, dan Monte Carlo untuk sistem yang berjalan di bawah ketidakpastian." },
-        { title: "Analitik Keputusan & AI", text: "Statistik, teori antrean, dan machine learning sebagai pendukung keputusan, dinilai dari keputusan yang dihasilkannya." },
+        { title: "Analitik & AI", text: "Statistik, teori antrean, dan machine learning sebagai pendukung keputusan, dinilai dari keputusan yang dihasilkannya." },
         { title: "Rantai Pasok & Sistem Berkelanjutan", text: "Dinamika persediaan, logistik kendaraan listrik, susut pascapanen, dan tata kelola rantai pasok." }
       ],
       about: {
@@ -555,7 +555,7 @@ PORTFOLIO.i18n.id = {
         "ysu": {
           kind: "Kepemimpinan",
           title: "Wakil Kepala, Lingkar Tanggung Jawab Sosial",
-          org: "Persatuan Pelajar Yaman di Indonesia",
+          org: "Persatuan Pelajar Yaman di Indonesia (Relawan)",
           bullets: ["Mengoordinasikan program dukungan mahasiswa dan komunitas serta acara budaya besar."],
           tags: ["Program komunitas", "Dukungan mahasiswa"]
         }
@@ -628,7 +628,7 @@ PORTFOLIO.i18n.id = {
           degree: "S1 Teknik Industri (Program Internasional)",
           location: "Yogyakarta, Indonesia",
           period: "2023 – perkiraan 2027",
-          coursework: ["Riset Operasi", "Perencanaan Produksi", "Simulasi & Pemodelan", "Tata Letak Fasilitas", "Kualitas Six Sigma", "Proses Manufaktur"]
+          coursework: ["Riset Operasi I & II", "Simulasi Sistem", "Pemodelan Sistem", "Sistem Rantai Pasok", "Manajemen Kinerja SCM", "Analitik Data", "Statistika I & II", "Perencanaan dan Pengendalian Produksi", "Metodologi Penelitian"]
         }
       ],
       certifications: {
@@ -647,6 +647,7 @@ PORTFOLIO.i18n.id = {
       { kind: "Program kepemimpinan", note: "40 jam pembelajaran.", date: "Selesai Oktober 2025" },
       { kind: "Kursus musim panas", org: "Departemen Teknologi Industri Pertanian, IPB University", date: "13 Juli – 7 Agustus 2025" },
       { kind: "Program musim panas", org: "Universitas Surabaya dan Universitas Islam Indonesia", date: "18–23 Juni 2025" },
+      { kind: "Kunjungan industri", org: "Diselenggarakan oleh Universitas Islam Indonesia", note: "Meninjau lini perakitan dan mempelajari sistem jaminan kualitas, dari inspeksi komponen hingga pengujian akhir.", date: "April 2025" },
       { kind: "Kuliah", org: "Davao del Sur State College dan Universitas Islam Indonesia", date: "7 Juni 2024" },
       { kind: "Seminar", date: "20 Februari 2024" },
       { kind: "Lokakarya", org: "Growth Hub, Universitas Islam Indonesia, bersama InTRIZ dan MyTRIZ", date: "1–2 Desember 2023" },
@@ -699,10 +700,11 @@ PORTFOLIO.i18n.id = {
       {
         group: "Data & Alat Teknis",
         items: [
-          { name: "Python (NumPy, SciPy, scikit-learn)" },
+          { name: "Python (OR-Tools, SciPy, pandas, scikit-learn)" },
           { name: "Machine learning untuk pendukung keputusan: kalibrasi dan ambang sensitif biaya" },
           { name: "Uji statistik" },
           { name: "Excel tingkat lanjut" },
+          { name: "Alat AI generatif untuk pemodelan, analisis, dan tinjauan pustaka" },
           { name: "Desain basis data (ERD, 3NF)" },
           { name: "Prototipe Arduino dan RFID" }
         ]

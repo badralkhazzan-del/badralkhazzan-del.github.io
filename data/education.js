@@ -8,19 +8,22 @@ window.PORTFOLIO = window.PORTFOLIO || {};
 PORTFOLIO.education = {
   degrees: [
     {
-      degree: "B.Sc. Industrial Engineering (International Program)",
+      degree: "B.Eng. Industrial Engineering (International Program)",
       institution: "Universitas Islam Indonesia",
       location: "Yogyakarta, Indonesia",
       period: "2023 – expected 2027",
       gpa: "3.90 / 4.00",
       scholarship: "fgls",
       coursework: [
-        "Operations Research",
-        "Production Planning",
-        "Simulation & Modelling",
-        "Facility Layout",
-        "Six Sigma Quality",
-        "Manufacturing Processes"
+        "Operations Research I & II",
+        "System Simulation",
+        "System Modeling",
+        "Supply Chain System",
+        "SCM Performance Management",
+        "Data Analytics",
+        "Statistics I & II",
+        "Production Planning and Control",
+        "Research Methodology"
       ]
     }
     // Add a master's degree here later, newest first.

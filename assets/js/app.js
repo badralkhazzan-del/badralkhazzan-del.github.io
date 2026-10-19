@@ -975,7 +975,7 @@
       jobTitle: "Industrial Engineering student",
       affiliation: { "@type": "CollegeOrUniversity", name: "Universitas Islam Indonesia" },
       address: { "@type": "PostalAddress", addressLocality: "Yogyakarta", addressCountry: "ID" },
-      knowsAbout: ["Industrial Engineering", "Operations Research", "Decision Analytics", "Supply Chain Management", "Simulation", "Optimization"],
+      knowsAbout: ["Industrial Engineering", "Operations Research", "Supply Chain Management", "Decision Analytics", "Simulation", "Optimization"],
       knowsLanguage: ((P.education || {}).languages || []).map(function (l) { return l.name; }),
       sameAs: [L.linkedin, L.github].filter(Boolean),
       hasCredential: ((P.education || {}).certifications || []).filter(function (c) { return c.id === "capm"; }).map(function (c) {

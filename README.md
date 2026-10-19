@@ -1,6 +1,6 @@
 # Badr Aldeen Al-Khazan · Portfolio
 
-Personal academic and professional portfolio of **Badr Aldeen Al-Khazan**, Industrial Engineering student at Universitas Islam Indonesia, working on Operations Research, Decision Analytics, and Supply Chain & Sustainable Systems.
+Personal academic and professional portfolio of **Badr Aldeen Al-Khazan**, Industrial Engineering student at Universitas Islam Indonesia, working on Operations Research and Supply Chain.
 
 It is a static website built with plain HTML, CSS and JavaScript. It has no backend, no database and no build step, so GitHub Pages can host it for free.
 

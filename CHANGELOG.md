@@ -2,6 +2,14 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-10-19 · New CV, focus on Operations Research & Supply Chain
+
+- CV replaced with the latest Drive version (phone and Drive links removed).
+- Positioning follows the CV: the hero, page titles, descriptions, search-engine data and the About text now say Operations Research and Supply Chain, instead of Industrial Engineering, Operations Research and Decision Analytics. The degree is shown as B.Eng.
+- Coursework, skills (Python tools, generative AI tools) and the Yemeni Students' Union dates (April 2025 to March 2026, volunteer) follow the CV.
+- New entry under programs: industrial company visit to PT Gaya Motor (BMW Indonesia), April 2025.
+- Translations (Indonesian, Arabic) updated to match.
+
 ## 2026-10-17 · Ergonomic pen project rewritten
 
 - New 3D concept render as the project image and a labelled component view (tip, grip, ruler, PLA body, voice recorder, telescopic body, eraser); old renders removed.

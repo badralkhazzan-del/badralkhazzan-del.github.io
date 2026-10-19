@@ -51,10 +51,11 @@ PORTFOLIO.skills = [
   {
     group: "Data & Technical Tools",
     items: [
-      { name: "Python (NumPy, SciPy, scikit-learn)", evidence: ["research:bullwhip", "research:predictive-maintenance", "research:wheat-cvar"] },
+      { name: "Python (OR-Tools, SciPy, pandas, scikit-learn)", evidence: ["research:bullwhip", "research:predictive-maintenance", "research:wheat-cvar"] },
       { name: "Machine learning for decision support: calibration and cost-sensitive thresholds", evidence: ["research:predictive-maintenance"] },
       { name: "Statistical testing", evidence: ["project:sigap"] },
       { name: "Advanced Excel" },
+      { name: "Generative AI tools for modelling, analysis and literature review" },
       { name: "Database design (ERD, 3NF)", evidence: ["project:hospital-db"] },
       { name: "Arduino and RFID prototyping", evidence: ["project:sigap"] }
     ]

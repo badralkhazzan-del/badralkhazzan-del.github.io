@@ -1,7 +1,7 @@
 /*
  * ACADEMIC ENGAGEMENT & INTERNATIONAL PROGRAMS
  * Summer courses, workshops, seminars and lectures. Shown compactly, newest first.
- * kind: "Leadership program" | "Summer course" | "Summer program" | "Workshop" | "Seminar" | "Lecture" | "Webinar"
+ * kind: "Leadership program" | "Industry visit" | "Summer course" | "Summer program" | "Workshop" | "Seminar" | "Lecture" | "Webinar"
  * date: display text;  sort: "YYYY-MM-DD" used for ordering.
  */
 window.PORTFOLIO = window.PORTFOLIO || {};
@@ -29,6 +29,14 @@ PORTFOLIO.programs = [
     kind: "Summer program",
     date: "18–23 June 2025",
     sort: "2025-06-18"
+  },
+  {
+    title: "Industrial Company Visit: PT Gaya Motor (BMW Indonesia)",
+    org: "Organized by Universitas Islam Indonesia",
+    kind: "Industry visit",
+    date: "April 2025",
+    sort: "2025-04-15",
+    note: "Toured the assembly line and studied quality assurance systems, from parts inspection to final testing."
   },
   {
     title: "Online Lecture Series: Artificial Intelligence and its Application in Agriculture",

@@ -86,7 +86,7 @@ PORTFOLIO.awards = [
     type: "scholarship",
     title: "Future Global Leaders Scholarship",
     event: "Universitas Islam Indonesia",
-    for: "B.Sc. Industrial Engineering (International Program)",
+    for: "B.Eng. Industrial Engineering (International Program)",
     date: "2023–2027",
     detail: "University scholarship supporting my undergraduate study in the International Program."
   },
