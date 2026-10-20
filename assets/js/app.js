@@ -808,7 +808,7 @@
     var compHtml = comp.map(function (a) {
       return '<article class="card award-card' + (a.image ? "" : " no-img") + '" id="' + esc(a.id) + '">' +
         (a.image ? '<div class="award-img">' + pic(a.image) + "</div>" : "") +
-        "<div>" +
+        '<div class="award-body">' +
           '<p class="award-title">' + esc(a.title) + "</p>" +
           '<p class="award-event">' + esc(a.event) + "</p>" +
           '<p class="award-sub">' + esc([a.eventDetail, a.date].filter(Boolean).join(" · ")) + "</p>" +

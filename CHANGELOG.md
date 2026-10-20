@@ -2,6 +2,10 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-10-20 · Awards layout
+
+- Award cards rebuilt: larger photos that fill the left side of each card, certificate links aligned at the bottom, equal-height cards in each row and a full-width last card. Phones show the photo on top.
+
 ## 2026-10-20 · TMIC photo
 
 - Added a photo from TMIC 2026 to the Best Presenter award.
