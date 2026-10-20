@@ -2,6 +2,10 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-10-20 · TMIC photo
+
+- Added a photo from TMIC 2026 to the Best Presenter award.
+
 ## 2026-10-19 · New CV, focus on Operations Research & Supply Chain
 
 - CV replaced with the latest Drive version (phone and Drive links removed).
