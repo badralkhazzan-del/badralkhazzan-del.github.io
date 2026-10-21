@@ -2,6 +2,10 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-10-21 · CV email
+
+- CV replaced with a version that uses the e-mail address badr.alkhazan@gmail.com in the header (text and link). `make_public_cv.py` can now replace the e-mail and also write a full copy that keeps the phone number.
+
 ## 2026-10-20 · Awards layout
 
 - Award cards rebuilt: larger photos that fill the left side of each card, certificate links aligned at the bottom, equal-height cards in each row and a full-width last card. Phones show the photo on top.

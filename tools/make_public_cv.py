@@ -5,7 +5,11 @@ re-centres the remaining items in the original font, keeps the email/portfolio l
 removes links to private Google Drive/Docs files (manuscripts, abstracts), and saves the
 result as assets/Badr_Aldeen_CV.pdf.
 
-    python3 tools/make_public_cv.py path/to/Badr_Aldeen_Master_CV.pdf [fallback-font.ttf]
+    python3 tools/make_public_cv.py path/to/Badr_Aldeen_Master_CV.pdf [fallback-font.ttf] [--email new@address] [--keep-private]
+
+--email replaces the e-mail address in the header (text and link).
+--keep-private  keeps the phone number and the Drive links (a copy for your own use). The result
+                is written next to the input as *_full.pdf and assets/ is not touched.
 
 The header is rewritten with the CV's own embedded font when it has every character needed.
 CVs exported by LibreOffice embed fonts without a character map; then pass the matching font
@@ -25,9 +29,22 @@ SEPARATOR = re.compile(r"^\s*[|·•]\s*$")
 
 root = Path(__file__).resolve().parent.parent
 out = root / "assets" / "Badr_Aldeen_CV.pdf"
+args = sys.argv[1:]
+NEW_EMAIL = None
+KEEP = "--keep-private" in args
+if KEEP:
+    args.remove("--keep-private")
+if "--email" in args:
+    i = args.index("--email")
+    NEW_EMAIL = args[i + 1]
+    del args[i:i + 2]
+sys.argv = [sys.argv[0]] + args
 if len(sys.argv) not in (2, 3):
     sys.exit(__doc__)
+EMAIL = re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+")
 
+if KEEP:
+    out = Path(sys.argv[1]).with_name(Path(sys.argv[1]).stem + "_full.pdf")
 doc = pymupdf.open(sys.argv[1])
 page = doc[0]
 
@@ -35,7 +52,7 @@ page = doc[0]
 # with student emails). The text stays; only the link is removed.
 PRIVATE_LINK = re.compile(r"^https?://(drive|docs)\.google\.com/", re.I)
 removed = 0
-for pg in doc:
+for pg in ([] if KEEP else doc):
     while True:  # delete one at a time: deleting shifts the remaining links
         hit = next((l for l in pg.get_links() if PRIVATE_LINK.match(l.get("uri") or "")), None)
         if hit is None:
@@ -61,13 +78,19 @@ if line is None:
 else:
     spans = [s for s in line["spans"] if s["text"].strip() or SEPARATOR.match(s["text"])]
     idx = next(i for i, s in enumerate(spans) if PHONE.search(s["text"]))
-    drop = {idx}
+    drop = set() if KEEP else {idx}
     # Drop one neighbouring separator so no double "|" remains.
-    if idx > 0 and SEPARATOR.match(spans[idx - 1]["text"]):
+    if KEEP:
+        pass
+    elif idx > 0 and SEPARATOR.match(spans[idx - 1]["text"]):
         drop.add(idx - 1)
     elif idx + 1 < len(spans) and SEPARATOR.match(spans[idx + 1]["text"]):
         drop.add(idx + 1)
     keep = [s for i, s in enumerate(spans) if i not in drop]
+    if NEW_EMAIL:
+        for s_ in keep:
+            if EMAIL.search(s_["text"]):
+                s_["text"] = EMAIL.sub(NEW_EMAIL, s_["text"])
 
     # Links and underlines on this line, matched to the span they sit on, so they can move with it.
     y0, y1 = line["bbox"][1], line["bbox"][3]
@@ -131,7 +154,13 @@ else:
                          color=((c >> 16 & 255) / 255, (c >> 8 & 255) / 255, (c & 255) / 255))
         dx = x - s["bbox"][0]
         for l in span_links.get(id(s), []):
-            page.insert_link({"kind": pymupdf.LINK_URI, "from": l["from"] + (dx, 0, dx, 0), "uri": l["uri"]})
+            uri = l["uri"]
+            if NEW_EMAIL and uri.startswith("mailto:"):
+                uri = "mailto:" + NEW_EMAIL
+            r = l["from"] + (dx, 0, dx, 0)
+            if NEW_EMAIL and uri.startswith("mailto:"):
+                r = pymupdf.Rect(x, y0 + 1, x + w, y1 - 0.6)
+            page.insert_link({"kind": pymupdf.LINK_URI, "from": r, "uri": uri})
         for r, fill in span_lines.get(id(s), []):
             page.draw_rect(r + (dx, 0, dx, 0), color=None, fill=fill, width=0)
         x += w
@@ -141,10 +170,10 @@ doc.save(out, garbage=4, deflate=True)
 
 saved = pymupdf.open(out)
 text = "".join(p.get_text() for p in saved)
-if any(PRIVATE_LINK.match(l.get("uri") or "") for p in saved for l in p.get_links()):
+if not KEEP and any(PRIVATE_LINK.match(l.get("uri") or "") for p in saved for l in p.get_links()):
     out.unlink()
     sys.exit("A Google Drive/Docs link is still present. The public CV was NOT saved.")
-if PHONE.search(text.replace("\xa0", " ")):
+if not KEEP and PHONE.search(text.replace("\xa0", " ")):
     out.unlink()
     sys.exit("A phone number is still present. The public CV was NOT saved.")
-print(f"Saved {out.relative_to(root)} without a phone number. Now run: python3 tools/update_cv_preview.py")
+print(f"Saved {out}" + ("" if KEEP else " without a phone number. Now run: python3 tools/update_cv_preview.py"))

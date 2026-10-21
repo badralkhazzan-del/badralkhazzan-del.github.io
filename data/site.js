@@ -26,7 +26,7 @@ PORTFOLIO.site = {
   location: "Yogyakarta, Indonesia",
 
   // Update this whenever the portfolio content changes (YYYY-MM-DD).
-  lastUpdated: "2026-10-20",
+  lastUpdated: "2026-10-21",
 
   // Final public address of the site. Change it here and in the <meta property="og:*"> tags
   // if the site moves (see README, "Changing the site address").
@@ -47,7 +47,7 @@ PORTFOLIO.site = {
     preview: "assets/cv-preview",
     previewW: 1241,
     previewH: 1754,
-    updated: "2026-10-19",
+    updated: "2026-10-21",
     note: "For references or further details, please get in touch by email."
   },
 
