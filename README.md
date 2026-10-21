@@ -157,7 +157,8 @@ Add an entry to `data/programs.js` with `title`, `org`, `kind`, `date` and `sort
    python3 tools/update_cv_preview.py
    ```
    (Both need `pip install pymupdf pillow`. The scripts remove links to Google Drive/Docs files and refuse to save a CV that still contains a phone number or such a link. If the CV was exported by LibreOffice, pass the matching font file, for example Carlito-Regular.ttf from Google Fonts, as the second argument.)
-3. Update `cv.updated` in `data/site.js`, and any facts that changed (for example the GPA in `data/education.js`).
+3. Browsers and the GitHub Pages cache keep old copies of the CV for a while. After replacing it, change the `?v=` number in `cv.file` in `data/site.js` (for example to today's date), and use the same number in the `?v=` of the script and style links in the HTML files so visitors get the new files straight away. If the preview image changed, copy it to a new name (`cv-preview-<date>`) and point `cv.preview` to it.
+4. Update `cv.updated` in `data/site.js`, and any facts that changed (for example the GPA in `data/education.js`).
 
 ### Change the profile photo
 Replace `assets/profile/badr-aldeen.jpg` and `.webp` (800 × 1000 px, portrait) and `badr-aldeen-480.jpg` / `.webp` (480 × 600 px). Keep the same file names.

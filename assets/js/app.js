@@ -1059,7 +1059,7 @@
   } else {
     // Load the translation file first; if it cannot load, show the English site.
     var script = document.createElement("script");
-    script.src = u("data/lang-" + LANG + ".js");
+    script.src = u("data/lang-" + LANG + ".js") + "?v=" + encodeURIComponent((S.lastUpdated || "").replace(/-/g, ""));
     script.onload = function () { DICT = ((window.PORTFOLIO || {}).i18n || {})[LANG] || {}; start(); };
     script.onerror = function () { LANG = "en"; start(); };
     document.body.appendChild(script);

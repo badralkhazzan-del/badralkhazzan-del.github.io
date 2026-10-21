@@ -89,7 +89,7 @@ for (const a of P.awards || []) {
 for (const r of (P.experience || {}).roles || []) checkImage(r.image, `role "${r.id}"`);
 for (const g of P.skills || []) for (const s of g.items) for (const e of s.evidence || []) checkRef(e, `skill "${s.name}"`);
 for (const f of S.focusAreas || []) for (const e of f.evidence || []) checkRef(e, `focus area "${f.title}"`);
-if (!exists(S.cv.file)) err(`CV file missing: ${S.cv.file}`);
+if (!exists(S.cv.file.split("?")[0])) err(`CV file missing: ${S.cv.file}`);
 if (S.cv.preview) for (const ext of [".jpg", ".webp"]) if (!exists(S.cv.preview + ext)) err(`CV preview missing: ${S.cv.preview}${ext}`);
 for (const ext of [".jpg", ".webp"]) if (!exists(S.portrait.src + ext)) err(`portrait missing: ${S.portrait.src}${ext}`);
 if (!/^\d{4}-\d{2}-\d{2}$/.test(S.lastUpdated || "")) err(`site.lastUpdated must be YYYY-MM-DD`);

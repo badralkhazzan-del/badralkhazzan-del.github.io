@@ -2,6 +2,10 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-10-21 · Cache fix
+
+- Script, style, language and CV links now carry a version number (`?v=`), so browsers fetch the new CV, e-mail and texts instead of showing an old cached copy.
+
 ## 2026-10-21 · CV email
 
 - E-mail changed to badr.alkhazan@gmail.com on the Contact page, footer, CV page and in the CV header (text and link).
