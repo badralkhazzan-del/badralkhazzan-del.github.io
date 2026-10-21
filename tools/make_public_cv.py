@@ -62,6 +62,27 @@ for pg in ([] if KEEP else doc):
 if removed:
     print(f"Removed {removed} link(s) to Google Drive/Docs files.")
 
+# The "Paper" / "Abstract" labels pointed at those files; without the link they are dead words,
+# so the label and the separator before it are removed too (journal and conference links stay).
+if not KEEP:
+    cut = 0
+    for block in page.get_text("rawdict")["blocks"]:
+        for ln in block.get("lines", []):
+            chars = [c for sp in ln["spans"] for c in sp["chars"]]
+            text = "".join(c["c"] for c in chars)
+            for label in ("Paper", "Abstract"):
+                if text.rstrip().endswith("\u00b7  " + label) or text.rstrip().endswith("\u00b7 " + label):
+                    k = text.rstrip().rfind("\u00b7")
+                    start = k
+                    while start > 0 and text[start - 1] == " ":
+                        start -= 1
+                    r = pymupdf.Rect(chars[start]["bbox"][0], ln["bbox"][1], ln["bbox"][2] + 1, ln["bbox"][3] + 2.5)
+                    page.add_redact_annot(r)
+                    cut += 1
+    if cut:
+        page.apply_redactions(images=pymupdf.PDF_REDACT_IMAGE_NONE, graphics=pymupdf.PDF_REDACT_LINE_ART_REMOVE_IF_COVERED)
+        print(f"Removed {cut} Paper/Abstract label(s).")
+
 
 
 def find_phone_line():

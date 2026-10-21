@@ -6,7 +6,7 @@
 window.PORTFOLIO = window.PORTFOLIO || {};
 
 PORTFOLIO.links = {
-  email: "badralkhazzan@gmail.com",
+  email: "badr.alkhazan@gmail.com",
   linkedin: "https://www.linkedin.com/in/badr-aldeen-capm%C2%AE-559838328",
   github: "https://github.com/badralkhazzan-del",
   githubRepo: "https://github.com/badralkhazzan-del/badr.github.io"

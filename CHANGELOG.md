@@ -4,7 +4,8 @@ Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in 
 
 ## 2026-10-21 · CV email
 
-- CV replaced with a version that uses the e-mail address badr.alkhazan@gmail.com in the header (text and link). `make_public_cv.py` can now replace the e-mail and also write a full copy that keeps the phone number.
+- E-mail changed to badr.alkhazan@gmail.com on the Contact page, footer, CV page and in the CV header (text and link).
+- Public CV: the "Paper" and "Abstract" labels (and their separators) are removed; journal and conference links stay. `make_public_cv.py` can now replace the e-mail and also write a full copy that keeps the phone number.
 
 ## 2026-10-20 · Awards layout
 
