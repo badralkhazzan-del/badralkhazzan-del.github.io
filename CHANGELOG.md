@@ -4,7 +4,7 @@ Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in 
 
 ## 2026-10-22 · UII Global certificates
 
-- The UII Global entry now shows two certificates: Student Ambassador (Industrial Engineering, 2025-2026) and Deputy Head of the Event Division (2025/2026). Experience roles can now hold several certificates (`certificates: [...]`).
+- The UII Global announcement photo is removed. The entry now shows two certificates: Student Ambassador (Industrial Engineering, 2025-2026) and Deputy Head of the Event Division (2025/2026). Experience roles can now hold several certificates (`certificates: [...]`).
 
 ## 2026-10-22 · New CV, JTMIT article published, Delsim certificate
 
