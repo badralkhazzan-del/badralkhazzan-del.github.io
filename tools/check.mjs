@@ -104,7 +104,7 @@ if (!/^\d{4}-\d{2}-\d{2}$/.test(S.lastUpdated || "")) err(`site.lastUpdated must
 const appSource = fs.readFileSync(path.join(root, "assets", "js", "app.js"), "utf8");
 const usedKeys = new Set([...appSource.matchAll(/\bt\(\s*"((?:[^"\\]|\\.)*)"/g)].map((m) => m[1]));
 // Strings passed to t() indirectly (plurals, tier labels, section titles stored in data).
-["Published work", "Published works", "Conference paper", "Conference papers", "Manuscript under review", "Manuscripts under review",
+["Publication", "Publications", "Conference paper", "Conference papers", "Manuscript under review", "Manuscripts under review",
  "Competitive award", "Competitive awards", "{n} item", "{n} items", "Flagship project", "Supporting project", "Approach",
  "Visual evidence", "Native"].forEach((k) => usedKeys.add(k));
 for (const p of P.projects || []) [p.approachTitle, p.galleryTitle].filter(Boolean).forEach((k) => usedKeys.add(k));

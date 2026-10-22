@@ -10,6 +10,7 @@ Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in 
 
 - CV replaced with the 22 October version. The public copy has no phone number and no links to private Google Drive files; links to journals, conferences, DOIs and repositories stay.
 - "Simulation and Modelling Trainee" is now "Simulation & Modelling Intern", as in the new CV. The Delsim certificate (certificate number and student number covered) is shown on that entry.
+- Research summary tiles: "Published works" is now "Publications" and comes before "Manuscripts under review".
 - The bullwhip article is now Published in JTMIT, with the article link and DOI 10.55826/jtmit.v5i4.1980.
 
 ## 2026-10-21 · Cache fix
