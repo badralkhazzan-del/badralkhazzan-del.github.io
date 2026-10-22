@@ -461,8 +461,8 @@
     var tiles = [
       [countStatus("accepted"), t("Accepted, forthcoming")],
       [countStatus("conference"), t(plural(countStatus("conference"), "Conference paper", "Conference papers"))],
+      [countStatus("published"), t(plural(countStatus("published"), "Publication", "Publications"))],
       [countStatus("under-review"), t(plural(countStatus("under-review"), "Manuscript under review", "Manuscripts under review"))],
-      [countStatus("published"), t(plural(countStatus("published"), "Published work", "Published works"))],
       [competitive, t(plural(competitive, "Competitive award", "Competitive awards"))],
       [(edu.gpa || "").split("/")[0].trim(), t("GPA out of 4.00")]
     ].filter(function (t) { return t[0] !== 0 && t[0] !== ""; });
