@@ -39,17 +39,17 @@ PORTFOLIO.research = [
     short: "Bullwhip effect simulation",
     title: "Simulation-Based Analysis of the Bullwhip Effect in a Multi-Echelon Bottled Water Supply Chain",
     type: "Journal article",
-    status: "accepted",
+    status: "published",
     year: 2026,
-    venue: "JTMIT",
-    statusDetail: "Accepted for publication; currently in production",
+    venue: "Jurnal Teknologi dan Manajemen Industri Terapan (JTMIT)",
     authors: ["Badr Aldeen Al-Khazan", "Agus Mansur"],
     summary:
       "A reproducible discrete-time simulation of a three-stage bottled-water supply chain (retailer, distributor, manufacturer) in which each stage follows a weekly order-up-to policy with moving-average forecasts, variable lead times, safety stock and batching. Across 1,000 replications, both ordering interfaces amplified relative demand variability, measured consistently as a coefficient-of-variation ratio. The model is a hypothetical scenario and makes no claim about a real company.",
     topics: ["Bullwhip effect", "Inventory policy", "Multi-echelon supply chain"],
     methods: ["simulation", "supply-chain", "statistics"],
     tools: ["Python", "NumPy"],
-    links: [],
+    links: [{ label: "View article", url: "https://jurnal-tmit.com/index.php/home/article/view/1980" }],
+    doi: "10.55826/jtmit.v5i4.1980",
     featured: true
   },
   {

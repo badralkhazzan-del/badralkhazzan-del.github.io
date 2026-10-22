@@ -268,7 +268,7 @@ PORTFOLIO.i18n.id = {
       "bullwhip": {
         short: "Simulasi efek bullwhip",
         type: "Artikel jurnal",
-        statusDetail: "Diterima untuk publikasi; sedang dalam proses produksi",
+        links: [{ label: "Lihat artikel" }],
         summary: "Simulasi waktu diskret yang dapat direproduksi untuk rantai pasok air minum dalam kemasan tiga tingkat (pengecer, distributor, produsen), di mana setiap tingkat mengikuti kebijakan order-up-to mingguan dengan peramalan rata-rata bergerak, waktu tunggu yang bervariasi, stok pengaman, dan pemesanan dalam lot. Dalam 1.000 replikasi, kedua titik pemesanan memperbesar variabilitas permintaan relatif, yang diukur secara konsisten sebagai rasio koefisien variasi. Model ini merupakan skenario hipotetis dan tidak mengklaim kondisi perusahaan nyata.",
         topics: ["Efek bullwhip", "Kebijakan persediaan", "Rantai pasok multi-eselon"]
       },
@@ -532,7 +532,7 @@ PORTFOLIO.i18n.id = {
       roles: {
         "delsim": {
           kind: "Teknis",
-          title: "Trainee Simulasi & Pemodelan",
+          title: "Magang Simulasi & Pemodelan",
           org: "Laboratorium Delsim, Universitas Islam Indonesia",
           summary: "Laboratorium pemodelan dan simulasi industri di Jurusan Teknik Industri.",
           bullets: ["Membangun dan memvalidasi model simulasi kejadian diskret dan dinamika sistem menggunakan FlexSim dan PowerSim untuk menganalisis perilaku sistem industri."],

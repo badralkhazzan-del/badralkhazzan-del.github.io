@@ -126,7 +126,7 @@ Open `data/research.js`, find the paper by its `id`, and change `status`:
 
 | Situation | Set |
 |---|---|
-| Accepted, in production | `status: "accepted"`, `statusDetail: "Accepted for publication; currently in production"` |
+| Accepted, in production | `status: "accepted"`, `statusDetail: "Accepted for publication; currently in production"` (remove `statusDetail` once the article is live and switch to Published) |
 | Accepted for a conference | `status: "conference"`, `venue: "Conference name"` |
 | Published | `status: "published"`, `venue: "Journal name"`, `year`, and `links: [{ label: "View article", url: "https://official-page" }]`, plus `doi: "10.xxxx/xxxxx"` if one exists |
 

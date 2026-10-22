@@ -49,40 +49,40 @@ doc = pymupdf.open(sys.argv[1])
 page = doc[0]
 
 # Links to Google Drive/Docs files point at private material (manuscripts under review, abstracts
-# with student emails). The text stays; only the link is removed.
+# with student emails, certificates). The link is removed and so is its label ("Paper", "Abstract",
+# "Link") with the separator before it. Links to journals, conferences, DOIs and repositories stay.
 PRIVATE_LINK = re.compile(r"^https?://(drive|docs)\.google\.com/", re.I)
-removed = 0
-for pg in ([] if KEEP else doc):
-    while True:  # delete one at a time: deleting shifts the remaining links
-        hit = next((l for l in pg.get_links() if PRIVATE_LINK.match(l.get("uri") or "")), None)
-        if hit is None:
-            break
-        pg.delete_link(hit)
-        removed += 1
-if removed:
-    print(f"Removed {removed} link(s) to Google Drive/Docs files.")
-
-# The "Paper" / "Abstract" labels pointed at those files; without the link they are dead words,
-# so the label and the separator before it are removed too (journal and conference links stay).
+cut = 0
 if not KEEP:
-    cut = 0
+    private_rects = [pymupdf.Rect(l["from"]) for l in page.get_links() if PRIVATE_LINK.match(l.get("uri") or "")]
     for block in page.get_text("rawdict")["blocks"]:
         for ln in block.get("lines", []):
             chars = [c for sp in ln["spans"] for c in sp["chars"]]
-            text = "".join(c["c"] for c in chars)
-            for label in ("Paper", "Abstract"):
-                if text.rstrip().endswith("\u00b7  " + label) or text.rstrip().endswith("\u00b7 " + label):
-                    k = text.rstrip().rfind("\u00b7")
-                    start = k
-                    while start > 0 and text[start - 1] == " ":
-                        start -= 1
-                    r = pymupdf.Rect(chars[start]["bbox"][0], ln["bbox"][1], ln["bbox"][2] + 1, ln["bbox"][3] + 2.5)
-                    page.add_redact_annot(r)
-                    cut += 1
+            text = "".join(c["c"] for c in chars).rstrip()
+            for label in ("Paper", "Abstract", "Link"):
+                if not (text.endswith("\u00b7  " + label) or text.endswith("\u00b7 " + label)):
+                    continue
+                label_box = pymupdf.Rect(chars[len(text) - len(label)]["bbox"]) | pymupdf.Rect(chars[len(text) - 1]["bbox"])
+                if not any(label_box.intersects(r) for r in private_rects):
+                    continue  # the label opens a public page (DOI, repository): keep it
+                start = text.rfind("\u00b7")
+                while start > 0 and text[start - 1] == " ":
+                    start -= 1
+                page.add_redact_annot(pymupdf.Rect(chars[start]["bbox"][0], ln["bbox"][1], chars[len(text) - 1]["bbox"][2] + 1, ln["bbox"][3] + 2.5))
+                cut += 1
+    removed = 0
+    for pg in doc:
+        while True:  # delete one at a time: deleting shifts the remaining links
+            hit = next((l for l in pg.get_links() if PRIVATE_LINK.match(l.get("uri") or "")), None)
+            if hit is None:
+                break
+            pg.delete_link(hit)
+            removed += 1
+    if removed:
+        print(f"Removed {removed} link(s) to Google Drive/Docs files.")
     if cut:
         page.apply_redactions(images=pymupdf.PDF_REDACT_IMAGE_NONE, graphics=pymupdf.PDF_REDACT_LINE_ART_REMOVE_IF_COVERED)
-        print(f"Removed {cut} Paper/Abstract label(s).")
-
+        print(f"Removed {cut} label(s) of private links.")
 
 
 def find_phone_line():
@@ -100,8 +100,14 @@ else:
     spans = [s for s in line["spans"] if s["text"].strip() or SEPARATOR.match(s["text"])]
     idx = next(i for i, s in enumerate(spans) if PHONE.search(s["text"]))
     drop = set() if KEEP else {idx}
+    # Some CVs keep the location and the phone number in one text run: cut only the phone number.
+    rest = PHONE.sub("", spans[idx]["text"])
+    if not KEEP and re.sub(r"[\s|\u00b7\u2022]", "", rest):
+        spans[idx]["text"] = re.sub(r"\s*[|\u00b7\u2022]\s*$", "  |  ", re.sub(r"\s*[|\u00b7\u2022]\s*" + PHONE.pattern + r"\s*[|\u00b7\u2022]?\s*", "  |  ", spans[idx]["text"]).rstrip())
+        spans[idx]["text"] = re.sub(r"(\s*\|\s*){2,}", "  |  ", spans[idx]["text"])
+        drop = set()
     # Drop one neighbouring separator so no double "|" remains.
-    if KEEP:
+    if KEEP or not drop:
         pass
     elif idx > 0 and SEPARATOR.match(spans[idx - 1]["text"]):
         drop.add(idx - 1)

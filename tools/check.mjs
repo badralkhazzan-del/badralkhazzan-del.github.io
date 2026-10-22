@@ -86,7 +86,13 @@ for (const a of P.awards || []) {
     checkImage({ src: a.certificate.src + "-thumb", alt: a.certificate.alt }, w + " certificate thumbnail");
   }
 }
-for (const r of (P.experience || {}).roles || []) checkImage(r.image, `role "${r.id}"`);
+for (const r of (P.experience || {}).roles || []) {
+  checkImage(r.image, `role "${r.id}"`);
+  if (r.certificate) {
+    checkImage(r.certificate, `role "${r.id}" certificate`);
+    checkImage({ src: r.certificate.src + "-thumb", alt: r.certificate.alt }, `role "${r.id}" certificate thumbnail`);
+  }
+}
 for (const g of P.skills || []) for (const s of g.items) for (const e of s.evidence || []) checkRef(e, `skill "${s.name}"`);
 for (const f of S.focusAreas || []) for (const e of f.evidence || []) checkRef(e, `focus area "${f.title}"`);
 if (!exists(S.cv.file.split("?")[0])) err(`CV file missing: ${S.cv.file}`);

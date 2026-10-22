@@ -26,7 +26,7 @@ PORTFOLIO.site = {
   location: "Yogyakarta, Indonesia",
 
   // Update this whenever the portfolio content changes (YYYY-MM-DD).
-  lastUpdated: "2026-10-21",
+  lastUpdated: "2026-10-22",
 
   // Final public address of the site. Change it here and in the <meta property="og:*"> tags
   // if the site moves (see README, "Changing the site address").
@@ -42,12 +42,12 @@ PORTFOLIO.site = {
   },
 
   cv: {
-    file: "assets/Badr_Aldeen_CV.pdf?v=20261021",
+    file: "assets/Badr_Aldeen_CV.pdf?v=20261022",
     // Image of page 1, shown where the browser cannot display PDFs (regenerate when the CV changes; see README).
-    preview: "assets/cv-preview-20261021",
+    preview: "assets/cv-preview-20261022",
     previewW: 1241,
     previewH: 1754,
-    updated: "2026-10-21",
+    updated: "2026-10-22",
     note: "For references or further details, please get in touch by email."
   },
 

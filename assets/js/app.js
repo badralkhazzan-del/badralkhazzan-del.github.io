@@ -211,6 +211,13 @@
     return (P.research || []).filter(function (r) { return r.status === key; }).length;
   }
 
+  function certLink(c) {
+    if (!c) return "";
+    return '<a class="cert-link" href="' + esc(c.src) + '.jpg" target="_blank" rel="noopener" aria-label="' + esc(t("View certificate (opens full size): {alt}", { alt: c.alt })) + '">' +
+      '<span class="cert-thumb">' + pic({ src: c.src + "-thumb", w: 480, h: Math.round(480 * c.h / c.w), alt: "" }) + "</span>" +
+      '<span class="cert-label">' + icon("badge") + esc(t("View certificate")) + " " + icon("external") + "</span></a>";
+  }
+
   function venueLine(r) {
     var bits = [];
     if (r.status === "published") {
@@ -763,7 +770,7 @@
           '<p class="role-org">' + esc(r.org) + "</p>" +
           (r.summary ? '<p class="role-summary">' + esc(r.summary) + "</p>" : "") +
           "<ul>" + (r.bullets || []).map(function (b) { return "<li>" + esc(b) + "</li>"; }).join("") + "</ul>" +
-          prog + related + tags +
+          prog + related + tags + certLink(r.certificate) +
         "</div>" +
         (r.image ? '<div class="role-img">' + pic(r.image) + "</div>" : "") +
         "</article></li>";
@@ -797,13 +804,7 @@
       return out.length ? '<div class="pub-foot">' + out.join("") + "</div>" : "";
     }
 
-    function cert(a) {
-      var c = a.certificate;
-      if (!c) return "";
-      return '<a class="cert-link" href="' + esc(c.src) + '.jpg" target="_blank" rel="noopener" aria-label="' + esc(t("View certificate (opens full size): {alt}", { alt: c.alt })) + '">' +
-        '<span class="cert-thumb">' + pic({ src: c.src + "-thumb", w: 480, h: Math.round(480 * c.h / c.w), alt: "" }) + "</span>" +
-        '<span class="cert-label">' + icon("badge") + esc(t("View certificate")) + " " + icon("external") + "</span></a>";
-    }
+    function cert(a) { return certLink(a.certificate); }
 
     var compHtml = comp.map(function (a) {
       return '<article class="card award-card' + (a.image ? "" : " no-img") + '" id="' + esc(a.id) + '">' +

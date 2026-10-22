@@ -12,7 +12,7 @@ PORTFOLIO.experience = {
     {
       id: "delsim",
       kind: "Technical",
-      title: "Simulation & Modelling Trainee",
+      title: "Simulation & Modelling Intern",
       org: "Delsim Laboratory, Universitas Islam Indonesia",
       start: "2025-04",
       end: "2025-09",
@@ -23,7 +23,8 @@ PORTFOLIO.experience = {
       related: [
         "Organizing committee, laboratory seminar \"Optimization via Simulation (OVS): Shifting from What-if to What-Best Analysis\" (November 2024)."
       ],
-      tags: ["FlexSim", "PowerSim", "Discrete-event simulation", "System dynamics"]
+      tags: ["FlexSim", "PowerSim", "Discrete-event simulation", "System dynamics"],
+      certificate: { src: "assets/img/certificates/delsim-2026", w: 1600, h: 1111, alt: "Certificate from the Delsim Laboratory, Universitas Islam Indonesia, confirming that Badr Aldeen Al-Khazan completed the laboratory assistant internship programme, dated 30 July 2026" }
     },
     {
       id: "uii-global",
