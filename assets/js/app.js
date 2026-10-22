@@ -215,7 +215,12 @@
     if (!c) return "";
     return '<a class="cert-link" href="' + esc(c.src) + '.jpg" target="_blank" rel="noopener" aria-label="' + esc(t("View certificate (opens full size): {alt}", { alt: c.alt })) + '">' +
       '<span class="cert-thumb">' + pic({ src: c.src + "-thumb", w: 480, h: Math.round(480 * c.h / c.w), alt: "" }) + "</span>" +
-      '<span class="cert-label">' + icon("badge") + esc(t("View certificate")) + " " + icon("external") + "</span></a>";
+      '<span class="cert-label">' + icon("badge") + esc(t(c.label || "View certificate")) + " " + icon("external") + "</span></a>";
+  }
+
+  function certRow(r) {
+    var list = r.certificates || (r.certificate ? [r.certificate] : []);
+    return list.length ? '<div class="cert-row">' + list.map(certLink).join("") + "</div>" : "";
   }
 
   function venueLine(r) {
@@ -770,7 +775,7 @@
           '<p class="role-org">' + esc(r.org) + "</p>" +
           (r.summary ? '<p class="role-summary">' + esc(r.summary) + "</p>" : "") +
           "<ul>" + (r.bullets || []).map(function (b) { return "<li>" + esc(b) + "</li>"; }).join("") + "</ul>" +
-          prog + related + tags + certLink(r.certificate) +
+          prog + related + tags + certRow(r) +
         "</div>" +
         (r.image ? '<div class="role-img">' + pic(r.image) + "</div>" : "") +
         "</article></li>";

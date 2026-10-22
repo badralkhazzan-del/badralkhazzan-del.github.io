@@ -114,6 +114,8 @@ PORTFOLIO.i18n.id = {
     "Project: {name}": "Proyek: {name}",
     "View certificate (opens full size): {alt}": "Lihat sertifikat (ukuran penuh): {alt}",
     "View certificate": "Lihat sertifikat",
+    "View ambassador certificate": "Lihat sertifikat duta",
+    "View deputy head certificate": "Lihat sertifikat wakil kepala divisi",
     "Competitive awards": "Penghargaan kompetisi",
     "Results from competitions and international conferences, each linked to the work behind it.": "Hasil dari kompetisi dan konferensi internasional, masing-masing ditautkan ke karya di baliknya.",
     "Scholarship and leadership development": "Beasiswa dan pengembangan kepemimpinan",

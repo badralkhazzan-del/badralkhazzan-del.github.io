@@ -43,7 +43,11 @@ PORTFOLIO.experience = {
         { when: "Jan–Dec 2025", what: "Deputy Head, Events Division & Industrial Engineering Ambassador" }
       ],
       tags: ["Event management", "Partnerships", "Cross-cultural communication"],
-      image: { src: "assets/img/experience/uii-global-ambassador", w: 358, h: 464, alt: "UII Global student ambassador announcement featuring Badr Aldeen Alkhazan, Industrial Engineering '23" }
+      image: { src: "assets/img/experience/uii-global-ambassador", w: 358, h: 464, alt: "UII Global student ambassador announcement featuring Badr Aldeen Alkhazan, Industrial Engineering '23" },
+      certificates: [
+        { label: "View ambassador certificate", src: "assets/img/certificates/uii-global-ambassador", w: 1600, h: 1132, alt: "Certificate from UII Global naming Badr Aldeen Al-Khazan Student Ambassador for the Department of Industrial Engineering, 2025-2026 term" },
+        { label: "View deputy head certificate", src: "assets/img/certificates/uii-global-deputy-head", w: 1080, h: 763, alt: "Certificate from UII Global naming Badr Aldeen Al-Khazan Deputy Head of the Event Division, 2025/2026 term" }
+      ]
     },
     {
       id: "ysu",

@@ -42,7 +42,7 @@ PORTFOLIO.site = {
   },
 
   cv: {
-    file: "assets/Badr_Aldeen_CV.pdf?v=20261022",
+    file: "assets/Badr_Aldeen_CV.pdf?v=20261023",
     // Image of page 1, shown where the browser cannot display PDFs (regenerate when the CV changes; see README).
     preview: "assets/cv-preview-20261022",
     previewW: 1241,

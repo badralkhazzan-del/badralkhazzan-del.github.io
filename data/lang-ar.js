@@ -114,6 +114,8 @@ PORTFOLIO.i18n.ar = {
     "Project: {name}": "المشروع: {name}",
     "View certificate (opens full size): {alt}": "عرض الشهادة (بالحجم الكامل): {alt}",
     "View certificate": "عرض الشهادة",
+    "View ambassador certificate": "عرض شهادة السفير",
+    "View deputy head certificate": "عرض شهادة نائب الرئيس",
     "Competitive awards": "جوائز المسابقات",
     "Results from competitions and international conferences, each linked to the work behind it.": "نتائج من مسابقات ومؤتمرات دولية، وكل منها مرتبط بالعمل الذي يقف خلفه.",
     "Scholarship and leadership development": "المنحة الدراسية وتطوير القيادة",

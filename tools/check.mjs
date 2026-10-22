@@ -88,9 +88,9 @@ for (const a of P.awards || []) {
 }
 for (const r of (P.experience || {}).roles || []) {
   checkImage(r.image, `role "${r.id}"`);
-  if (r.certificate) {
-    checkImage(r.certificate, `role "${r.id}" certificate`);
-    checkImage({ src: r.certificate.src + "-thumb", alt: r.certificate.alt }, `role "${r.id}" certificate thumbnail`);
+  for (const c of r.certificates || (r.certificate ? [r.certificate] : [])) {
+    checkImage(c, `role "${r.id}" certificate`);
+    checkImage({ src: c.src + "-thumb", alt: c.alt }, `role "${r.id}" certificate thumbnail`);
   }
 }
 for (const g of P.skills || []) for (const s of g.items) for (const e of s.evidence || []) checkRef(e, `skill "${s.name}"`);
@@ -108,6 +108,8 @@ const usedKeys = new Set([...appSource.matchAll(/\bt\(\s*"((?:[^"\\]|\\.)*)"/g)]
  "Competitive award", "Competitive awards", "{n} item", "{n} items", "Flagship project", "Supporting project", "Approach",
  "Visual evidence", "Native"].forEach((k) => usedKeys.add(k));
 for (const p of P.projects || []) [p.approachTitle, p.galleryTitle].filter(Boolean).forEach((k) => usedKeys.add(k));
+for (const r of (P.experience || {}).roles || []) for (const c of r.certificates || []) if (c.label) usedKeys.add(c.label);
+usedKeys.add("View certificate");
 for (const file of fs.readdirSync(path.join(root, "data")).filter((f) => /^lang-[a-z]+\.js$/.test(f))) {
   const code = file.slice(5, -3);
   const lctx = { window: {} }; lctx.window = lctx; lctx.PORTFOLIO = lctx.window.PORTFOLIO = {};

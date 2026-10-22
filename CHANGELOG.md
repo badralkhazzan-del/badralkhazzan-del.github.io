@@ -2,6 +2,10 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-10-22 · UII Global certificates
+
+- The UII Global entry now shows two certificates: Student Ambassador (Industrial Engineering, 2025-2026) and Deputy Head of the Event Division (2025/2026). Experience roles can now hold several certificates (`certificates: [...]`).
+
 ## 2026-10-22 · New CV, JTMIT article published, Delsim certificate
 
 - CV replaced with the 22 October version. The public copy has no phone number and no links to private Google Drive files; links to journals, conferences, DOIs and repositories stay.
