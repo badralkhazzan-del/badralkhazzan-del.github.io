@@ -2,6 +2,10 @@
 
 Meaningful updates to the portfolio. Newest first. Also update `lastUpdated` in `data/site.js`.
 
+## 2026-11-18 · Fifth conference paper
+
+- Added "Heat-Aware Routing and Rest Scheduling for Motorcycle Couriers under Indonesia's Workplace Heat Regulation" (CENTIVE) as an accepted conference paper, with Indonesian and Arabic texts. No link, DOI or conference date is shown because none is official yet.
+
 ## 2026-10-22 · UII Global certificates
 
 - The UII Global announcement photo is removed. The entry now shows two certificates: Student Ambassador (Industrial Engineering, 2025-2026) and Deputy Head of the Event Division (2025/2026). Experience roles can now hold several certificates (`certificates: [...]`).

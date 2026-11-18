@@ -87,6 +87,23 @@ PORTFOLIO.research = [
     featured: true
   },
   {
+    id: "heat-aware-routing",
+    short: "Heat-aware courier routing",
+    title: "Heat-Aware Routing and Rest Scheduling for Motorcycle Couriers under Indonesia's Workplace Heat Regulation",
+    type: "Conference paper",
+    status: "conference",
+    year: 2026,
+    venue: "CENTIVE (Conference on Electrical Engineering, Informatics, Industrial Technology, and Creative Media)",
+    statusDetail: "Paper accepted",
+    authors: ["Badr Aldeen Al-Khazan", "Muhammad Ridwan Andi Purnomo"],
+    summary:
+      "Asks how much Indonesia's workplace heat regulation (Permenaker 5/2018) changes the cost of delivery routes for motorcycle couriers. The study adds heat limits and cooling stops at air-conditioned minimarkets to a vehicle routing model, and plans routes, departure times and rest stops together. It uses weather from 25 days in 2023, 166 real minimarkets in South Jakarta and simulated orders. Plans that ignore heat broke the clock-hour allowance on 17 days and the dose limit on 19 days. Following the rules cost 9.5% more at median heat, and moving deliveries away from midday restored 99.5% on-time service for a 19.3% cost increase.",
+    topics: ["Vehicle routing", "Occupational heat stress", "Last-mile delivery", "Rest scheduling"],
+    methods: ["routing", "optimization", "simulation"],
+    links: [],
+    featured: false
+  },
+  {
     id: "wheat-cvar",
     short: "Wheat import Mean-CVaR",
     title: "Balancing Cost and Tail Risk in the Indonesian Wheat Import Portfolio Using Nested Mean CVaR Optimization",

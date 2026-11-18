@@ -322,6 +322,13 @@ PORTFOLIO.i18n.id = {
         summary: "Mempertanyakan kapan rute yang memperhitungkan beban kerja dapat mengurangi ketimpangan beban kurir dan risiko lembur dalam pengiriman last-mile tanpa penalti jarak tempuh yang berlebihan. Menggunakan data pengiriman publik LaDe-D dari Chongqing, Jilin, dan Yantai (sekitar 1,17 juta catatan paket), model gradient boosting memperkirakan beban kerja kurir, lalu enam kebijakan rute dibandingkan pada 36 instans wilayah-hari yang nyata. Dibandingkan rute berbasis jarak saja, penyeimbangan scenario-CVaR menambah jarak tempuh 3,63% sambil menurunkan ketimpangan beban kerja rata-rata sebesar 39,50% dan probabilitas lembur sebesar 32,67%, meskipun tidak secara signifikan mengungguli pembanding penyeimbangan yang lebih sederhana.",
         topics: ["Logistik last-mile", "Penyeimbangan beban kerja", "Conditional value at risk", "Analitik prediktif"]
       },
+      "heat-aware-routing": {
+        short: "Rute kurir sadar panas",
+        type: "Makalah konferensi",
+        statusDetail: "Makalah diterima",
+        summary: "Mempertanyakan seberapa besar peraturan panas di tempat kerja Indonesia (Permenaker 5/2018) mengubah biaya rute pengiriman kurir sepeda motor. Studi ini menambahkan batas panas dan perhentian pendinginan di minimarket ber-AC ke model rute kendaraan, lalu merencanakan rute, jam berangkat dan tempat istirahat sekaligus. Datanya berasal dari cuaca 25 hari pada 2023, 166 minimarket nyata di Jakarta Selatan dan pesanan simulasi. Rencana yang mengabaikan panas melanggar batas jam kerja pada 17 hari dan batas dosis pada 19 hari. Mematuhi aturan menambah biaya 9,5% pada panas median, dan menggeser pengiriman dari tengah hari mengembalikan 99,5% layanan tepat waktu dengan kenaikan biaya 19,3%.",
+        topics: ["Rute kendaraan", "Stres panas kerja", "Pengiriman last-mile", "Penjadwalan istirahat"]
+      },
       "wheat-cvar": {
         short: "Mean-CVaR impor gandum",
         type: "Makalah konferensi",
